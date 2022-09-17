@@ -33,6 +33,7 @@ body{
  .template{
     width: 100%;
     position:relative;
+   
     
   }
   div.ftl-vertical-tab-container{
@@ -48,6 +49,7 @@ body{
     background-clip: padding-box;
     opacity: 0.97;
     filter: alpha(opacity=97);
+    
     
   }
   div.ftl-vertical-tab-menu{
@@ -91,6 +93,7 @@ body{
     border-bottom: 13px solid transparent;
     border-top: 13px solid transparent;
     border-left: 10px solid #5C6B73;
+   
   }
   
   div.ftl-vertical-tab-content{
@@ -133,6 +136,7 @@ table {
     background-color: #9DB4C0;
     height: 100%;
     font-family: 'Open Sans', sans-serif;
+    bottom: 0px;
 }
 .pie-pagina .grupo-1{
     width: 100%;
@@ -172,3 +176,4 @@ table {
         padding: 35px 0px;
     }
 }
+
