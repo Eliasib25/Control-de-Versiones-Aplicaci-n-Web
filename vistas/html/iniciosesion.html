@@ -24,17 +24,13 @@
 </div>
 </header>
 <div class="divlogin">
-    <form action="">
         <div class="login-page">
             <div class="form">
-              <form class="login-form">
-                <input type="text" placeholder="Usuario" id="usuario"/>
-                <input type="password" placeholder="Contraseña" id="contraseña"/>
+                <input type="text" placeholder="Usuario" id="correo"/>
+                <input type="password" placeholder="Contraseña" id="password"/>
                 <button onclick="inicioSesion()">Iniciar Sesión</button>
-              </form>
             </div>
           </div>
-    </form>
 </div>
 
 <footer class="pie-pagina">
@@ -56,10 +52,11 @@
         </div>
     </div>
 </footer>
+
 <script>
-
-
-function inicioSesion(usuario,password) {
+function inicioSesion() {
+var usuario = document.getElementById("correo").value;
+var password = document.getElementById("password").value;
 
 if (usuario== "cliente" && password=="123") {
     window.location.href = "interfazcliente.html";
@@ -76,11 +73,6 @@ if (usuario== "cliente" && password=="123") {
 }
    
 }
-
-var usuario = document.getElementById("usuario").value;
-var password = document.getElementById("contraseña").value;
-inicioSesion(usuario, password);
-
-  </script>
+ </script>
 </body>
 </html>
