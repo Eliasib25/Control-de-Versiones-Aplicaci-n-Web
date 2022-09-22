@@ -1,6 +1,13 @@
 /* estilos footer */
 /*:::::Pie de Pagina*/
 
+nav{
+    color: #253237;
+}
+body{
+    background-color: #E0FBFC;
+    color: #253237;
+}
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 *{
     margin: 0;
@@ -10,7 +17,7 @@
 }
 .pie-pagina{
     width: 100%;
-    background-color: #0a141d;
+    background-color: #9DB4C0;
     height: 100%;
     font-family: 'Open Sans', sans-serif
     
