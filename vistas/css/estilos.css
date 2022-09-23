@@ -17,6 +17,15 @@
   align-items: center;
   font-family: 'Open Sans', sans-serif;
  }
+
+ body{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
  
  /* estilos login */
 
@@ -131,7 +140,9 @@ body{
     width: 100%;
     background-color: #9DB4C0;
     height: 100%;
-    font-family: 'Open Sans', sans-serif
+    font-family: 'Open Sans', sans-serif;
+    bottom: 0px;
+    margin-top: auto;
     
 }
 .pie-pagina .grupo-1{
