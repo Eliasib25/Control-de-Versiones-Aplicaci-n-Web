@@ -184,9 +184,16 @@
                       <center>
                         <h2 class="border border-3 text-center" style="margin-top: 0;color:#253237">Registrar costos materias primas, reactivos, maquinas</h2>
                         <div class="container my_text" style="text-align: center;">
-                          <div class="row" >
-                            <div class= "col"">
-                                <label for="">Nombre Materia Prima</label>
+                          <div class>
+                            <div class>
+                              <label for="Seleccione elelmeto a registrar el precio"></label>
+                                <select name="elemento" id="elemento">
+                                  <option value="0">Materia Prima</option>
+                                  <option value="1">Reactivos</option>
+                                  <option value="2">Maquinas</option>
+                                </select>
+                                <br>
+                                <label for="">Nombre</label>
                                 <br>
                               <input type="text" aria-label="First name">
                             </div>
@@ -196,36 +203,6 @@
                                 <input type="text" aria-label="First name">
                             </div>  
                           </div>
-                          
-                            <div class="row" style="justify-content: center;">
-                                <div class = "col" style="width: auto;">
-                                    <br>
-                                    <label for="">Nombre Reactivo</label>
-                                    <br>
-                                    <input type="text" aria-label="First name">
-                                </div>  
-                                <div class = "col" style="width: auto;">
-                                    <br>
-                                    <label for="">Precio</label>
-                                    <br>
-                                    <input type="text" aria-label="First name">
-                                </div> 
-                           </div>
-
-                           <div class="row" style="justify-content: center;">
-                            <div class = "col" style="width: auto;">
-                                <br>
-                                <label for="">Nombre Maquina</label>
-                                <br>
-                                <input type="text" aria-label="First name">
-                            </div>  
-                            <div class = "col" style="width: auto;">
-                                <br>
-                                <label for="">Precio</label>
-                                <br>
-                                <input type="text" aria-label="First name">
-                            </div> 
-                       </div>
                         <div class="container my_text">
                           <div class="row justify-content-center">
                             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -324,11 +301,19 @@
                                 <br>
                                 <label for="">Experticia</label>
                                 <br>
+                                <input type="text" style="width: 150px;" stylearia-label="First name">
+                                <button class="btn btn-dark" style="font-size: 13px;" role="button">Agregar</button>
+                                <br>
+                                <br>
                                <textarea name="experticia" id="experticia" cols="auto" rows="auto">
 
                                </textarea>
                                 <br>
                                 <label for="">Estudios Realizados</label>
+                                <br>
+                                <input type="text" style="width: 150px;" stylearia-label="First name">
+                                <button class="btn btn-dark" style="font-size: 13px;" role="button">Agregar</button>
+                                <br>
                                 <br>
                                 <textarea name="" id="" cols="auto" rows="auto">
 

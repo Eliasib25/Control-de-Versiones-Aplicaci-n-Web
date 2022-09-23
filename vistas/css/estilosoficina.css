@@ -20,6 +20,10 @@
 body{
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .a{
@@ -137,6 +141,7 @@ table {
     height: 100%;
     font-family: 'Open Sans', sans-serif;
     bottom: 0px;
+    margin-top: auto;
 }
 .pie-pagina .grupo-1{
     width: 100%;
