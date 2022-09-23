@@ -88,45 +88,49 @@
                   <!-- train section -->
                   <div class="ftl-vertical-tab-content active">
                       <center>
-                        <h2 class="border border-3 text-center" style="margin-top: 0;color:#253237">Actualizar Historia Clinica y Agendar Cita</h2>
+                        <h2 class="border border-3 text-center" style="margin-top: 0;color:#253237">Registrar historia clinica y agendar cita</h2>
                         <div class="container mt-3 mb-3 my_text">
                             <div style="text-align: center; width: auto;">
+                              <form action="">
                                 <label for="">Fecha</label>
                                 <br>
-                                <input type="date" name="Fecha" id="Fecha">
+                                <input type="date" name="Fecha" id="Fecha" required >
                                 <br>
                                 <label for="">Peso</label>
                                 <br>
-                                <input type="number" name="peso" id="peso">
+                                <input type="number" name="peso" id="peso" required>
                                 <br>
                                 <label for="">Presión arterial</label>
                                 <br>
-                                <input type="number" name="presionArterial" id="presionArterial">
-                                <br>
-                                <label for="">Diagnostico</label>
-                                <br>
-                                <textarea name="diagnostico" id="diagnostico" cols="23" rows="3">
-                                  Hipertensión leve 
-                                </textarea>
+                                <input type="number" name="presionArterial" id="presionArterial" required>
+                        
                                 <br>
                                 <label for="">Derivación</label>
                                 <br>
-                                <textarea name="derivacion" id="derivacion" cols="23" rows="3">
+                                <textarea name="derivacion" id="derivacion" cols="23" rows="3" required> 
                                   XD
                                 </textarea>
                                 <br>
                                 <label for="">Resultados</label>
                                 <br>
-                                <input type="number" name="resultados" id="resultados">
+                                <textarea name="resultados" id="resultados" cols="auto" rows="auto" required>
+
+                                </textarea>
                                 <br>
-                                <label for="">Numero de sesiones Realizadas</label>
+                                <label for="">Sesiones Realizadas</label>
                                 <br>
                                 <input type="number" disabled name="sesiones" id="sesiones">
+                                <br>
+                                <label for="">Sesiones Faltantes</label>
+                                <br>
+                                <input type="number" disabled name="sesiones" id="sesiones">
+                              
                               </div>
                               <br>
                               <div style="text-align: center;">
-                                <button class="btn btn-dark" style="font-size: 13px; width: 200px;"role="button">Actualizar</button>
-                                <a href="../html/agendarcita.html"><button class="btn btn-dark" style="font-size: 13px; width: 200px" role="button">Agendar Cita</button></a>
+                                <button type="submit" class="btn btn-dark" style="font-size: 13px; width: 200px;"role="button">Registrar</button>
+                              </form>
+                              <a href="../html/agendarcita.html"><button class="btn btn-dark" style="font-size: 13px; width: 200px" role="button">Agendar Cita</button></a>
                                </div>
                         </div>
                         

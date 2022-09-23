@@ -91,22 +91,24 @@
                         <h2 class="border border-3 text-center" style="margin-top: 0;color:#253237">Agendar Cita</h2>
                         <div class="container mt-3 mb-3 my_text">
                             <div style="text-align: center; width: auto;">
+                              <form action="">
                                 <label for="">Fecha</label>
                                 <br>
-                                <input type="date" name="fecha" id="fecha">
+                                <input type="date" name="fecha" id="fecha" required autofocus>
                                 <br>
                                 <label for="">Hora</label>
                                 <br>
-                                <input type="time" name="hora" id="hora">
+                                <input type="time" name="hora" id="hora" required>
                                 <br>
                                 <label for="">Sesiones Realizadas</label>
                                 <br>
-                                <input type="number" disabled name="hora" id="hora">
+                                <input type="number" disabled name="hora" id="hora" required>
                                 <br>
                                 <br>
                                 <div>
-                                <button class="btn btn-dark" style="font-size: 13px; width: 200px" role="button">Agendar Cita</button>
+                                <button type="submit" class="btn btn-dark" style="font-size: 13px; width: 200px" role="button">Agendar Cita</button>
                                </div>
+                              </form>
                         </div>
                         
                         

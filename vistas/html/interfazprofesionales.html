@@ -91,10 +91,12 @@
                         <h2 class="border border-3 text-center" style="margin-top: 0;color:#253237">Listado de Pacientes</h2>
                         <div class="container mt-3 mb-3 my_text">
                             <div style="text-align: center;font-size: 18px;">
+                              <form action="">
                               <label for="">Número de identificación</label>
                               <br>
-                              <input type="number" name="idpaciente" id="identificacion">
-                              <button class="btn btn-dark" role="button">Buscar</button>
+                              <input type="number" required name="idpaciente" id="identificacion">
+                              <button  type="submit" btn btn-dark" role="button">Buscar</button>
+                            </form>
                             </div>
                             <br>
                             <div class="mb-3" style="overflow-x:auto;">
@@ -139,11 +141,14 @@
                         <div class="container my_text">
 
                           <div style="text-align: center;font-size: 18px;">
+                            <form action="">
                               <label for="">Número de identificación</label>
                               <br>
-                              <input type="number" name="idpaciente" id="identificacion">
-                              <button class="btn btn-dark" style="color: white;" role="button">Ver</button>
+                              <input type="number" required name="idpaciente" id="identificacion">
+                              <button type="submit" class="btn btn-dark" style="color: white;" role="button">Ver</button>
+                            </form>
                             </div>
+                          
                            <br>
                           <div class="mb-3" style="overflow-x:auto;">
                             <table class="table table-striped table-ligth border border-5">

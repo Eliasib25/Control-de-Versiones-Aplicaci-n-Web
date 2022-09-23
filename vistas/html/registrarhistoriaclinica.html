@@ -91,29 +91,30 @@
                         <h2 class="border border-3 text-center" style="margin-top: 0;color:#253237">Registrar Historia Clinica</h2>
                         <div class="container mt-3 mb-3 my_text">
                             <div style="text-align: center; width: auto;">
+                              <form action="">
                                 <label for="">Peso</label>
                                 <br>
-                                <input type="number" name="peso" id="peso">
+                                <input type="number" name="peso" id="peso" required autofocus>
                                 <br>
                                 <label for="">Presión arterial</label>
                                 <br>
-                                <input type="number" name="presionArterial" id="presionArterial">
+                                <input type="number" name="presionArterial" id="presionArterial" required>
                                 <br>
                                 <label for="">Diagnostico</label>
                                 <br>
-                                <textarea name="diagnostico" id="diagnostico" cols="23" rows="3">
+                                <textarea name="diagnostico" id="diagnostico" cols="23" rows="3" required>
                                   Hipertensión leve 
                                 </textarea>
                                 <br>
                                 <label for="">Derivación</label>
                                 <br>
-                                <textarea name="derivacion" id="derivacion" cols="23" rows="3">
+                                <textarea name="derivacion" id="derivacion" cols="23" rows="3" required>
                                   XD
                                 </textarea>
                                 <br>
                                 <label for="">Servicio</label>
                                 <br>
-                                 <select name="servicios" id="servicios" style="width: 170px;">
+                                 <select name="servicios" id="servicios" style="width: 170px;" required>
                                   <option value="0">Servicio x</option>
                                   <option value="1">Servicio y</option>
                                   <option value="2">Servicio z</option>
@@ -127,15 +128,16 @@
                                 <br>
                                 <label for="">Sesiones Recomendadas</label>
                                 <br>
-                                <input type="number" name="sesiones" id="sesiones">
+                                <input type="number" name="sesiones" id="sesiones" required>
                                 <br>
                                 <label for="">Resultados</label>
                                 <br>
-                                <input type="number" name="resultados" id="resultados">
+                                <input type="number" name="resultados" id="resultados" required>
                               </div>
                               <br>
                               <div style="text-align: center;">
                                 <button class="btn btn-dark" style="font-size: 13px; width: 200px;"role="button">Registrar</button>
+                              </form>
                                 <a href="../html/agendarcita.html"><button class="btn btn-dark" style="font-size: 13px; width: 200px" role="button">Agendar Cita</button></a>
                                </div>
                         </div>
