@@ -9,6 +9,7 @@
  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
  <script type="text/javascript" src=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/oficinavirtual.js"></script>
  
 
 <link rel="stylesheet" href="../css/estilosoficina.css">
@@ -131,12 +132,12 @@
                                             <br>
                                             <label for="">Materias Primas</label>
                                             <br>
-                                          <select name="Materias" id="Materias">
-                                            <option value="0">Materia P 1</option>
-                                            <option value="1">Materia P 2</option>
-                                            <option value="2">Materia P 3</option>
+                                          <select name="materias" id="materias">
+                                            <option id="materias">Materia P 1</option>
+                                            <option id="materias">Materia P 2</option>
+                                            <option id="materias">Materia P 3</option>
                                           </select>
-                                          <button class="btn btn-dark" style="font-size: 13px;" role="button">Agregar</button>
+                                          <button class="btn btn-dark" style="font-size: 13px;" role="button" onclick="agregar()">Agregar</button>
                                           <br>
                                           <br>
                                           <div class="mb-3" style="overflow-x:auto;">
@@ -146,10 +147,9 @@
                                                     <th>Nombre Materia Prima</th>
                                                 </tr>
                                               </thead>
-                                                <tbody>
-                                                  <tr>
-                                                    <td>Materia P 1</td>
-                                                    <td><button class="btn btn-danger" style="font-size: 13px;" role="button">Eliminar</button></td>
+                                                <tbody id="tabla">
+                                                  <tr id="fila1">
+                                                   
                                                   </tr>
                                                 </tbody>
                                             </table>

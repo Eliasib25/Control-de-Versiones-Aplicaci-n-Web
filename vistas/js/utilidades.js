@@ -162,3 +162,4 @@ function adicionarGestionVenta() {
     agregarElementoContenedor(tagTR, tagTD8);
     agregarElementoContenedor(tabla, tagTR);
 }
+
