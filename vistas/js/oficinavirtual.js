@@ -67,8 +67,6 @@ function remover() {
     document.getElementById("fila1").remove();
 }
 
-
-
 function agregar(){
 
     var select = document.getElementById("materias").value;
@@ -76,16 +74,14 @@ function agregar(){
     var tabla = document.getElementById("tabla");
     var tagTR = crearTag("tr");
 
-//     var button = document.createElement("input");
-//     button.type = "button";
-//     button.value= "Eliminar";
-//     button.className = "btn btn-danger";
-   
+    var precio = Math.round(Math.random()*1000000);
 
     var tagtd = crearTagConTexto("td",select);
+    var tagtd1 = crearTagConTexto("td",precio);
     var tagtd2 = crearTagConInput("td",tagTR);
 
     adicionarElementoContenedor(tagTR,tagtd);
+    adicionarElementoContenedor(tagTR,tagtd1);
     adicionarElementoContenedor(tagTR,tagtd2);
     adicionarElementoContenedor(tabla,tagTR);
 }
