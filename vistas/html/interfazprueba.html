@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="../../controladores/controladorformulario.php" method="POST">
+        <label for="">Seleccione el tipo de identificacion</label>
+        <br>
+        <select name="tipoidentificacion" id="">
+            <option value="TI">TI</option>
+            <option value="CC">CC</option>
+            <option value="CE">CE</option>
+        </select>
+        <br>
+        <label for="">Ingrese el numero de identificacion</label>
+        <br>
+        <input type="text" name="identificacion" id="">
+        <br>
+        <label for="">Ingrese los nombres</label>
+        <br>
+        <input type="text" name="nombres" id="">
+        <br>
+        <label for="">Ingrese los apellidos</label>
+        <br>
+        <input type="text" name="apellidos" id="">
+        <br>
+        <label for="">Ingrese la fecha de nacimiento</label>
+        <br>
+        <input type="date" name="fechanacimiento" id="">
+        <br>
+        <label for="">Ingrese la direccion</label>
+        <br>
+        <input type="text" name="direccion" id="">
+        <br>
+        <label for="">Seleccione su estrato</label>
+        <br>
+        <select name="estrato" id="">
+            <option value="1">1</option>
+            <option value="2">2</option>
+        </select>
+        <br>
+        <label for="">Ingrese el nombre del acudiente</label>
+        <br>
+        <input type="text" name="nombreacudiente" id="">
+        <br>
+        <label for="">Ingrese el apellido del acudiente</label>
+        <br>
+        <input type="text" name="apellidoacudiente" id="">
+        <br>
+        <label for="">Ingrese la fecha de nacimiento del acudiente</label>
+        <br>
+        <input type="date" name="fechanacimientoacudiente" id="">
+        <br>
+        <input type="text" name="controlador" value ="cliente" id="" hidden>
+        <br>
+        <br>
+        <input type="submit" name= "operacion" value="Guardar">
+        <input type="submit" name = "operacion" value="Eliminar">
+        <input type="submit" name = "operacion" value = "Listar">
+        </form>
+</body>
+</html>

@@ -3,17 +3,21 @@
 class Elemento{
 
     public $identificador;
-    public $tipoElemento;
-    public $Nombre;
-    public $Precio;
+    public $tipoelemento;
+    public $nombre;
+    public $precio;
 
-    public function __construct($identificador, $tipoElemento, $Nombre, $Precio){
+    public function __construct($identificador=0, $tipoelemento="", $nombre="", $precio=0){
 
         $this->identificador = $identificador;
-        $this->tipoElemento = $tipoElemento;
-        $this->Nombre = $Nombre;
-        $this->Precio = $Precio;
+        $this->tipoelemento = $tipoelemento;
+        $this->nombre = $nombre;
+        $this->precio = $precio;
 
+    }
+
+    public function getCodigo(){
+        return $identificador;
     }
 
 }

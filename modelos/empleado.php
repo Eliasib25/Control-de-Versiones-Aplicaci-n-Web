@@ -2,20 +2,24 @@
 
 class Empleado{
 
-    public $numeroIdentificacion;
+    public $numeroidentificacion;
     public $tipoIdentificacion;
     public $nombres;
     public $apellidos;
-    public $tipoUsuario;
+    public $tipousuario;
 
-    public function construct($numeroIdentificacion, $tipoIdentificacion, $nombres, $apellidos,$tipoUsuario){
+    public function __construct($numeroidentificacion=0,$tipoIdentificacion="", $nombres="", $apellidos="",$tipousuario=""){
 
-        $this->numeroIdentificacion = $numeroIdentificacion;
+        $this->numeroidentificacion = $numeroidentificacion;
         $this->tipoIdentificacion = $tipoIdentificacion;
         $this->nombres = $nombres;
         $this->apellidos = $apellidos;
-        $this->tipoUsuario = $tipoUsuario;
+        $this->tipousuario = $tipousuario;
 
+    }
+
+    public function getCodigo(){
+        return $numeroidentificacion,$tipoIdentificacion;
     }
 
 }

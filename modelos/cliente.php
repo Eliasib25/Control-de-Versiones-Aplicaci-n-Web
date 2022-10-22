@@ -2,38 +2,36 @@
 
 class Cliente{
 
-    public $tipoIdentificacion;
+    public $tipoidentificacion;
     public $identificacion;
     public $nombres;
     public $apellidos;
-    public $fechaNacimiento;
+    public $fechanacimiento;
     public $direccion;
     public $estrato;
-    public $nombreAcudiente;
-    public $apellidoAcudiente;
-    public $fechaNacimientoAcudiente;
-    public $numeroIdentificacionEmpleado;
-    public $tipoIdentificacionEmpleado;
-    public $tipoIdentifiacionProfesional;
-    public $identificacionProfesional;
+    public $nombreacudiente;
+    public $apellidoacudiente;
+    public $fechanacimientoacudiente;
 
-    public function __construct($tipoIdentificacion,$identificacion,$nombres,$apellidos,$fechaNacimiento,$direccion,$estrato,$nombreAcudiente,$apellidoAcudiente,$fechaNacimientoAcudiente,$numeroIdentificacionEmpleado,$tipoIdentificacionEmpleado,$tipoIdentifiacionProfesional,$identificacionProfesional) {
+    public function __construct($tipoidentificacion,$identificacion,$nombres="",$apellidos="",
+                                $fechanacimiento="",$direccion="",$estrato="",
+                                $nombreacudiente="",$apellidoacudiente="",$fechanacimientoacudiente="") {
 
-        $this->tipoIdentificacion = $tipoIdentificacion;
-        $this->$identificacion = $identificacion;
+        $this->tipoidentificacion = $tipoidentificacion;
+        $this->identificacion = $identificacion;
         $this->nombres = $nombres; 
         $this->apellidos = $apellidos;
-        $this->fechaNacimiento = $fechaNacimiento;
+        $this->fechanacimiento = $fechanacimiento;
         $this->direccion = $direccion;
         $this->estrato = $estrato;
-        $this->nombreAcudiente = $nombreAcudiente;
-        $this->apellidoAcudiente = $apellidoAcudiente;
-        $this->fechaNacimiento = $fechaNacimientoAcudiente;
-        $this->numeroIdentificacionEmpleado = $numeroIdentificacionEmpleado;
-        $this->tipoIdentificacionEmpleado = $tipoIdentificacionEmpleado;
-        $this->tipoIdentificacionProfesional = $tipoIdentificacionProfesional;
-        $this->identificacionProfesional = $identificacionProfesional;
+        $this->nombreacudiente = $nombreacudiente;
+        $this->apellidoacudiente = $apellidoacudiente;
+        $this->fechanacimientoacudiente = $fechanacimientoacudiente;
 
+    }
+
+    public function getCodigo(){
+        
     }
 
 }

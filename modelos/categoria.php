@@ -6,7 +6,7 @@ class Categoria{
     public $nombre;
     public $descripcion;
 
-    public function __construct($identificador, $nombre, $descripcion) {
+    public function __construct($identificador=0, $nombre="", $descripcion="") {
 
         $this->identificador = $identificador;
         $this->nombre = $nombre;
@@ -14,9 +14,9 @@ class Categoria{
 
 }
 
-public function getCodigo(){
-
-}
+    public function getCodigo(){
+        return $identificador;
+    }
 
 }
 
