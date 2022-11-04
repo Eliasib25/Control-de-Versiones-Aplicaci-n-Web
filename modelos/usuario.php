@@ -11,10 +11,10 @@ class Usuario {
     public $Profesionales_tipoidentificacion;
     public $Profesionales_Identificacion;
 
-    public function($usuario="",$contraseña="",
-                    $Clientes_tipoidentificacion="",$Clientes_identificacion=0,
-                    $Empleados_numeroidentificacion=0,$Empleados_tipoIdentificacion="",
-                    $Profesionales_tipoidentificacion="",$Profesionales_Identificacion=0){
+    public function __construct($usuario,$contraseña,
+                    $Clientes_tipoidentificacion,$Clientes_identificacion,
+                    $Empleados_numeroidentificacion="",$Empleados_tipoIdentificacion="",
+                    $Profesionales_tipoidentificacion="",$Profesionales_Identificacion=""){
 
         $this->usuario = $usuario;
         $this->contraseña = $contraseña;
