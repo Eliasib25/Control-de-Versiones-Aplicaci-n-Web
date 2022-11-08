@@ -1,6 +1,6 @@
 <?php
 
-require ("../componentes/conectarmysql.php");
+require("../componentes/conectarmysql.php");
 require("interfazcontrolador.php");
 
 class ControladorCliente extends ConectarMysql implements InterfazControlador{
@@ -46,7 +46,7 @@ class ControladorCliente extends ConectarMysql implements InterfazControlador{
             $sentencia-> execute();
         }
         public function listar(){
-            $sql = "select codigo, concat(nombres,' ',apellidos) nombres from ".$this->tabla;
+            $sql = "select identificador, nombres from ".$this->tabla;
             return $this->getDatos($sql);
         }
         public function consultarRegistro($objeto){}
@@ -99,7 +99,7 @@ class ControladorUsuario extends ConectarMysql implements InterfazControlador{
         $sentencia-> execute();
     }
     public function listar(){
-        $sql = "select codigo, concat(nombres,' ',apellidos) nombres from ".$this->tabla;
+        $sql = "select nombres from ".$this->tabla;
         return $this->getDatos($sql);
     }
     public function consultarRegistro($objeto){}

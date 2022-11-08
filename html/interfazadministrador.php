@@ -9,7 +9,7 @@
  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
  <script type="text/javascript" src=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../js/oficinavirtual.js"></script>
+<script src="js/oficinavirtual.js"></script>
  
 
 <link rel="stylesheet" href="../css/estilosoficina.css">
@@ -575,17 +575,22 @@
                             </h2>
                             <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                               <div class="accordion-body">
-                                <form action="">
-                          <label for="">Nombre de la categoría</label>
-                          <br>
-                          <input type="text" aria-label="First name" required autofocus>
-                          <br>
-                          <label for="">Descripción</label>
-                          <br>
-                          <textarea name="" id="" cols="auto" rows="auto"></textarea>
-                          <br>
-                          <button class="btn btn-dark" style="font-size: 13px;" role="button">Crear</button>
-                             </form>
+                              <form action="../../controladores/controladorformulario.php" method="post">
+                                  <label for="">Identificador</label>
+                                  <br>
+                                  <input type="number" aria-label="First name" name="identificador" required autofocus>
+                                  <br>
+                                  <label for="">Nombre</label>
+                                  <br>
+                                  <input type="text" aria-label="First name" name="nombre" required>
+                                  <br>
+                                  <label for="">Descripción</label>
+                                  <br>
+                                  <textarea name="descripcion" id="" cols="auto" rows="auto"></textarea>
+                                  <br>
+                                  <button class="btn btn-dark" style="font-size: 13px;" role="button" name="operacion" value="guardar">Crear</button>
+                                  <input type="text" placeholder="Ingrese el nombre del controlador" name="controlador" value = 'categoria' hidden>
+                                </form>
                               </div>
                               <br>
                             </div>
@@ -604,9 +609,14 @@
                                     <label for="">Categoría</label>
                                     <br>
                                    <select name="" id="">
-                                    <option value="0">categoría 1</option>
-                                    <option value="1">categoría 2</option>
-                                    <option value="2">categoría 3</option>
+                                  <?php
+                                  include("../controladores/controladorcategoria.php");
+                                  $controladorCategoria = new controladorCategoria();
+                                  $resultado = $controladorCategoria->listar();
+                                  while ($fila = $resultado->fetch_assoc()){
+                                      echo "<option value=".$fila['identificador'].">".$fila['nombre']."</option>";
+                                  }
+                                  ?>                                 
                                    </select>
                                    <br>
                                    <label for="">Nombre</label>
@@ -1370,7 +1380,6 @@
                                     <option value="">Negativa</option>
                                   </select>
                               </div>
-
                               <div class="justify-content-center">
                                 <br>
                                 <button class="btn btn-info" style="font-size: 15px;">Definir</button>
