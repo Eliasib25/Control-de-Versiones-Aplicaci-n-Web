@@ -24,6 +24,9 @@ if($controlador == "cliente"){
     
     if($operacion == "Guardar"){
         $controladorGenerico->guardar($objeto);
+    }elseif($operacion == "Eliminar") {
+        $controladorGenerico->eliminar($objeto);
+        echo "Se eliminó de forma exitosa!!";
     }
     
     if($controlador == "cliente"){
@@ -36,6 +39,9 @@ if($controlador == "cliente"){
     $controladorGenerico = new controladorusuario();
     if($operacion == "Guardar"){
         $controladorGenerico->guardar($objeto);
+    }elseif($operacion == "Eliminar") {
+        $controladorGenerico->eliminar($objeto);
+        echo "Se eliminó de forma exitosa!!";
     }
     
     }
@@ -55,9 +61,25 @@ if($controlador == "cliente"){
 
 // }
 
-elseif($operacion == "Eliminar") {
-    $controladorGenerico->eliminar($objeto);
-    echo "Se eliminó de forma exitosa!!";
+elseif ($controlador == "categoria") {
+
+    require("../modelos/categoria.php");
+    require("controladorcategoria.php");
+
+    $identificador = $_POST["identificador"];
+    $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : '';
+    $descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : '';
+
+    //Se envían los datos del cliente
+    $categoria = new Categoria($identificador, $nombre, $descripcion);
+    $controladorGenerico = new ControladorCategoria(); 
+
+    if($operacion == "guardar"){
+        $controladorGenerico->guardar($categoria);
+    }elseif($operacion == "eliminar") {
+        $controladorGenerico->eliminar($categoria);
+        echo "Se eliminó de forma exitosa!!";
+    }
 }
 
 ?>

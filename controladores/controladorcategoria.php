@@ -4,13 +4,13 @@
     require("interfazcontrolador.php");
 
 //Acá hay una herencia 
-class ControladorCategoria extends ConectarMySQL {
+class ControladorCategoria extends ConectarMysql {
 
     private $tabla = "categorias";
 
     public function guardar($objeto){
         $sql = "call crudcategorias(0,?,?,?)";
-        $sentencia = $this->getConexion()->prepare($sql);
+        $sentencia = $this->getconexion()->prepare($sql);
         $sentencia->bind_param("sss", $objeto->identificador, $objeto->nombre, $objeto->descripcion);
         $sentencia->execute();
         $result = $sentencia->get_result();
@@ -18,7 +18,7 @@ class ControladorCategoria extends ConectarMySQL {
 
     public function eliminar($objeto){
         $sql = "call crudcategorias(1,?,?,?)";
-        $sentencia = $this->getConexion()->prepare($sql);
+        $sentencia = $this->getconexion()->prepare($sql);
         $sentencia->bind_param("sss", $objeto->identificador, $objeto->nombre, $objeto->descripcion);
         $sentencia->execute();
         $result = $sentencia->get_result();
@@ -29,16 +29,8 @@ class ControladorCategoria extends ConectarMySQL {
         return $this->getDatos($sql);
     }
 
-    public function listarCategorias(){
-        $sql = "select identificador, nombre from $this->tabla";
-        $sentencia = $this->getConexion()->prepare($sql);
-        $sentencia->execute();
-        $resultado = $sentencia->get_result();
-        return $resultado;
-    }
-
     public function getDatos($sql){
-        $sentencia = $this->getConexion()->prepare($sql);
+        $sentencia = $this->getconexion()->prepare($sql);
         $sentencia->execute();
         $resultado = $sentencia->get_result();
         return $resultado;

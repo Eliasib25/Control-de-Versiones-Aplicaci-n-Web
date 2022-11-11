@@ -575,7 +575,7 @@
                             </h2>
                             <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                               <div class="accordion-body">
-                              <form action="../../controladores/controladorformulario.php" method="post">
+                              <form action="../controladores/controladorformulario.php" method="post">
                                   <label for="">Identificador</label>
                                   <br>
                                   <input type="number" aria-label="First name" name="identificador" required autofocus>
@@ -608,15 +608,16 @@
                                   <form action="">
                                     <label for="">Categoría</label>
                                     <br>
-                                   <select name="" id="">
-                                  <?php
-                                  include("../controladores/controladorcategoria.php");
-                                  $controladorCategoria = new controladorCategoria();
-                                  $resultado = $controladorCategoria->listar();
-                                  while ($fila = $resultado->fetch_assoc()){
-                                      echo "<option value=".$fila['identificador'].">".$fila['nombre']."</option>";
-                                  }
-                                  ?>                                 
+                                   <select name="categoria" id="">
+                                   <option selected>Categorias</option>
+                                      <?php
+                                      include("../controladores/controladorcategoria.php");
+                                      $controladorCategoria = new controladorCategoria();
+                                      $resultado = $controladorCategoria->listar();
+                                      while ($fila = $resultado->fetch_assoc()){
+                                          echo "<option value=".$fila['identificador'].">".$fila['identificador']."</option>";
+                                      }
+                                      ?>                                 
                                    </select>
                                    <br>
                                    <label for="">Nombre</label>
@@ -648,19 +649,34 @@
                                 
                                 <div class="mb-3" style="overflow-x:auto;">
                                   <table class="table table-striped table-ligth border border-5">
-                                    <thead>
                                       <tr>
                                           <th>Nombre Categoría</th>
+                                          <th>Nombre Categoría</th>
                                           <th>Descripción</th>
+                                          <th>Acción</th>
                                       </tr>
-                                    </thead>
-                                      <tbody>
-                                        <tr>
-                                          <td>y</td>
-                                          <td>materia prima</td>
-                                          <td><button class="btn btn-danger">Eliminar</button></td>
-                                        </tr>
-                                      </tbody>
+
+                                      <?php
+                                        // include ('../controladores/controladorcategoria.php');
+                                        // $controladorCategoria = new ControladorCategoria();
+                                        // $resultado = $controladorCategoria->listar();
+                                        // var_export($resultado);
+
+                                        // while ($fila = $resultado->fetch_assoc()){
+                                        //     echo "<tr>";
+                                        //         echo "<td>".$fila['identificador']."</td>";
+                                        //         echo "<td>".$fila['nombre']."</td>";
+                                        //         echo "<td>".$fila['descripcion']."</td>";
+                                        //         echo "<td>
+                                        //                 <form action='../controladores/controladorformulario.php' method='post'>
+                                        //                     <input type='number' name='identificador' value=".$fila['identificador']." hidden>
+                                        //                     <button type='submit' class='btn btn-outline-danger' style='text-align: center;' name='operacion' value='eliminar'>eliminar</button>
+                                        //                     <input type='text' name='controlador' value = 'categoria' hidden>
+                                        //                 </form>
+                                        //             </td>";
+                                        //     echo "</tr>";
+                                        //   }
+                                        ?>
                                   </table>
                                </div>
 
@@ -967,16 +983,15 @@
                                     <div class= "col"">
                                         <label for="">Tipo de identificación</label>
                                         <br>
-                                      <select name="tipoIdentificación" id="tipoIdentificación">
-                                        <option value="0">Cedula de ciudadanía</option>
-                                        <option value="1">Tarjeta de identidad</option>
-                                        <option value="2">Cedula de extranjería</option>
+                                      <select name="tipoidentificacion" id="tipoidentificacion">
+                                        <option value="CC">Cedula de ciudadanía</option>
+                                        <option value="CE">Cedula de extranjería</option>
                                       </select>
                                     </div>
                                     <div  class = "col" style="width: auto;">
                                         <label for="">#Identificación</label>
                                         <br>
-                                        <input type="text" aria-label="First name" required autofocus>
+                                        <input type="text" name="identificacion" aria-label="First name" required autofocus>
                                     </div>  
                                   </div>
                                   
@@ -985,13 +1000,13 @@
                                             <br>
                                             <label for="">#Tarjeta Profesional</label>
                                             <br>
-                                            <input type="text" aria-label="First name" required>
+                                            <input type="text" name="numerotarjetaprofesional" aria-label="First name" required>
                                         </div>  
                                         <div class = "col" style="width: auto;">
                                             <br>
                                             <label for="">Nombres</label>
                                             <br>
-                                            <input type="text" aria-label="First name" required>
+                                            <input type="text" name="nombres" aria-label="First name" required>
                                         </div> 
                                    </div>
         
@@ -1000,7 +1015,7 @@
                                         <br>
                                         <label for="">Apellidos</label>
                                         <br>
-                                        <input type="text" aria-label="First name" required>
+                                        <input type="text" name="apellidos" aria-label="First name" required>
                                         <br>
                                         <label for="">Experticia</label>
                                         <br>
@@ -1070,7 +1085,7 @@
                                         <br>
                                         <label for="">Usuario</label>
                                         <br>
-                                        <input type="text" name="" id="" required> 
+                                        <input type="text" name="usuario" id="" required> 
                                         <br>
                                         <label for="">Contraseña</label>
                                         <br>
@@ -1078,13 +1093,14 @@
                                          <br>
                                         <label for="">Confirmar constraseña</label>
                                         <br>
-                                        <input type="password" name="" id="" required>
+                                        <input type="password" name="constraseña" id="" required>
                                     </div> 
                                    </div>
 
                                    <br>
                                    <div class="row" style="justify-content: center;">
-                                    <button class="btn btn-dark" style="font-size: 13px;" role="button">Registrar</button>
+                                    <button class="btn btn-dark" style="font-size: 13px;" role="button" name="operacion" value="guardar">Registrar</button>
+                                    <input type="text" name="controlador" value="profesional" hidden>
                                     </div> 
                                   </form>
                                     <br>
@@ -1115,7 +1131,6 @@
                                             <br>
                                           <select name="tipoIdentificación" id="tipoIdentificación" disabled>
                                             <option value="0">Cedula de ciudadanía</option>
-                                            <option value="1">Tarjeta de identidad</option>
                                             <option value="2">Cedula de extranjería</option>
                                           </select>
                                         </div>
@@ -1297,7 +1312,14 @@
                         <div class="ftl-vertical-tab-content">
                           <center>
                             <h2 class="border border-3 text-center" style="margin-top: 0;color:#253237">Definir estado de los profesionales</h2>
-                            <div class="container my_text" style="text-align: center;"> 
+                            <div class="container my_text" style="text-align: center;">
+                            <label for="">Tipo de Identificación del profesional</label>
+                            <br>
+                            <select name="tipoIdentificación" id="tipoIdentificación">
+                              <option value="CC">Cedula de ciudadanía</option>
+                              <option value="CE">Cedula de extranjería</option>
+                            </select> 
+                            <br>
                             <label for="">#Identificación del profesional</label>
                             <br>
                             <input type="text" aria-label="First name">
@@ -1305,8 +1327,8 @@
                             <label for="">Estado en la empresa</label>
                             <br>
                             <select name="estado" id="estado">
-                            <option value="0">Activo</option>
-                            <option value="1">Inactivo</option>
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
                           </select>
                             <br>
                             <br>

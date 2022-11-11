@@ -9,7 +9,7 @@ class Profesional{
     public $apellidos;
     public $estado;
 
-    public function __construct($tipoidentificacion="",$identificacion=0,$numerotarjetaprofesional="",$nombres="",$apellidos="",$estado=""){
+    public function __construct($tipoidentificacion="",$identificacion="",$numerotarjetaprofesional="",$nombres="",$apellidos="",$estado=""){
 
         $this->tipoidentificacion = $tipoidentificacion;
         $this->identificacion = $identificacion;
