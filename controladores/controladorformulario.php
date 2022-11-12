@@ -82,6 +82,57 @@ elseif ($controlador == "categoria") {
         $controladorGenerico->eliminar($categoria);
         echo "Se eliminó de forma exitosa!!";
     }
+
+    
+}
+
+elseif ($controlador == "elemento") {
+
+    require("../modelos/elemento.php");
+    require("controladorelementos.php");
+    
+    //Se recuperan los datos del elemento del front-end
+    $identificador = null;
+    $tipo = $_POST["tipoElemento"];
+    $nombre = $_POST["nombre"];
+    $precio = $_POST["precio"];
+
+    //Se envían los datos del elemento
+    $elemento = new Elemento($identificador, $tipo, $nombre,$precio);
+    $controladorGenerico = new ControladorElemento(); 
+
+    if($operacion == "guardar"){
+        $controladorGenerico->guardar($elemento);
+    }elseif($operacion == "eliminar") {
+        $controladorGenerico->eliminar($elemento);
+        echo "Se eliminó de forma exitosa!!";
+    }
+
+    
+}
+
+elseif ($controlador == "empleado"){
+
+    require("../modelos/empleado.php");
+    require("controladorempleado.php");
+
+    //Se recuperan los datos del empleado desde el front-end usando el metodo post
+    $numeroIdentificacion = $_POST["numeroIdentificacion"];
+    $tipoIdentificacion = $_POST["tipoIdentificacion"];
+    $nombres = $_POST["nombres"];
+    $apellidos = $_POST["apellidos"];
+    $tipoUsuario = $_POST["tipoUsuario"];
+
+    //Se envían los datos del empleado 
+    $empleado = new Empleado($numeroIdentificacion,$tipoIdentificacion,$nombres,$apellidos,$tipoUsuario);
+    $controladorGenerico = new ControladorEmpleado();
+
+    if($operacion == "guardar"){
+        $controladorGenerico->guardar($empleado);
+    }elseif($operacion == "eliminar"){
+        $controladorGenerico->eliminar($empleado);
+    }
+
 }
 
 

@@ -8,7 +8,7 @@ class Empleado{
     public $apellidos;
     public $tipousuario;
 
-    public function __construct($numeroidentificacion=0,$tipoIdentificacion="", $nombres="", $apellidos="",$tipousuario=""){
+    public function __construct($numeroidentificacion,$tipoIdentificacion="", $nombres="", $apellidos="",$tipousuario=""){
 
         $this->numeroidentificacion = $numeroidentificacion;
         $this->tipoIdentificacion = $tipoIdentificacion;
@@ -19,7 +19,7 @@ class Empleado{
     }
 
     public function getCodigo(){
-        return $numeroidentificacion,$tipoIdentificacion;
+        return $numeroidentificacion;
     }
 
 }

@@ -4,22 +4,22 @@
     require("interfazcontrolador.php");
 
 //Acá hay una herencia 
-class ControladorCategoria extends ConectarMysql {
+class ControladorEmpleado extends ConectarMysql {
 
-    private $tabla = "categorias";
+    private $tabla = "empleados";
 
     public function guardar($objeto){
-        $sql = "call crudcategorias(0,?,?,?)";
+        $sql = "call crudempleados(0,?,?,?,?,?)";
         $sentencia = $this->getconexion()->prepare($sql);
-        $sentencia->bind_param("sss", $objeto->identificador, $objeto->nombre, $objeto->descripcion);
+        $sentencia->bind_param("sssss", $objeto->numeroidentificacion, $objeto->tipoIdentificacion, $objeto->nombres, $objeto->apellidos,$objeto->tipousuario);
         $sentencia->execute();
         $result = $sentencia->get_result();
     }
 
     public function eliminar($objeto){
-        $sql = "call crudcategorias(1,?)";
+        $sql = "call crudcategorias(1,?,?,?)";
         $sentencia = $this->getconexion()->prepare($sql);
-        $sentencia->bind_param("s", $objeto->identificador);
+        $sentencia->bind_param("sss", $objeto->identificador, $objeto->nombre, $objeto->descripcion);
         $sentencia->execute();
         $result = $sentencia->get_result();
     }
@@ -40,6 +40,3 @@ class ControladorCategoria extends ConectarMysql {
     }
 
 }
-
-
-?>
