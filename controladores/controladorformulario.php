@@ -107,8 +107,6 @@ elseif ($controlador == "elemento") {
         $controladorGenerico->eliminar($elemento);
         echo "Se eliminó de forma exitosa!!";
     }
-
-    
 }
 
 elseif ($controlador == "empleado"){

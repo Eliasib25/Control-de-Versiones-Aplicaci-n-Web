@@ -49,6 +49,8 @@ class ControladorProfesional extends ConectarMysql {
 
 }
 
+
+
 class ControladorUsuario extends ConectarMysql{
     private $tabla = "usuarios";
     
@@ -71,7 +73,6 @@ class ControladorUsuario extends ConectarMysql{
             $sentencia->bind_param("ss",$objeto->contraseña,$objeto->usuario);
             $sentencia-> execute();
         }
-
 
     }
 

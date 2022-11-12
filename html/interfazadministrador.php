@@ -55,7 +55,7 @@
                     <h4 class="glyphicon glyphicon-book"></h4><br/>Gestión categorías
                   </a>
                   <a href="#" class="list-group-item text-center">
-                    <h4 class="glyphicon glyphicon-book"></h4><br/>Gestión Usuarios
+                    <h4 class="glyphicon glyphicon-book"></h4><br/>Gestión Empleados
                   </a>
                   <a href="#" class="list-group-item text-center">
                     <h4 class="glyphicon glyphicon-book"></h4><br/>Gestión profesionales
