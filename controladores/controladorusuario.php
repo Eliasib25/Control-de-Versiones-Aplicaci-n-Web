@@ -19,13 +19,11 @@ class ControladorUsuario extends ConectarMysql implements InterfazControlador{
                 $sentencia = $this->getconexion()->prepare($sql);
                 $sentencia->bind_param("ssssssss",$objeto->usuario,$objeto->contraseña,$objeto->Clientes_tipoidentificacion,$objeto->Clientes_identificacion,$objeto->Empleados_numeroidentificacion,$objeto->Empleados_tipoIdentificacion,$objeto->Profesionales_tipoidentificacion,$objeto->Profesionales_Identificacion);
                 $sentencia-> execute();
-                $objeto->mysqli_close();
             }else{
                 $sql="update ".$this->tabla." set contraseña=? where usuario=?";  
                 $sentencia = $this->getconexion()->prepare($sql);
                 $sentencia->bind_param("ss",$objeto->contraseña,$objeto->usuario);
                 $sentencia-> execute();
-                $objeto->mysqli_close();
             }
 
 

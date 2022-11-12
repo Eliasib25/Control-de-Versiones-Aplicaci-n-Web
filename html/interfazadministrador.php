@@ -785,7 +785,7 @@
                                       <br>
                                         <label for="">Usuario</label>
                                         <br>
-                                        <input type="text" name="" id="" > 
+                                        <input type="text" name="usuario" id="" > 
                                         <br>
                                         <label for="">Contraseña</label>
                                         <br>
@@ -793,10 +793,10 @@
                                          <br>
                                         <label for="">Confirmar constraseña</label>
                                         <br>
-                                        <input type="password" name="" id="" >
+                                        <input type="password" name="contraseña" id="" >
                                     </div>
                                    </div>
-
+                                    
                                    <br>
                                    <div class="row" style="justify-content: center;">
                                     <button class="btn btn-dark" style="font-size: 13px;" role="button" name="operacion" value="guardar" >Registrar</button>

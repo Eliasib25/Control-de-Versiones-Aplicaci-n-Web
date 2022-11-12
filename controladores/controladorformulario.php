@@ -131,10 +131,33 @@ elseif ($controlador == "empleado"){
         $controladorGenerico->eliminar($empleado);
     }
 
+if($controlador == "empleado"){
+
+        require("../modelos/usuario.php");
+    
+       //Usuario
+       $usuario = isset($_POST['usuario']) ? $_POST['usuario'] : '';
+       $contraseña = isset($_POST['contraseña']) ? $_POST['contraseña'] : '';
+       $Empleados_numeroidentificacion = $_POST["numeroIdentificacion"];
+       $Empleados_tipoIdentificacion = $_POST["tipoIdentificacion"];
+       //Se envían los datos a Usuarios
+       $usuario = new Usuario($usuario,$contraseña,$tipoidentificacion=null,$identificacion=null, $Empleados_numeroidentificacion, $Empleados_tipoIdentificacion, $Profesionales_tipoidentificacion=null, $Profesionales_Identificacion=null);
+       $controladorGenerico = new ControladorUsuario();
+       if($operacion == "guardar"){
+           $controladorGenerico->guardar($usuario);
+       }elseif($operacion == "eliminar") {
+           $controladorGenerico->eliminar($usuario);
+           echo "Se eliminó de forma exitosa!!";
+       }
+       
+       }
+
 }
 
 
-if($controlador == "profesionales"){
+
+
+elseif($controlador == "profesionales"){
     require("../modelos/profesional.php");
     require("controladorprofesional.php");
     //Datos profesional
