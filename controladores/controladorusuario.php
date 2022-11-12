@@ -4,7 +4,7 @@ require ("../componentes/conectarmysql.php");
 require("interfazcontrolador.php");
 
 class ControladorUsuario extends ConectarMysql implements InterfazControlador{
-        private $tabla = "Usuarios";
+        private $tabla = "usuarios";
         
         public function guardar($objeto){
 

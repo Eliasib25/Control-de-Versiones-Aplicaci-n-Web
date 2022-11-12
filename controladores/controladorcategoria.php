@@ -17,9 +17,9 @@ class ControladorCategoria extends ConectarMysql {
     }
 
     public function eliminar($objeto){
-        $sql = "call crudcategorias(1,?,?,?)";
+        $sql = "call crudcategorias(1,?)";
         $sentencia = $this->getconexion()->prepare($sql);
-        $sentencia->bind_param("sss", $objeto->identificador, $objeto->nombre, $objeto->descripcion);
+        $sentencia->bind_param("s", $objeto->identificador);
         $sentencia->execute();
         $result = $sentencia->get_result();
     }

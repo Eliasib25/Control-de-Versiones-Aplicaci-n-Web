@@ -978,7 +978,7 @@
                               </h2>
                               <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body">
-                                  <form action="">
+                                  <form action="../controladores/controladorformulario.php" method="post">
                                   <div class="row">
                                     <div class= "col"">
                                         <label for="">Tipo de identificación</label>
@@ -1019,7 +1019,7 @@
                                         <br>
                                         <label for="">Experticia</label>
                                         <br>
-                                        <input type="text" style="width: 150px;" stylearia-label="First name" required>
+                                        <input type="text" style="width: 150px;" stylearia-label="First name">
                                         <button class="btn btn-dark" style="font-size: 13px;" role="button">Agregar</button>
                                         <br>
                                         <br>
@@ -1040,7 +1040,7 @@
                                         <br>
                                         <label for="">Estudios Realizados</label>
                                         <br>
-                                        <input type="text" style="width: 150px;" stylearia-label="First name" required>
+                                        <input type="text" style="width: 150px;" stylearia-label="First name">
                                         <button class="btn btn-dark" style="font-size: 13px;" role="button">Agregar</button>
                                         <br>
                                         <br>
@@ -1063,7 +1063,7 @@
                                         <br>
                                         <label for="">Telefonos</label>
                                         <br>
-                                        <input type="text" style="width: 150px;" stylearia-label="First name" required>
+                                        <input type="text" style="width: 150px;" stylearia-label="First name">
                                         <button class="btn btn-dark" style="font-size: 13px;" role="button">Agregar</button>
                                         <br>
                                         <br>
@@ -1091,16 +1091,16 @@
                                         <br>
                                          <input type="password" name="" id="" required>
                                          <br>
-                                        <label for="">Confirmar constraseña</label>
+                                        <label for="">Confirmar contraseña</label>
                                         <br>
-                                        <input type="password" name="constraseña" id="" required>
+                                        <input type="password" name="contraseña" id="" required>
                                     </div> 
                                    </div>
 
                                    <br>
                                    <div class="row" style="justify-content: center;">
                                     <button class="btn btn-dark" style="font-size: 13px;" role="button" name="operacion" value="guardar">Registrar</button>
-                                    <input type="text" name="controlador" value="profesional" hidden>
+                                    <input type="text" name="controlador" value="profesionales" hidden>
                                     </div> 
                                   </form>
                                     <br>
@@ -1313,26 +1313,29 @@
                           <center>
                             <h2 class="border border-3 text-center" style="margin-top: 0;color:#253237">Definir estado de los profesionales</h2>
                             <div class="container my_text" style="text-align: center;">
-                            <label for="">Tipo de Identificación del profesional</label>
-                            <br>
-                            <select name="tipoIdentificación" id="tipoIdentificación">
-                              <option value="CC">Cedula de ciudadanía</option>
-                              <option value="CE">Cedula de extranjería</option>
-                            </select> 
-                            <br>
-                            <label for="">#Identificación del profesional</label>
-                            <br>
-                            <input type="text" aria-label="First name">
-                            <br>
-                            <label for="">Estado en la empresa</label>
-                            <br>
-                            <select name="estado" id="estado">
-                            <option value="Activo">Activo</option>
-                            <option value="Inactivo">Inactivo</option>
-                          </select>
-                            <br>
-                            <br>
-                            <button class="btn btn-dark" style="font-size: 13px;" role="button">Registrar estado</button>
+                               <form action="../controladores/controladorformulario.php" method="post">
+                               <label for="">Tipo de Identificación del profesional</label>
+                                <br>
+                                <select name="tipoidentificacion" id="tipoIdentificación">
+                                  <option value="CC">Cedula de ciudadanía</option>
+                                  <option value="CE">Cedula de extranjería</option>
+                                </select> 
+                                <br>
+                                <label for="">#Identificación del profesional</label>
+                                <br>
+                                <input type="text" name="identificacion" aria-label="First name">
+                                <br>
+                                <label for="">Estado en la empresa</label>
+                                <br>
+                                <select name="estado" id="estado">
+                                  <option value="Activo">Activo</option>
+                                  <option value="Inactivo">Inactivo</option>
+                                </select>
+                                <br>
+                                <br>
+                                <button class="btn btn-dark" style="font-size: 13px;" role="button" name="operacion" value="actualizarEstado">Registrar estado</button>
+                                <input type="text" name="controlador" value="profesionales" hidden>
+                               </form>
                             </div>
                           </center>
                          </div>

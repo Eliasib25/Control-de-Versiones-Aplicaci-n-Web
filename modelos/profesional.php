@@ -9,7 +9,7 @@ class Profesional{
     public $apellidos;
     public $estado;
 
-    public function __construct($tipoidentificacion="",$identificacion="",$numerotarjetaprofesional="",$nombres="",$apellidos="",$estado=""){
+    public function __construct($tipoidentificacion="",$identificacion="",$numerotarjetaprofesional="",$nombres="",$apellidos="",$estado=''){
 
         $this->tipoidentificacion = $tipoidentificacion;
         $this->identificacion = $identificacion;
@@ -20,9 +20,9 @@ class Profesional{
 
     }
 
-    public function getCodigo(){
-        return $tipoidentificacion,$identificacion;
-    }
+    // public function getCodigo(){
+    //     return $tipoidentificacion.$identificacion;
+    // }
 
 }
 
