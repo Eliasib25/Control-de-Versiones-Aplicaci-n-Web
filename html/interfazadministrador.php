@@ -459,27 +459,31 @@
                                 <div class="container my_text" style="text-align: center;">
                                   <div>
                                     <div>
+                                      <form action="../controladores/controladorformulario.php" method="POST">
                                       <label for="">Seleccione el elemento a registrar el precio</label>
                                       <br>
-                                        <select name="elemento" id="elemento">
-                                          <option value="0">Materia Prima</option>
-                                          <option value="1">Reactivos</option>
-                                          <option value="2">Maquinas</option>
+                                        <select name="tipoElemento" id="tipoElemento">
+                                          <option value="MateriaPrima">Materia Prima</option>
+                                          <option value="Reactivo">Reactivo</option>
+                                          <option value="Maquina">Maquina</option>
                                         </select>
                                         <br>
                                         <label for="">Nombre</label>
                                         <br>
-                                      <input type="text" aria-label="First name">
+                                      <input type="text" aria-label="First name" name="nombre" >
                                     </div>
                                     <div  class = "col" style="width: auto;">
                                         <label for="">Precio</label>
                                         <br>
-                                        <input type="text" aria-label="First name">
+                                        <input type="text" aria-label="First name" name="precio">
                                         <br>
                                         <br>
-                                        <button class="btn btn-dark" style="font-size: 13px;" role="button">Registrar</button>
+                                        <button class="btn btn-dark" style="font-size: 13px;" role="button" name="operacion" value="guardar">Registrar</button>
+
+                                        <input type="text" name ="controlador" value="elemento" hidden>
+                                        </form>
                                     </div>  
-        
+                                  
                                   </div>
                               </div>
                             </div>
@@ -498,9 +502,14 @@
                                       <label for="">Seleccione el elemento a Actualizar</label>
                                       <br>
                                         <select name="elemento" id="elemento">
-                                          <option value="0">Materia P 1</option>
-                                          <option value="1">Reactivo 1</option>
-                                          <option value="2">Maquina 1</option>
+                                        <?php
+                                      include("../controladores/controladorelementos.php");
+                                      $controladorElemento = new controladorElemento();
+                                      $resultado = $controladorElemento->listar();
+                                      while ($fila = $resultado->fetch_assoc()){
+                                          echo "<option value=".$fila['identificador'].">".$fila['nombre']."</option>";
+                                      }
+                                      ?> 
                                         </select>
                                         <br>
                                         <label for="">Nuevo Nombre</label>
@@ -610,14 +619,14 @@
                                     <br>
                                    <select name="categoria" id="">
                                    <option selected>Categorias</option>
-                                      <?php
-                                      include("../controladores/controladorcategoria.php");
-                                      $controladorCategoria = new controladorCategoria();
-                                      $resultado = $controladorCategoria->listar();
-                                      while ($fila = $resultado->fetch_assoc()){
-                                          echo "<option value=".$fila['identificador'].">".$fila['identificador']."</option>";
-                                      }
-                                      ?>                                 
+                                   <?php
+                                      // include("../controladores/controladorcategoria.php");
+                                      // $controladorCategoria = new controladorCategoria();
+                                      // $resultado = $controladorCategoria->listar();
+                                      // while ($fila = $resultado->fetch_assoc()){
+                                      //     echo "<option value=".$fila['identificador'].">".$fila['nombre']."</option>";
+                                      // }
+                                      ?>   
                                    </select>
                                    <br>
                                    <label for="">Nombre</label>
@@ -701,16 +710,16 @@
                               </h2>
                               <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body">
-                                  <form action="">
+                                  <form action="../controladores/controladorformulario.php" method="POST" >
 
                                     <div class="row">
                                       <div class="col">
                                         <label for="">Tipo de Usuario</label>
                                         <br>
-                                        <select name="" id="">
-                                          <option value="0">Administrador</option>
-                                          <option value="1">Secretaria</option>
-                                          <option value="2">Gerente</option>
+                                        <select name="tipoUsuario" id="">
+                                          <option value="Administrador">Administrador</option>
+                                          <option value="Secretaria">Secretaria</option>
+                                          <option value="Gerente">Gerente</option>
                                         </select>
                                       </div>
                                      </div>
@@ -719,16 +728,15 @@
                                     <div class= "col">
                                         <label for="">Tipo de identificación</label>
                                         <br>
-                                      <select name="tipoIdentificación" id="tipoIdentificación">
-                                        <option value="0">Cedula de ciudadanía</option>
-                                        <option value="1">Tarjeta de identidad</option>
-                                        <option value="2">Cedula de extranjería</option>
+                                      <select name="tipoIdentificacion" id="tipoIdentificación">
+                                        <option value="cc">Cedula de ciudadanía</option>
+                                        <option value="ce">Cedula de extranjería</option>
                                       </select>
                                     </div>
                                     <div  class = "col" style="width: auto;">
                                         <label for="">#Identificación</label>
                                         <br>
-                                        <input type="text" aria-label="First name" required autofocus>
+                                        <input type="text" name="numeroIdentificacion" aria-label="First name" required autofocus>
                                     </div>  
                                   </div>
                                   
@@ -738,13 +746,13 @@
                                             <br>
                                             <label for="">Nombres</label>
                                             <br>
-                                            <input type="text" aria-label="First name" required>
+                                            <input type="text" name="nombres" aria-label="First name" required>
                                         </div> 
                                         <div class="col">
                                           <br>
                                         <label for="">Apellidos</label>
                                         <br>
-                                        <input type="text" aria-label="First name" required>
+                                        <input type="text" name="apellidos" aria-label="First name" required>
                                         </div>
                                    </div>
         
@@ -753,7 +761,7 @@
                                         <br>
                                         <label for="">Telefonos</label>
                                         <br>
-                                        <input type="text" style="width: 150px;" stylearia-label="First name" required>
+                                        <input type="text" style="width: 150px;" stylearia-label="First name" >
                                         <button class="btn btn-dark" style="font-size: 13px;" role="button">Agregar</button>
                                         <br>
                                         <br>
@@ -777,21 +785,22 @@
                                       <br>
                                         <label for="">Usuario</label>
                                         <br>
-                                        <input type="text" name="" id="" required> 
+                                        <input type="text" name="" id="" > 
                                         <br>
                                         <label for="">Contraseña</label>
                                         <br>
-                                         <input type="password" name="" id="" required>
+                                         <input type="password" name="" id="" >
                                          <br>
                                         <label for="">Confirmar constraseña</label>
                                         <br>
-                                        <input type="password" name="" id="" required>
+                                        <input type="password" name="" id="" >
                                     </div>
                                    </div>
 
                                    <br>
                                    <div class="row" style="justify-content: center;">
-                                    <button class="btn btn-dark" style="font-size: 13px;" role="button">Registrar</button>
+                                    <button class="btn btn-dark" style="font-size: 13px;" role="button" name="operacion" value="guardar" >Registrar</button>
+                                    <input type="text" name="controlador" value="empleado"  hidden>
                                     </div> 
                                   </form>
                                     <br>
