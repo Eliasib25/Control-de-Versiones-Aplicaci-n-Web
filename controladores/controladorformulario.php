@@ -210,27 +210,30 @@ else if ($controlador == 'login') {
 
     if ($operacion == "iniciar" ) {
         $resultado = $controladorGenerico->validarRegistro($usuario);
-        $tipoUsuario = null;
         $tipoUsuario = $resultado->fetch_assoc();
-        $valor = "";
 
-        foreach ($tipoUsuario as $value) {
-            $valor = $value;      
-        }
-        
-        if ($valor == "cliente") {
-            header("Location:../html/interfazcliente.html");
-        }elseif ($valor == "secretaria") {
-            header("Location:../html/interfazsecretaria.html");
-        }elseif ($valor == "profesional") {
-            header("Location:../html/interfazprofesionales.html");
-        }elseif ($valor == "administrador") {
-            header("Location:../html/interfazadministrador.php");
-        }elseif ($valor == "gerente") {
-            header("Location:../html/interfazGerente.html");
-        }else{
+        if (empty($tipoUsuario)){
             echo '<script language="javascript">alert("Usuario o contraseña incorrecto");</script>';
+        }else{
+            $valor = implode($tipoUsuario);
+            if ($valor == "cliente") {
+                header("Location:../html/interfazcliente.html");
+            }elseif ($valor == "secretaria") {
+                header("Location:../html/interfazsecretaria.html");
+            }elseif ($valor == "profesional") {
+                header("Location:../html/interfazprofesionales.html");
+            }elseif ($valor == "administrador") {
+                header("Location:../html/interfazadministrador.php");
+            }elseif ($valor == "gerente") {
+                header("Location:../html/interfazGerente.html");
+            }else{
+                echo '<script language="javascript">alert("Usuario o contraseña incorrecto");</script>';
+            }
         }
+
+       
+        
+      
     }
 }
 
