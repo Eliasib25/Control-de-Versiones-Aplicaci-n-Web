@@ -1,6 +1,5 @@
 <?php
 
-
 $controlador = $_POST["controlador"];
 $operacion = $_POST["operacion"];
 
@@ -34,9 +33,10 @@ if($controlador == "cliente"){
     //Usuario
     $usuario = isset($_POST['usuario']) ? $_POST['usuario'] : '';
     $contraseña = isset($_POST['contraseña']) ? $_POST['contraseña'] : '';
+    $tipoUsuario = isset($_POST['tipoUsuario']) ? $_POST['tipoUsuario'] : '';
     //Se envían los datos a Usuarios
     require("../modelos/usuario.php");
-    $usuario = new Usuario($usuario,$contraseña,$tipoidentificacion,$identificacion, $Empleados_numeroidentificacion=null, $Empleados_tipoIdentificacion=null, $Profesionales_tipoidentificacion=null, $Profesionales_Identificacion=null);
+    $usuario = new Usuario($usuario,$contraseña,$tipoUsuario,$tipoidentificacion,$identificacion, $Empleados_numeroidentificacion=null, $Empleados_tipoIdentificacion=null, $Profesionales_tipoidentificacion=null, $Profesionales_Identificacion=null);
     $controladorGenerico = new ControladorUsuario();
     if($operacion == "Guardar"){
         $controladorGenerico->guardar($usuario);
@@ -82,7 +82,6 @@ elseif ($controlador == "categoria") {
         $controladorGenerico->eliminar($categoria);
         echo "Se eliminó de forma exitosa!!";
     }
-
     
 }
 
@@ -119,29 +118,31 @@ elseif ($controlador == "empleado"){
     $tipoIdentificacion = $_POST["tipoIdentificacion"];
     $nombres = $_POST["nombres"];
     $apellidos = $_POST["apellidos"];
-    $tipoUsuario = $_POST["tipoUsuario"];
 
     //Se envían los datos del empleado 
-    $empleado = new Empleado($numeroIdentificacion,$tipoIdentificacion,$nombres,$apellidos,$tipoUsuario);
+    $empleado = new Empleado($numeroIdentificacion,$tipoIdentificacion,$nombres,$apellidos);
     $controladorGenerico = new ControladorEmpleado();
 
     if($operacion == "guardar"){
         $controladorGenerico->guardar($empleado);
+        echo "Se registro de forma exitosa";
     }elseif($operacion == "eliminar"){
         $controladorGenerico->eliminar($empleado);
+        echo "Se elimino de forma exitosa";
     }
 
-if($controlador == "empleado"){
+    if($controlador == "empleado"){
 
         require("../modelos/usuario.php");
     
        //Usuario
        $usuario = isset($_POST['usuario']) ? $_POST['usuario'] : '';
        $contraseña = isset($_POST['contraseña']) ? $_POST['contraseña'] : '';
+       $tipoUsuario = isset($_POST['tipoUsuario']) ? $_POST['tipoUsuario'] : '';
        $Empleados_numeroidentificacion = $_POST["numeroIdentificacion"];
        $Empleados_tipoIdentificacion = $_POST["tipoIdentificacion"];
        //Se envían los datos a Usuarios
-       $usuario = new Usuario($usuario,$contraseña,$tipoidentificacion=null,$identificacion=null, $Empleados_numeroidentificacion, $Empleados_tipoIdentificacion, $Profesionales_tipoidentificacion=null, $Profesionales_Identificacion=null);
+       $usuario = new Usuario($usuario,$contraseña,$tipoUsuario,$tipoidentificacion=null,$identificacion=null, $Empleados_numeroidentificacion, $Empleados_tipoIdentificacion, $Profesionales_tipoidentificacion=null, $Profesionales_Identificacion=null);
        $controladorGenerico = new ControladorUsuario();
        if($operacion == "guardar"){
            $controladorGenerico->guardar($usuario);
@@ -150,12 +151,9 @@ if($controlador == "empleado"){
            echo "Se eliminó de forma exitosa!!";
        }
        
-       }
+    }
 
 }
-
-
-
 
 elseif($controlador == "profesionales"){
     require("../modelos/profesional.php");
@@ -183,20 +181,56 @@ elseif($controlador == "profesionales"){
     }
     
     if($controlador == "profesionales"){
-    //Usuario
-    $usuario = isset($_POST['usuario']) ? $_POST['usuario'] : '';
-    $contraseña = isset($_POST['contraseña']) ? $_POST['contraseña'] : '';
-    //Se envían los datos a Usuarios
-    require("../modelos/usuario.php");
-    $usuario = new Usuario($usuario,$contraseña,$Clientes_tipoidentificacion=null, $Clientes_identificacion=null, $Empleados_numeroidentificacion=null, $Empleados_tipoIdentificacion=null,$tipoidentificacion,$identificacion);
-    $controladorGenerico = new ControladorUsuario();
-    if($operacion == "guardar"){
-        $controladorGenerico->guardar($usuario);
-    }elseif($operacion == "eliminar") {
-        $controladorGenerico->eliminar($usuario);
-        echo "Se eliminó de forma exitosa!!";
-    }
+        //Usuario
+        $usuario = isset($_POST['usuario']) ? $_POST['usuario'] : '';
+        $contraseña = isset($_POST['contraseña']) ? $_POST['contraseña'] : '';
+        $tipoUsuario = isset($_POST['tipoUsuario']) ? $_POST['tipoUsuario'] : '';
+        //Se envían los datos a Usuarios
+        require("../modelos/usuario.php");
+        $usuario = new Usuario($usuario,$contraseña,$tipoUsuario,$Clientes_tipoidentificacion=null, $Clientes_identificacion=null, $Empleados_numeroidentificacion=null, $Empleados_tipoIdentificacion=null,$tipoidentificacion,$identificacion);
+        $controladorGenerico = new ControladorUsuario();
+        if($operacion == "guardar"){
+            $controladorGenerico->guardar($usuario);
+        }elseif($operacion == "eliminar") {
+            $controladorGenerico->eliminar($usuario);
+            echo "Se eliminó de forma exitosa!!";
+        }
     
+    }
+}
+
+else if ($controlador == 'login') {
+    require("../modelos/usuario.php");
+    require("../controladores/controladorlogin.php");
+    
+    $usuario = $_POST['usuario'];
+    $contraseña = $_POST['contraseña'];
+    $usuario = new Usuario($usuario, $contraseña);
+    $controladorGenerico = new ControladorLogin();
+
+    if ($operacion == "iniciar" ) {
+        $resultado = $controladorGenerico->validarRegistro($usuario);
+        $tipoUsuario = null;
+        $tipoUsuario = $resultado->fetch_assoc();
+        $valor = "";
+
+        foreach ($tipoUsuario as $value) {
+            $valor = $value;      
+        }
+        
+        if ($valor == "cliente") {
+            header("Location:../html/interfazcliente.html");
+        }elseif ($valor == "secretaria") {
+            header("Location:../html/interfazsecretaria.html");
+        }elseif ($valor == "profesional") {
+            header("Location:../html/interfazprofesionales.html");
+        }elseif ($valor == "administrador") {
+            header("Location:../html/interfazadministrador.php");
+        }elseif ($valor == "gerente") {
+            header("Location:../html/interfazGerente.html");
+        }else{
+            echo '<script language="javascript">alert("Usuario o contraseña incorrecto");</script>';
+        }
     }
 }
 

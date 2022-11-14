@@ -4,6 +4,7 @@ class Usuario {
 
     public $usuario;
     public $contraseña;
+    public $tipousuario;
     public $Clientes_tipoidentificacion;
     public $Clientes_identificacion;
     public $Empleados_numeroidentificacion;
@@ -11,13 +12,14 @@ class Usuario {
     public $Profesionales_tipoidentificacion;
     public $Profesionales_Identificacion;
 
-    public function __construct($usuario,$contraseña,
-                    $Clientes_tipoidentificacion,$Clientes_identificacion,
+    public function __construct($usuario,$contraseña,$tipousuario="",
+                    $Clientes_tipoidentificacion="",$Clientes_identificacion="",
                     $Empleados_numeroidentificacion="",$Empleados_tipoIdentificacion="",
                     $Profesionales_tipoidentificacion="",$Profesionales_Identificacion=""){
 
         $this->usuario = $usuario;
         $this->contraseña = $contraseña;
+        $this->tipousuario = $tipousuario;
         $this->Clientes_tipoidentificacion = $Clientes_tipoidentificacion;
         $this->Clientes_identificacion = $Clientes_identificacion;
         $this->Empleados_numeroidentificacion = $Empleados_numeroidentificacion;

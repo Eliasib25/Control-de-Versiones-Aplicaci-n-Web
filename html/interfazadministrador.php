@@ -699,13 +699,13 @@
 
                   <div class="ftl-vertical-tab-content">
                       <center>
-                        <h2 class="border border-3 text-center" style="margin-top: 0;color:#253237">Gestión Usuarios</h2>
+                        <h2 class="border border-3 text-center" style="margin-top: 0;color:#253237">Gestión Empleados</h2>
                         <div class="container my_text" style="text-align: center;">
                           <div class="accordion accordion-flush" id="accordionFlushExample">
                             <div class="accordion-item">
                               <h2 class="accordion-header" id="flush-headingOne">
                                 <button class="accordion-button collapsed btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                  Crear Usuarios
+                                  Crear Empleados
                                 </button>
                               </h2>
                               <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
@@ -811,7 +811,7 @@
                             <div class="accordion-item">
                               <h2 class="accordion-header" id="flush-headingThree">
                                 <button class="accordion-button collapsed btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                                Actualizar Usarios
+                                Actualizar Empleados
                                 </button>
                               </h2>
                               <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
@@ -819,7 +819,7 @@
                                   <div>
                                     <form action="">
                                       <div>
-                                        <label for="">Ingrese el número de identificación del usuario</label>
+                                        <label for="">Ingrese el número de identificación del Empleado</label>
                                         <br>
                                         <input type="number" name="" id="" required autofocus>
                                         <br>
@@ -831,7 +831,6 @@
                                             <br>
                                           <select name="tipoIdentificación" id="tipoIdentificación" disabled>
                                             <option value="0">Cedula de ciudadanía</option>
-                                            <option value="1">Tarjeta de identidad</option>
                                             <option value="2">Cedula de extranjería</option>
                                           </select>
                                         </div>
@@ -934,7 +933,7 @@
                             <div class="accordion-item">
                               <h2 class="accordion-header" id="flush-headingTwo">
                                 <button class="accordion-button collapsed btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                  Consultar o eliminar Usuarios
+                                  Consultar o eliminar empleados
                                 </button>
                               </h2>
                               <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
@@ -1094,7 +1093,8 @@
                                         <br>
                                         <label for="">Usuario</label>
                                         <br>
-                                        <input type="text" name="usuario" id="" required> 
+                                        <input type="text" name="usuario" id="" required>
+                                        <input type="text" name="tipoUsuario" value="profesional" hidden> 
                                         <br>
                                         <label for="">Contraseña</label>
                                         <br>

@@ -12,46 +12,50 @@
 </head>
 <body>
     <header>
-<div class="grupo1";>
-    <ul class="nav justify-content-center" style="align-items: center;">
-        <li class="nav-item">
-          <img style="height: 80px;width: 80px;"src="../recursos/imagenes/cecarlogo.png" alt="CECAR">
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="color: white;" href="paginaprincipal.html">Página Principal</a>
-        </li>
-      </ul>
-</div>
-</header>
-<div class="divlogin">
+        <div class="grupo1";>
+            <ul class="nav justify-content-center" style="align-items: center;">
+                <li class="nav-item">
+                <img style="height: 80px;width: 80px;"src="../recursos/imagenes/cecarlogo.png" alt="CECAR">
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" style="color: white;" href="paginaprincipal.html">Página Principal</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="divlogin">
         <div class="login-page">
             <div class="form">
-                <input type="text" placeholder="Usuario" id="correo"/>
-                <input type="password" placeholder="Contraseña" id="password"/>
-                <button onclick="inicioSesion()">Iniciar Sesión</button>
+                <form action="../controladores/controladorformulario.php" method="post">
+                    <input type="text" placeholder="Usuario" name="usuario"/>
+                    <input type="password" placeholder="Contraseña" name="contraseña"/>
+                    <input type="text" name="controlador" value="login" hidden>
+                    <button name="operacion" value="iniciar">Iniciar Sesión</button>
+                </form>
             </div>
-          </div>
-</div>
-
-<footer class="pie-pagina">
-    <div class="grupo-1">
-        <div class="box">
-            <a href="" ><img src="../recursos/imagenes/facebook.png" alt="facebook"></a>
-              <a href="" ><img src="../recursos/imagenes/instagram.png  " alt="facebook"></a>
-            </figure>
-        </div>
-        <div class="box">
-            <h1>CECAR</h1>
-        </div>
-        <div class="box">
-            <ul class="footer-links" >
-                <h6>Contactanos</h6>
-                <li><a href=""><img src="../recursos/imagenes/telefono.png" alt=""></a> numero telefono</li>
-                <li><a href=""><img src="../recursos/imagenes/correo.png" alt=""></a> direccioncorreo@example.com</li>
-              </ul>
         </div>
     </div>
-</footer>
+
+    <footer class="pie-pagina">
+        <div class="grupo-1">
+            <div class="box">
+                <a href="" ><img src="../recursos/imagenes/facebook.png" alt="facebook"></a>
+                <a href="" ><img src="../recursos/imagenes/instagram.png  " alt="facebook"></a>
+                </figure>
+            </div>
+            <div class="box">
+                <h1>CECAR</h1>
+            </div>
+            <div class="box">
+                <ul class="footer-links" >
+                    <h6>Contactanos</h6>
+                    <li><a href=""><img src="../recursos/imagenes/telefono.png" alt=""></a> numero telefono</li>
+                    <li><a href=""><img src="../recursos/imagenes/correo.png" alt=""></a> direccioncorreo@example.com</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 
 <script>
 function inicioSesion() {
