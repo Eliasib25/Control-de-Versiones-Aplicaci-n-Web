@@ -226,14 +226,8 @@ else if ($controlador == 'login') {
                 header("Location:../html/interfazadministrador.php");
             }elseif ($valor == "gerente") {
                 header("Location:../html/interfazGerente.html");
-            }else{
-                echo '<script language="javascript">alert("Usuario o contraseña incorrecto");</script>';
             }
         }
-
-       
-        
-      
     }
 }
 
