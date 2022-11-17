@@ -17,9 +17,9 @@ class ControladorElemento extends ConectarMysql {
     }
 
     public function eliminar($objeto){
-        $sql = "call crudcategorias(1,?,?,?)";
+        $sql = "call crudelementos(1,?,?,?,?)";
         $sentencia = $this->getconexion()->prepare($sql);
-        $sentencia->bind_param("sss", $objeto->identificador, $objeto->nombre, $objeto->descripcion);
+        $sentencia->bind_param("issi", $objeto->identificador, $objeto->tipoelemento, $objeto->nombre, $objeto->precio);
         $sentencia->execute();
         $result = $sentencia->get_result();
     }

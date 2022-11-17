@@ -4,7 +4,7 @@
     require("interfazcontrolador.php");
 
 //Acá hay una herencia 
-class ControladorEmpleado extends ConectarMysql {
+class ControladorEmpleado extends ConectarMysql4 {
 
     private $tabla = "empleados";
 
@@ -25,7 +25,10 @@ class ControladorEmpleado extends ConectarMysql {
     }
 
     public function listar(){
-        $sql = "select * from $this->tabla";
+        $sql = "select *
+                from empleados as e, usuarios as u
+                where e.tipoIdentificacion = u.Empleados_tipoIdentificacion and e.numeroidentificacion = u.Empleados_numeroidentificacion
+                group by u.usuario, u.tipousuario";
         return $this->getDatos($sql);
     }
 
@@ -52,9 +55,9 @@ class ControladorUsuario extends ConectarMysql implements InterfazControlador{
     }
 
     public function eliminar($objeto){
-        $sql = "call crudusuarios(1,?)";
+        $sql = "call crudusuarios(1,?,?,?,?,?,?,?,?,?)";
         $sentencia = $this->getconexion()->prepare($sql);
-        $sentencia->bind_param("s",$objeto->usuario);
+        $sentencia->bind_param("sssssssss",$objeto->usuario,$objeto->contraseña,$objeto->tipousuario,$objeto->Clientes_tipoidentificacion,$objeto->Clientes_identificacion,$objeto->Empleados_numeroidentificacion,$objeto->Empleados_tipoIdentificacion,$objeto->Profesionales_tipoidentificacion,$objeto->Profesionales_Identificacion);
         $sentencia-> execute();
     }
     

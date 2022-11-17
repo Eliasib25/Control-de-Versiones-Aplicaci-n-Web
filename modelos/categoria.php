@@ -6,7 +6,7 @@ class Categoria{
     public $nombre;
     public $descripcion;
 
-    public function __construct($identificador=0, $nombre="", $descripcion="") {
+    public function __construct($identificador, $nombre, $descripcion) {
 
         $this->identificador = $identificador;
         $this->nombre = $nombre;

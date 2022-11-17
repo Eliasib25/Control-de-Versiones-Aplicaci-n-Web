@@ -18,15 +18,19 @@ class ControladorProfesional extends ConectarMysql {
     }
 
     public function eliminar($objeto){
-        $sql = "call crudprofesionales(1,?,?)";
+        $sql = "call crudprofesionales(1,?,?,?,?,?,?)";
         $sentencia = $this->getconexion()->prepare($sql);
-        $sentencia->bind_param("ss", $objeto->tipoidentificacion, $objeto->identificacion);
+        $sentencia->bind_param("ssssss", $objeto->tipoidentificacion, $objeto->identificacion, $objeto->numerotarjetaprofesional, 
+                                $objeto->nombres, $objeto->apellidos, $objeto->estado);
         $sentencia->execute();
         $result = $sentencia->get_result();
     }
 
     public function listar(){
-        $sql = "select * from $this->tabla";
+        $sql = "select *
+                from profesionales as p, usuarios as u
+                where p.tipoidentificacion = u.Profesionales_tipoidentificacion and p.identificacion = u.Profesionales_Identificacion
+                group by u.usuario, u.tipousuario";
         return $this->getDatos($sql);
     }
 
@@ -62,9 +66,9 @@ class ControladorUsuario extends ConectarMysql{
     }
 
     public function eliminar($objeto){
-        $sql = "call crudusuarios(1,?)";
+        $sql = "call crudusuarios(1,?,?,?,?,?,?,?,?,?)";
         $sentencia = $this->getconexion()->prepare($sql);
-        $sentencia->bind_param("s",$objeto->usuario);
+        $sentencia->bind_param("sssssssss",$objeto->usuario,$objeto->contraseña,$objeto->tipousuario,$objeto->Clientes_tipoidentificacion,$objeto->Clientes_identificacion,$objeto->Empleados_numeroidentificacion,$objeto->Empleados_tipoIdentificacion,$objeto->Profesionales_tipoidentificacion,$objeto->Profesionales_Identificacion);
         $sentencia-> execute();
     }
 

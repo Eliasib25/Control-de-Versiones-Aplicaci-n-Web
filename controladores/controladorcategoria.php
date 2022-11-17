@@ -4,7 +4,7 @@
     require("interfazcontrolador.php");
 
 //Acá hay una herencia 
-class ControladorCategoria extends ConectarMysql {
+class ControladorCategoria extends ConectarMysql3 {
 
     private $tabla = "categorias";
 
@@ -17,9 +17,9 @@ class ControladorCategoria extends ConectarMysql {
     }
 
     public function eliminar($objeto){
-        $sql = "call crudcategorias(1,?)";
+        $sql = "call crudcategorias(1,?,?,?)";
         $sentencia = $this->getconexion()->prepare($sql);
-        $sentencia->bind_param("s", $objeto->identificador);
+        $sentencia->bind_param("sss", $objeto->identificador, $objeto->nombre, $objeto->descripcion);
         $sentencia->execute();
         $result = $sentencia->get_result();
     }
