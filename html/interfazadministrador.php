@@ -17,11 +17,6 @@
   <title>Interfaz Administrador</title>
 </head>
 <body>
-
-<?php 
-   include("../controladores/controladorcategoria.php");
-   include("../controladores/controladorelementos.php");
-?>
   
   <header >
     <div>
@@ -507,7 +502,7 @@
                                       <br>
                                         <select name="elemento" id="elemento">
                                         <?php
-                                      
+                                      include("../controladores/controladorelementos.php");
                                       $controladorElemento = new controladorElemento();
                                       $resultado = $controladorElemento->listar();
                                       while ($fila = $resultado->fetch_assoc()){
