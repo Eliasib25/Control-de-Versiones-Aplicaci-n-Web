@@ -27,15 +27,17 @@
     <div class="divlogin">
         <div class="login-page">
             <div class="form">
-                <form action="../controladores/controladorformulario.php" method="post">
-                    <input type="text" placeholder="Usuario" name="usuario"/>
-                    <input type="password" placeholder="Contraseña" name="contraseña"/>
-                    <input type="text" name="controlador" value="login" hidden>
-                    <button name="operacion" value="iniciar">Iniciar Sesión</button>
-                </form>
+                    <input type="text" placeholder="Usuario" id="usuario"/>
+                    <input type="password" placeholder="Contraseña" id="contraseña"/>
+                    <input type="text" id="controlador" value="login" hidden>
+                    <button id="operacion" value="iniciar">Iniciar Sesión</button>  
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+                    <script type="text/javascript" src="../js/login.js"></script> 
             </div>
         </div>
     </div>
+
+    
 
     <footer class="pie-pagina">
         <div class="grupo-1">
@@ -57,7 +59,7 @@
         </div>
     </footer>
 
-<script>
+<!-- <script>
 function inicioSesion() {
 var usuario = document.getElementById("correo").value;
 var password = document.getElementById("password").value;
@@ -77,6 +79,6 @@ if (usuario== "cliente" && password=="123") {
 }
    
 }
- </script>
+ </script> -->
 </body>
 </html>

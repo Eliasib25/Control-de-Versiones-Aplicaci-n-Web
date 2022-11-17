@@ -6,6 +6,7 @@ $operacion = $_POST["operacion"];
 if($controlador == "cliente"){
     require("../modelos/cliente.php");
     require("controladorcliente.php");
+
     //Datos Cliente
     $tipoidentificacion = $_POST["tipoidentificacion"];
     $identificacion = $_POST["identificacion"];
@@ -17,6 +18,7 @@ if($controlador == "cliente"){
     $nombreacudiente = $_POST['nombreacudiente'];
     $apellidoacudiente = $_POST['apellidoacudiente'];
     $fechanacimientoacudiente = $_POST['fechanacimientoacudiente'];
+
     //Se envían los datos del cliente
     $cliente = new Cliente($tipoidentificacion,$identificacion,$nombres,$apellidos,$fechanacimiento,$direccion,$estrato,$nombreacudiente,$apellidoacudiente,$fechanacimientoacudiente);
     $controladorGenerico = new ControladorCliente(); 
@@ -31,36 +33,53 @@ if($controlador == "cliente"){
     
     if($controlador == "cliente"){
     //Usuario
-    $usuario = isset($_POST['usuario']) ? $_POST['usuario'] : '';
+    $nombreUsuario =$_POST['usuario'];
     $contraseña = isset($_POST['contraseña']) ? $_POST['contraseña'] : '';
     $tipoUsuario = isset($_POST['tipoUsuario']) ? $_POST['tipoUsuario'] : '';
+
     //Se envían los datos a Usuarios
     require("../modelos/usuario.php");
-    $usuario = new Usuario($usuario,$contraseña,$tipoUsuario,$tipoidentificacion,$identificacion, $Empleados_numeroidentificacion=null, $Empleados_tipoIdentificacion=null, $Profesionales_tipoidentificacion=null, $Profesionales_Identificacion=null);
+    $usuario = new Usuario($nombreUsuario,$contraseña,$tipoUsuario,$tipoidentificacion,$identificacion, $Empleados_numeroidentificacion=null, $Empleados_tipoIdentificacion=null, $Profesionales_tipoidentificacion=null, $Profesionales_Identificacion=null);
+
     $controladorGenerico = new ControladorUsuario();
+
     if($operacion == "Guardar"){
         $controladorGenerico->guardar($usuario);
     }elseif($operacion == "Eliminar") {
         $controladorGenerico->eliminar($usuario);
         echo "Se eliminó de forma exitosa!!";
     }
+
+}
+if($controlador == "cliente"){
+
+require("../modelos/contactos.php");
+
+$arrayTelefonos=json_decode($_POST["arrayDeValores"], true );
+$arrayCorreos = json_decode($_POST["arrayCorreos"], true);
+$identificador = null;
+
+$controladorGenerico = new ControladorContacto();
+
+foreach($arrayTelefonos as $telefono)
+{
+    $contacto = new Contacto($identificador,$telefono,$correos=null,$tipoidentificacion,$identificacion,$Empleados_numeroidentificacion=null,$Empleados_tipoIdentificacion=null,$Profesionales_tipoidentificacion=null,$Profesionales_Identificacion=null);
     
+    if($operacion == "Guardar"){
+        $controladorGenerico->guardar($contacto);
+    }
+} 
+foreach ($arrayCorreos as $correos) {
+    $contacto = new Contacto($identificador,$telefono=null,$correos,$tipoidentificacion,$identificacion,$Empleados_numeroidentificacion=null,$Empleados_tipoIdentificacion=null,$Profesionales_tipoidentificacion=null,$Profesionales_Identificacion=null);
+    
+    if($operacion == "Guardar"){
+        $controladorGenerico->guardar($contacto);
     }
 }
+    }
+    
+}
 
-// }elseif($controlador == "paciente"){
-//     require_once('../modelos/paciente.php');
-//     require_once('../controladores/controladorpaciente.php');
-
-//     $identificador = $_POST["identificador"];
-//     $nombres = $_POST["nombres"];
-//     $apellidos = $_POST["apellidos"];
-//     $fechaNacimiento = $_POST["fechaNacimiento"];
-
-//     $objeto = new Paciente($identificador,$nombres,$apellidos,$fechaNacimiento);
-//     $controladorGenerico = new ControladorPaciente();
-
-// }
 
 elseif ($controlador == "categoria") {
 
@@ -208,26 +227,11 @@ else if ($controlador == 'login') {
     $usuario = new Usuario($usuario, $contraseña);
     $controladorGenerico = new ControladorLogin();
 
-    if ($operacion == "iniciar" ) {
+    if ($operacion == "iniciar") {
         $resultado = $controladorGenerico->validarRegistro($usuario);
         $tipoUsuario = $resultado->fetch_assoc();
-
-        if (empty($tipoUsuario)){
-            echo '<script language="javascript">alert("Usuario o contraseña incorrecto");</script>';
-        }else{
-            $valor = implode($tipoUsuario);
-            if ($valor == "cliente") {
-                header("Location:../html/interfazcliente.html");
-            }elseif ($valor == "secretaria") {
-                header("Location:../html/interfazsecretaria.html");
-            }elseif ($valor == "profesional") {
-                header("Location:../html/interfazprofesionales.html");
-            }elseif ($valor == "administrador") {
-                header("Location:../html/interfazadministrador.php");
-            }elseif ($valor == "gerente") {
-                header("Location:../html/interfazGerente.html");
-            }
-        }
+        $valor=implode($tipoUsuario);
+        echo json_encode($valor);
     }
 }
 
