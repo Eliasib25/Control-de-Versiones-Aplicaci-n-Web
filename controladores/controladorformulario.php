@@ -35,12 +35,8 @@ if($controlador == "cliente"){
     //Usuario
     $nombreUsuario =$_POST['usuario'];
     $contraseña = isset($_POST['contraseña']) ? $_POST['contraseña'] : '';
-<<<<<<< HEAD
     $tipoUsuario = isset($_POST['tipoUsuario']) ? $_POST['tipoUsuario'] : 'Cliente';
-=======
-    $tipoUsuario = isset($_POST['tipoUsuario']) ? $_POST['tipoUsuario'] : '';
 
->>>>>>> 6b9de1139fcd6837e7055987488518b839f35961
     //Se envían los datos a Usuarios
     require("../modelos/usuario.php");
     $usuario = new Usuario($nombreUsuario,$contraseña,$tipoUsuario,$tipoidentificacion,$identificacion, $Empleados_numeroidentificacion=null, $Empleados_tipoIdentificacion=null, $Profesionales_tipoidentificacion=null, $Profesionales_Identificacion=null);
@@ -63,23 +59,32 @@ $arrayTelefonos=json_decode($_POST["arrayDeValores"], true );
 $arrayCorreos = json_decode($_POST["arrayCorreos"], true);
 $identificador = null;
 
+var_dump($arrayTelefonos);
+
 $controladorGenerico = new ControladorContacto();
 
-foreach($arrayTelefonos as $telefono)
-{
-    $contacto = new Contacto($identificador,$telefono,$correos=null,$tipoidentificacion,$identificacion,$Empleados_numeroidentificacion=null,$Empleados_tipoIdentificacion=null,$Profesionales_tipoidentificacion=null,$Profesionales_Identificacion=null);
-    
-    if($operacion == "Guardar"){
-        $controladorGenerico->guardar($contacto);
+$tamañoArrayTelefonos = count($arrayTelefonos);
+$tamañoArrayCorreos = count($arrayCorreos);
+
+
+if($tamañoArrayTelefonos>$tamañoArrayCorreos){
+
+
+    for ($i=0; $i <count($arrayTelefonos); $i++) { 
+
+        if($i+1>count($arrayCorreos)){
+            $arrayCorreos[$i]=null;
+        }
+
+        $contacto = new Contacto($identificador,$arrayTelefonos[$i],$arrayCorreos[$i],$tipoidentificacion,$identificacion,$Empleados_numeroidentificacion=null,$Empleados_tipoIdentificacion=null,$Profesionales_tipoidentificacion=null,$Profesionales_Identificacion=null);
+
+        if($operacion == "Guardar"){
+            $controladorGenerico->guardar($contacto);
+        }
     }
-} 
-foreach ($arrayCorreos as $correos) {
-    $contacto = new Contacto($identificador,$telefono=null,$correos,$tipoidentificacion,$identificacion,$Empleados_numeroidentificacion=null,$Empleados_tipoIdentificacion=null,$Profesionales_tipoidentificacion=null,$Profesionales_Identificacion=null);
-    
-    if($operacion == "Guardar"){
-        $controladorGenerico->guardar($contacto);
-    }
+
 }
+
     }
     
 }
@@ -210,6 +215,7 @@ elseif($controlador == "profesionales"){
         $tipoUsuario = isset($_POST['tipoUsuario']) ? $_POST['tipoUsuario'] : 'Profesional';
         //Se envían los datos a Usuarios
         require("../modelos/usuario.php");
+        require("controladorusuario.php");
         $usuario = new Usuario($usuario,$contraseña,$tipoUsuario,$Clientes_tipoidentificacion=null, $Clientes_identificacion=null, $Empleados_numeroidentificacion=null, $Empleados_tipoIdentificacion=null,$tipoidentificacion,$identificacion);
         $controladorGenerico = new ControladorUsuario();
         if($operacion == "guardar"){

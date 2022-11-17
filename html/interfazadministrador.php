@@ -60,9 +60,6 @@
                     <h4 class="glyphicon glyphicon-book"></h4><br/>Gestión profesionales
                   </a>
                   <a href="#" class="list-group-item text-center">
-                    <h4 class="glyphicon glyphicon-book"></h4><br/>Definir estados de los profesionales
-                  </a>
-                  <a href="#" class="list-group-item text-center">
                     <h4 class="glyphicon glyphicon-book"></h4><br/>Definición reglas de evolución 
                   </a>
                 </div>
@@ -511,27 +508,27 @@
                                             </tr>
                                             <?php
 
-                                                // include ('../controladores/controladorelementos.php');
-                                                // $controladorElemento = new ControladorElemento();
-                                                // $resultado = $controladorElemento->listar();
+                                                include ('../controladores/controladorelementos.php');
+                                                $controladorElemento = new ControladorElemento();
+                                                $resultado = $controladorElemento->listar();
                                                 
-                                                // while ($fila = $resultado->fetch_assoc()){
-                                                //     echo "<tr>";
-                                                //         echo "<td>".$fila['identificador']."</td>";
-                                                //         echo "<td>".$fila['tipoelemento']."</td>";
-                                                //         echo "<td>".$fila['nombre']."</td>";
-                                                //         echo "<td>".$fila['precio']."</td>";
-                                                //         echo "<td>
-                                                //                 <form action='modalelementos.php' method='post'>
-                                                //                     <input type='number' name='identificador' value=".$fila['identificador']." hidden>
-                                                //                     <input type='text' name='tipoElemento' value=".$fila['tipoelemento']." hidden>
-                                                //                     <input type='text' name='nombre' value=".$fila['nombre']." hidden>
-                                                //                     <input type='number' name='precio' value=".$fila['precio']." hidden>
-                                                //                     <button type='submit' class='btn btn-outline-success' style='text-align: center;'>editar</button>
-                                                //                 </form>
-                                                //               </td>";
-                                                //     echo "</tr>";
-                                                // }
+                                                while ($fila = $resultado->fetch_assoc()){
+                                                    echo "<tr>";
+                                                        echo "<td>".$fila['identificador']."</td>";
+                                                        echo "<td>".$fila['tipoelemento']."</td>";
+                                                        echo "<td>".$fila['nombre']."</td>";
+                                                        echo "<td>".$fila['precio']."</td>";
+                                                        echo "<td>
+                                                                <form action='modalelementos.php' method='post'>
+                                                                    <input type='number' name='identificador' value=".$fila['identificador']." hidden>
+                                                                    <input type='text' name='tipoElemento' value=".$fila['tipoelemento']." hidden>
+                                                                    <input type='text' name='nombre' value=".$fila['nombre']." hidden>
+                                                                    <input type='number' name='precio' value=".$fila['precio']." hidden>
+                                                                    <button type='submit' class='btn btn-outline-success' style='text-align: center;'>editar</button>
+                                                                </form>
+                                                              </td>";
+                                                    echo "</tr>";
+                                                }
                                               ?>
                                         </table>
                                      </div>
@@ -580,51 +577,6 @@
                           </div>
 
                           <div class="accordion-item">
-<<<<<<< HEAD
-=======
-                            <h2 class="accordion-header" id="flush-headingTwo">
-                              <button class="accordion-button collapsed btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                Actualizar Categoría
-                              </button>
-                            </h2>
-                            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                              <div class="accordion-body">
-                                <div>
-                                  <form action="">
-                                    <label for="">Categoría</label>
-                                    <br>
-                                   <select name="categoria" id="">
-                                   <option selected>Categorias</option>
-                                   <?php
-                                      include("../controladores/controladorcategoria.php");
-                                      $controladorCategoria = new controladorCategoria();
-                                      $resultado = $controladorCategoria->listar();
-                                      while ($fila = $resultado->fetch_assoc()){
-                                          echo "<option value=".$fila['identificador'].">".$fila['nombre']."</option>";
-                                      }
-                                      ?>   
-                                   </select>
-                                   <br>
-                                   <label for="">Nombre</label>
-                                   <br>
-                                   <input type="text" name="" id="" required autofocus>
-                                    <br>
-                                    <label for="">Descripción</label>
-                                    <br>
-                                    <textarea name="" id="" cols="auto" rows="auto" required>
-
-                                    </textarea>
-                                    <br>
-                                    <button class="btn btn-dark" style="font-size: 13px;" role="button">Actualizar</button>
-                                  </form>
-                                </div>
-                                <br>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div class="accordion-item">
->>>>>>> 6b9de1139fcd6837e7055987488518b839f35961
                             <h2 class="accordion-header" id="flush-headingThree">
                               <button class="accordion-button collapsed btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
                                 Consultar Categoría
@@ -643,25 +595,25 @@
                                       </tr>
 
                                       <?php
-                                        // include ('../controladores/controladorcategoria.php');
-                                        // $controladorCategoria = new ControladorCategoria();
-                                        // $resultado = $controladorCategoria->listar();
+                                        include ('../controladores/controladorcategoria.php');
+                                        $controladorCategoria = new ControladorCategoria();
+                                        $resultado = $controladorCategoria->listar();
 
-                                        // while ($fila = $resultado->fetch_assoc()){
-                                        //     echo "<tr>";
-                                        //         echo "<td>".$fila['identificador']."</td>";
-                                        //         echo "<td>".$fila['nombre']."</td>";
-                                        //         echo "<td>".$fila['descripcion']."</td>";
-                                        //         echo "<td>
-                                        //                 <form action='modalcategorias.php' method='post'>
-                                        //                     <input type='number' name='identificador' value=".$fila['identificador']." hidden>
-                                        //                     <input type='text' name='nombre' value=".$fila['nombre']." hidden>
-                                        //                     <input type='text' name='descripcion' value=".$fila['descripcion']." hidden>
-                                        //                     <button type='submit' class='btn btn-outline-success' style='text-align: center;'>editar</button>
-                                        //                 </form>
-                                        //               </td>";
-                                        //     echo "</tr>";
-                                        //   }
+                                        while ($fila = $resultado->fetch_assoc()){
+                                            echo "<tr>";
+                                                echo "<td>".$fila['identificador']."</td>";
+                                                echo "<td>".$fila['nombre']."</td>";
+                                                echo "<td>".$fila['descripcion']."</td>";
+                                                echo "<td>
+                                                        <form action='modalcategorias.php' method='post'>
+                                                            <input type='number' name='identificador' value=".$fila['identificador']." hidden>
+                                                            <input type='text' name='nombre' value=".$fila['nombre']." hidden>
+                                                            <input type='text' name='descripcion' value=".$fila['descripcion']." hidden>
+                                                            <button type='submit' class='btn btn-outline-success' style='text-align: center;'>editar</button>
+                                                        </form>
+                                                      </td>";
+                                            echo "</tr>";
+                                          }
                                         ?>
                                   </table>
                                </div>
@@ -807,32 +759,32 @@
                                             <th>Acciones</th>
                                         </tr>
                                         <?php
-                                        // include ('../controladores/controladorempleado.php');
-                                        // $controladorEmpleado = new ControladorEmpleado();
-                                        // $resultado = $controladorEmpleado->listar();
+                                        include('../controladores/controladorempleado.php');
+                                        $controladorEmpleado = new ControladorEmpleado();
+                                        $resultado = $controladorEmpleado->listar();
 
-                                        // while ($fila = $resultado->fetch_assoc()){
-                                        //     echo "<tr>";
-                                        //         echo "<td>".$fila['tipoIdentificacion']."</td>";
-                                        //         echo "<td>".$fila['numeroidentificacion']."</td>";
-                                        //         echo "<td>".$fila['nombres']."</td>";
-                                        //         echo "<td>".$fila['apellidos']."</td>";
-                                        //         echo "<td>"."---"."</td>";
-                                        //         echo "<td>".$fila['usuario']."</td>";
-                                        //         echo "<td>".$fila['tipousuario']."</td>";
-                                        //         echo "<td>
-                                        //                 <form action='modalempleados.php' method='post'>
-                                        //                     <input type='text' name='tipoIdentificacion' value=".$fila['tipoIdentificacion']." hidden>
-                                        //                     <input type='text' name='numeroIdentificacion' value=".$fila['numeroidentificacion']." hidden>
-                                        //                     <input type='text' name='nombres' value=".$fila['nombres']." hidden>
-                                        //                     <input type='text' name='apellidos' value=".$fila['apellidos']." hidden>
-                                        //                     <input type='text' name='usuario' value=".$fila['usuario']." hidden>
-                                        //                     <input type='text' name='tipoUsuario' value=".$fila['tipousuario']." hidden>
-                                        //                     <button type='submit' class='btn btn-outline-success' style='text-align: center;'>editar</button>
-                                        //                 </form>
-                                        //               </td>";
-                                        //     echo "</tr>";
-                                        //   }
+                                        while ($fila = $resultado->fetch_assoc()){
+                                            echo "<tr>";
+                                                echo "<td>".$fila['tipoIdentificacion']."</td>";
+                                                echo "<td>".$fila['numeroidentificacion']."</td>";
+                                                echo "<td>".$fila['nombres']."</td>";
+                                                echo "<td>".$fila['apellidos']."</td>";
+                                                echo "<td>"."---"."</td>";
+                                                echo "<td>".$fila['usuario']."</td>";
+                                                echo "<td>".$fila['tipousuario']."</td>";
+                                                echo "<td>
+                                                        <form action='modalempleados.php' method='post'>
+                                                            <input type='text' name='tipoIdentificacion' value=".$fila['tipoIdentificacion']." hidden>
+                                                            <input type='text' name='numeroIdentificacion' value=".$fila['numeroidentificacion']." hidden>
+                                                            <input type='text' name='nombres' value=".$fila['nombres']." hidden>
+                                                            <input type='text' name='apellidos' value=".$fila['apellidos']." hidden>
+                                                            <input type='text' name='usuario' value=".$fila['usuario']." hidden>
+                                                            <input type='text' name='tipoUsuario' value=".$fila['tipousuario']." hidden>
+                                                            <button type='submit' class='btn btn-outline-success' style='text-align: center;'>editar</button>
+                                                        </form>
+                                                      </td>";
+                                            echo "</tr>";
+                                          }
                                         ?>
                                     </table>
                                  </div>
@@ -1013,38 +965,38 @@
                                             <th>Acciones</th>
                                         </tr>
                                         <?php
-                                            // include ('../controladores/controladorprofesional.php');
-                                            // $controladorProfesional = new ControladorProfesional();
-                                            // $resultado = $controladorProfesional->listar();
+                                            include ('../controladores/controladorprofesional.php');
+                                            $controladorProfesional = new ControladorProfesional();
+                                            $resultado = $controladorProfesional->listar();
 
-                                            // while ($fila = $resultado->fetch_assoc()){
-                                            //     echo "<tr>";
-                                            //         echo "<td>".$fila['tipoidentificacion']."</td>";
-                                            //         echo "<td>".$fila['identificacion']."</td>";
-                                            //         echo "<td>".$fila['numerotarjetaprofesional']."</td>";
-                                            //         echo "<td>".$fila['nombres']."</td>";
-                                            //         echo "<td>".$fila['apellidos']."</td>";
-                                            //         echo "<td>"."---"."</td>";
-                                            //         echo "<td>"."---"."</td>";
-                                            //         echo "<td>"."---"."</td>";
-                                            //         echo "<td>".$fila['usuario']."</td>";
-                                            //         echo "<td>".$fila['tipousuario']."</td>";
-                                            //         echo "<td>".$fila['estado']."</td>";
-                                            //         echo "<td>
-                                            //                 <form action='modalprofesionales.php' method='post'>
-                                            //                     <input type='text' name='tipoidentificacion' value=".$fila['tipoidentificacion']." hidden>
-                                            //                     <input type='text' name='identificacion' value=".$fila['identificacion']." hidden>
-                                            //                     <input type='text' name='numerotarjetaprofesional' value=".$fila['numerotarjetaprofesional']." hidden>
-                                            //                     <input type='text' name='nombres' value=".$fila['nombres']." hidden>
-                                            //                     <input type='text' name='apellidos' value=".$fila['apellidos']." hidden>
-                                            //                     <input type='text' name='usuario' value=".$fila['usuario']." hidden>
-                                            //                     <input type='text' name='tipoUsuario' value=".$fila['tipousuario']." hidden>
-                                            //                     <input type='text' name='estado' value=".$fila['estado']." hidden>
-                                            //                     <button type='submit' class='btn btn-outline-success' style='text-align: center;'>editar</button>
-                                            //                 </form>
-                                            //               </td>";
-                                            //     echo "</tr>";
-                                            // }
+                                            while ($fila = $resultado->fetch_assoc()){
+                                                echo "<tr>";
+                                                    echo "<td>".$fila['tipoidentificacion']."</td>";
+                                                    echo "<td>".$fila['identificacion']."</td>";
+                                                    echo "<td>".$fila['numerotarjetaprofesional']."</td>";
+                                                    echo "<td>".$fila['nombres']."</td>";
+                                                    echo "<td>".$fila['apellidos']."</td>";
+                                                    echo "<td>"."---"."</td>";
+                                                    echo "<td>"."---"."</td>";
+                                                    echo "<td>"."---"."</td>";
+                                                    echo "<td>".$fila['usuario']."</td>";
+                                                    echo "<td>".$fila['tipousuario']."</td>";
+                                                    echo "<td>".$fila['estado']."</td>";
+                                                    echo "<td>
+                                                            <form action='modalprofesionales.php' method='post'>
+                                                                <input type='text' name='tipoidentificacion' value=".$fila['tipoidentificacion']." hidden>
+                                                                <input type='text' name='identificacion' value=".$fila['identificacion']." hidden>
+                                                                <input type='text' name='numerotarjetaprofesional' value=".$fila['numerotarjetaprofesional']." hidden>
+                                                                <input type='text' name='nombres' value=".$fila['nombres']." hidden>
+                                                                <input type='text' name='apellidos' value=".$fila['apellidos']." hidden>
+                                                                <input type='text' name='usuario' value=".$fila['usuario']." hidden>
+                                                                <input type='text' name='tipoUsuario' value=".$fila['tipousuario']." hidden>
+                                                                <input type='text' name='estado' value=".$fila['estado']." hidden>
+                                                                <button type='submit' class='btn btn-outline-success' style='text-align: center;'>editar</button>
+                                                            </form>
+                                                          </td>";
+                                                echo "</tr>";
+                                            }
                                           ?>
                                     </table>
                                  </div>
@@ -1054,36 +1006,7 @@
                             </div>
                         </div>
 
-                        <div class="ftl-vertical-tab-content">
-                          <center>
-                            <h2 class="border border-3 text-center" style="margin-top: 0;color:#253237">Definir estado de los profesionales</h2>
-                            <div class="container my_text" style="text-align: center;">
-                               <form action="../controladores/controladorformulario.php" method="post">
-                               <label for="">Tipo de Identificación del profesional</label>
-                                <br>
-                                <select name="tipoidentificacion" id="tipoIdentificación">
-                                  <option value="CC">Cedula de ciudadanía</option>
-                                  <option value="CE">Cedula de extranjería</option>
-                                </select> 
-                                <br>
-                                <label for="">#Identificación del profesional</label>
-                                <br>
-                                <input type="text" name="identificacion" aria-label="First name">
-                                <br>
-                                <label for="">Estado en la empresa</label>
-                                <br>
-                                <select name="estado" id="estado">
-                                  <option value="Activo">Activo</option>
-                                  <option value="Inactivo">Inactivo</option>
-                                </select>
-                                <br>
-                                <br>
-                                <button class="btn btn-dark" style="font-size: 13px;" role="button" name="operacion" value="actualizarEstado">Registrar estado</button>
-                                <input type="text" name="controlador" value="profesionales" hidden>
-                               </form>
-                            </div>
-                          </center>
-                         </div>
+                        
 
                          <div class="ftl-vertical-tab-content">
                           <center>
