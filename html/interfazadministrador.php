@@ -11,7 +11,6 @@
 <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/oficinavirtual.js"></script>
  
-
 <link rel="stylesheet" href="../css/estilosoficina.css">
 
 <script src="../js/oficinavirtual.js"></script>
@@ -581,6 +580,51 @@
                           </div>
 
                           <div class="accordion-item">
+<<<<<<< HEAD
+=======
+                            <h2 class="accordion-header" id="flush-headingTwo">
+                              <button class="accordion-button collapsed btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                Actualizar Categoría
+                              </button>
+                            </h2>
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                              <div class="accordion-body">
+                                <div>
+                                  <form action="">
+                                    <label for="">Categoría</label>
+                                    <br>
+                                   <select name="categoria" id="">
+                                   <option selected>Categorias</option>
+                                   <?php
+                                      include("../controladores/controladorcategoria.php");
+                                      $controladorCategoria = new controladorCategoria();
+                                      $resultado = $controladorCategoria->listar();
+                                      while ($fila = $resultado->fetch_assoc()){
+                                          echo "<option value=".$fila['identificador'].">".$fila['nombre']."</option>";
+                                      }
+                                      ?>   
+                                   </select>
+                                   <br>
+                                   <label for="">Nombre</label>
+                                   <br>
+                                   <input type="text" name="" id="" required autofocus>
+                                    <br>
+                                    <label for="">Descripción</label>
+                                    <br>
+                                    <textarea name="" id="" cols="auto" rows="auto" required>
+
+                                    </textarea>
+                                    <br>
+                                    <button class="btn btn-dark" style="font-size: 13px;" role="button">Actualizar</button>
+                                  </form>
+                                </div>
+                                <br>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="accordion-item">
+>>>>>>> 6b9de1139fcd6837e7055987488518b839f35961
                             <h2 class="accordion-header" id="flush-headingThree">
                               <button class="accordion-button collapsed btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
                                 Consultar Categoría
