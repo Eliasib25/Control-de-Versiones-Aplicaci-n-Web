@@ -11,13 +11,17 @@
 <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/oficinavirtual.js"></script>
  
-
 <link rel="stylesheet" href="../css/estilosoficina.css">
 
 <script src="../js/oficinavirtual.js"></script>
   <title>Interfaz Administrador</title>
 </head>
 <body>
+
+<?php 
+   include("../controladores/controladorcategoria.php");
+   include("../controladores/controladorelementos.php");
+?>
   
   <header >
     <div>
@@ -503,7 +507,7 @@
                                       <br>
                                         <select name="elemento" id="elemento">
                                         <?php
-                                      include("../controladores/controladorelementos.php");
+                                      
                                       $controladorElemento = new controladorElemento();
                                       $resultado = $controladorElemento->listar();
                                       while ($fila = $resultado->fetch_assoc()){
@@ -620,12 +624,12 @@
                                    <select name="categoria" id="">
                                    <option selected>Categorias</option>
                                    <?php
-                                      // include("../controladores/controladorcategoria.php");
-                                      // $controladorCategoria = new controladorCategoria();
-                                      // $resultado = $controladorCategoria->listar();
-                                      // while ($fila = $resultado->fetch_assoc()){
-                                      //     echo "<option value=".$fila['identificador'].">".$fila['nombre']."</option>";
-                                      // }
+                                   
+                                      $controladorCategoria = new controladorCategoria();
+                                      $resultado = $controladorCategoria->listar();
+                                      while ($fila = $resultado->fetch_assoc()){
+                                          echo "<option value=".$fila['identificador'].">".$fila['nombre']."</option>";
+                                      }
                                       ?>   
                                    </select>
                                    <br>
