@@ -619,7 +619,7 @@
                                    <select name="categoria" id="">
                                    <option selected>Categorias</option>
                                    <?php
-                                   
+                                      include("../controladores/controladorcategoria.php");
                                       $controladorCategoria = new controladorCategoria();
                                       $resultado = $controladorCategoria->listar();
                                       while ($fila = $resultado->fetch_assoc()){
