@@ -35,12 +35,8 @@ if($controlador == "cliente"){
     //Usuario
     $nombreUsuario =$_POST['usuario'];
     $contraseña = isset($_POST['contraseña']) ? $_POST['contraseña'] : '';
-<<<<<<< HEAD
-    $tipoUsuario = isset($_POST['tipoUsuario']) ? $_POST['tipoUsuario'] : 'Cliente';
-=======
-    $tipoUsuario = isset($_POST['tipoUsuario']) ? $_POST['tipoUsuario'] : '';
 
->>>>>>> 6b9de1139fcd6837e7055987488518b839f35961
+    $tipoUsuario = isset($_POST['tipoUsuario']) ? $_POST['tipoUsuario'] : 'Cliente';
     //Se envían los datos a Usuarios
     require("../modelos/usuario.php");
     $usuario = new Usuario($nombreUsuario,$contraseña,$tipoUsuario,$tipoidentificacion,$identificacion, $Empleados_numeroidentificacion=null, $Empleados_tipoIdentificacion=null, $Profesionales_tipoidentificacion=null, $Profesionales_Identificacion=null);
@@ -210,13 +206,13 @@ elseif($controlador == "profesionales"){
         $tipoUsuario = isset($_POST['tipoUsuario']) ? $_POST['tipoUsuario'] : 'Profesional';
         //Se envían los datos a Usuarios
         require("../modelos/usuario.php");
+        require("../controladores/controladorusuario.php");
         $usuario = new Usuario($usuario,$contraseña,$tipoUsuario,$Clientes_tipoidentificacion=null, $Clientes_identificacion=null, $Empleados_numeroidentificacion=null, $Empleados_tipoIdentificacion=null,$tipoidentificacion,$identificacion);
         $controladorGenerico = new ControladorUsuario();
         if($operacion == "guardar"){
             $controladorGenerico->guardar($usuario);
         }elseif($operacion == "eliminar") {
             $controladorGenerico->eliminar($usuario);
-            echo "Se eliminó de forma exitosa!!";
         }
     
     }

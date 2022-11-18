@@ -1,10 +1,10 @@
 <?php
 
-    require("../componentes/conectarmysql.php");
-    require("interfazcontrolador.php");
+require_once("../componentes/conectarmysql.php");
+require_once("interfazcontrolador.php");
 
 //Acá hay una herencia 
-class ControladorEmpleado extends ConectarMysql4 {
+class ControladorEmpleado extends ConectarMysql {
 
     private $tabla = "empleados";
 
@@ -44,7 +44,7 @@ class ControladorEmpleado extends ConectarMysql4 {
 
 }
 
-class ControladorUsuario extends ConectarMysql implements InterfazControlador{
+class ControladorUsuario extends ConectarMysql{
     private $tabla = "Usuarios";
     
     public function guardar($objeto){
@@ -80,3 +80,5 @@ class ControladorUsuario extends ConectarMysql implements InterfazControlador{
         return $this->getDatos($sql);
     }
 }
+
+?>

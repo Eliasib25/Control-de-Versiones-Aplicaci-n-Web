@@ -1,10 +1,10 @@
 <?php
 
-    require("../componentes/conectarmysql.php");
-    require("interfazcontrolador.php");
+require_once("../componentes/conectarmysql.php");
+require_once("interfazcontrolador.php");
 
 //Acá hay una herencia 
-class ControladorCategoria extends ConectarMysql3 {
+class ControladorCategoria extends ConectarMysql {
 
     private $tabla = "categorias";
 
