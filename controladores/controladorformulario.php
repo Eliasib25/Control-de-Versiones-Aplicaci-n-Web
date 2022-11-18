@@ -59,8 +59,6 @@ $arrayTelefonos=json_decode($_POST["arrayDeValores"], true );
 $arrayCorreos = json_decode($_POST["arrayCorreos"], true);
 $identificador = null;
 
-var_dump($arrayTelefonos);
-
 $controladorGenerico = new ControladorContacto();
 
 $tamañoArrayTelefonos = count($arrayTelefonos);
@@ -68,7 +66,6 @@ $tamañoArrayCorreos = count($arrayCorreos);
 
 
 if($tamañoArrayTelefonos>$tamañoArrayCorreos){
-
 
     for ($i=0; $i <count($arrayTelefonos); $i++) { 
 
@@ -85,7 +82,33 @@ if($tamañoArrayTelefonos>$tamañoArrayCorreos){
 
 }
 
+elseif($tamañoArrayCorreos>$tamañoArrayTelefonos){
+
+    for($i=0; $i <count($arrayCorreos);$i++){
+
+    if($i+1>count($arrayTelefonos)){
+        $arrayTelefonos[$i]=null;
     }
+
+    $contacto = new Contacto($identificador,$arrayTelefonos[$i],$arrayCorreos[$i],$tipoidentificacion,$identificacion,$Empleados_numeroidentificacion=null,$Empleados_tipoIdentificacion=null,$Profesionales_tipoidentificacion=null,$Profesionales_Identificacion=null);
+
+    if($operacion == "Guardar"){
+        $controladorGenerico->guardar($contacto);
+    }
+
+}
+}elseif($tamañoArrayCorreos=$tamañoArrayTelefonos){
+    for($i=0; $i<count($arrayTelefonos);$i++){
+
+    $contacto = new Contacto($identificador,$arrayTelefonos[$i],$arrayCorreos[$i],$tipoidentificacion,$identificacion,$Empleados_numeroidentificacion=null,$Empleados_tipoIdentificacion=null,$Profesionales_tipoidentificacion=null,$Profesionales_Identificacion=null);
+
+    if($operacion == "Guardar"){
+        $controladorGenerico->guardar($contacto);
+    }
+}
+}
+
+}
     
 }
 
@@ -243,6 +266,8 @@ else if ($controlador == 'login') {
         $valor=implode($tipoUsuario);
         echo json_encode($valor);
     }
+}esle if($controlador =='administrador'){
+    
 }
 
 ?>

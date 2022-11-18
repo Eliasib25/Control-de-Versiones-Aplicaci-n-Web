@@ -1,25 +1,25 @@
 <?php
 
-    require_once("../componentes/conectarmysql.php");
-    require_once("interfazcontrolador.php");
+    require("../componentes/conectarmysql.php");
+    require("interfazcontrolador.php");
 
 //Acá hay una herencia 
-class ControladorContacto extends ConectarMysql {
+class ControladorElemento extends ConectarMysql {
 
-    private $tabla = "contactos";
+    private $tabla = "elementos";
 
     public function guardar($objeto){
-        $sql = "call crudcontactos(0,?,?,?,?,?,?,?,?,?)";
+        $sql = "call crudelementos(0,?,?,?,?)";
         $sentencia = $this->getconexion()->prepare($sql);
-        $sentencia->bind_param("issssssss", $objeto->identificador, $objeto->telefonos, $objeto->correos, $objeto->Clientes_tipoidentificacion,$objeto->Clientes_identificacion,$objeto->Empleados_numeroidentificacion,$objeto->Empleados_tipoIdentificacion,$objeto->Profesionales_tipoidentificacion,$objeto->Profesionales_Identificacion);
+        $sentencia->bind_param("issi", $objeto->identificador, $objeto->tipoelemento, $objeto->nombre, $objeto->precio);
         $sentencia->execute();
         $result = $sentencia->get_result();
     }
 
     public function eliminar($objeto){
-        $sql = "call crudcategorias(1,?,?,?)";
+        $sql = "call crudelementos(1,?,?,?,?)";
         $sentencia = $this->getconexion()->prepare($sql);
-        $sentencia->bind_param("sss", $objeto->identificador, $objeto->nombre, $objeto->descripcion);
+        $sentencia->bind_param("issi", $objeto->identificador, $objeto->tipoelemento, $objeto->nombre, $objeto->precio);
         $sentencia->execute();
         $result = $sentencia->get_result();
     }
