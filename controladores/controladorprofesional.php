@@ -55,6 +55,7 @@ class ControladorProfesional extends ConectarMysql {
 
 
 
+<<<<<<< HEAD
 // class ControladorUsuario extends ConectarMysql {
 //     private $tabla = "Usuarios";
     
@@ -91,5 +92,8 @@ class ControladorProfesional extends ConectarMysql {
 //         return $this->getDatos($sql);
 //     }
 // }
+=======
+
+>>>>>>> a980e9c65413336240bd9de5abc80acea469a604
 
 ?>

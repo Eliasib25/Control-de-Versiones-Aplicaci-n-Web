@@ -1,7 +1,7 @@
 <?php
 
-require("../componentes/conectarmysql.php");
-require("interfazcontrolador.php");
+require_once("../componentes/conectarmysql.php");
+require_once("interfazcontrolador.php");
 
 class ControladorCliente extends ConectarMysql implements InterfazControlador{
         private $tabla = "Clientes";

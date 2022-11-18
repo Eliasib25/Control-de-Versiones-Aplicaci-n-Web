@@ -60,9 +60,6 @@
                     <h4 class="glyphicon glyphicon-book"></h4><br/>Gestión profesionales
                   </a>
                   <a href="#" class="list-group-item text-center">
-                    <h4 class="glyphicon glyphicon-book"></h4><br/>Definir estados de los profesionales
-                  </a>
-                  <a href="#" class="list-group-item text-center">
                     <h4 class="glyphicon glyphicon-book"></h4><br/>Definición reglas de evolución 
                   </a>
                 </div>
@@ -511,7 +508,11 @@
                                             </tr>
                                             <?php
 
+<<<<<<< HEAD
                                                 require_once ('../controladores/controladorelementos.php');
+=======
+                                                include ('../controladores/controladorelementos.php');
+>>>>>>> a980e9c65413336240bd9de5abc80acea469a604
                                                 $controladorElemento = new ControladorElemento();
                                                 $resultado = $controladorElemento->listar();
                                                 
@@ -598,7 +599,11 @@
                                       </tr>
 
                                       <?php
+<<<<<<< HEAD
                                         require_once ('../controladores/controladorcategoria.php');
+=======
+                                        include ('../controladores/controladorcategoria.php');
+>>>>>>> a980e9c65413336240bd9de5abc80acea469a604
                                         $controladorCategoria = new ControladorCategoria();
                                         $resultado = $controladorCategoria->listar();
 
@@ -762,7 +767,11 @@
                                             <th>Acciones</th>
                                         </tr>
                                         <?php
+<<<<<<< HEAD
                                         require_once ('../controladores/controladorempleado.php');
+=======
+                                        include('../controladores/controladorempleado.php');
+>>>>>>> a980e9c65413336240bd9de5abc80acea469a604
                                         $controladorEmpleado = new ControladorEmpleado();
                                         $resultado = $controladorEmpleado->listar();
 
@@ -968,7 +977,11 @@
                                             <th>Acciones</th>
                                         </tr>
                                         <?php
+<<<<<<< HEAD
                                             require_once ('../controladores/controladorprofesional.php');
+=======
+                                            include ('../controladores/controladorprofesional.php');
+>>>>>>> a980e9c65413336240bd9de5abc80acea469a604
                                             $controladorProfesional = new ControladorProfesional();
                                             $resultado = $controladorProfesional->listar();
 
@@ -1009,36 +1022,7 @@
                             </div>
                         </div>
 
-                        <div class="ftl-vertical-tab-content">
-                          <center>
-                            <h2 class="border border-3 text-center" style="margin-top: 0;color:#253237">Definir estado de los profesionales</h2>
-                            <div class="container my_text" style="text-align: center;">
-                               <form action="../controladores/controladorformulario.php" method="post">
-                               <label for="">Tipo de Identificación del profesional</label>
-                                <br>
-                                <select name="tipoidentificacion" id="tipoIdentificación">
-                                  <option value="CC">Cedula de ciudadanía</option>
-                                  <option value="CE">Cedula de extranjería</option>
-                                </select> 
-                                <br>
-                                <label for="">#Identificación del profesional</label>
-                                <br>
-                                <input type="text" name="identificacion" aria-label="First name">
-                                <br>
-                                <label for="">Estado en la empresa</label>
-                                <br>
-                                <select name="estado" id="estado">
-                                  <option value="Activo">Activo</option>
-                                  <option value="Inactivo">Inactivo</option>
-                                </select>
-                                <br>
-                                <br>
-                                <button class="btn btn-dark" style="font-size: 13px;" role="button" name="operacion" value="actualizarEstado">Registrar estado</button>
-                                <input type="text" name="controlador" value="profesionales" hidden>
-                               </form>
-                            </div>
-                          </center>
-                         </div>
+                        
 
                          <div class="ftl-vertical-tab-content">
                           <center>
