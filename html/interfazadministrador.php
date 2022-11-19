@@ -508,11 +508,8 @@
                                             </tr>
                                             <?php
 
-<<<<<<< HEAD
-                                                require_once ('../controladores/controladorelementos.php');
-=======
-                                                include ('../controladores/controladorelementos.php');
->>>>>>> a980e9c65413336240bd9de5abc80acea469a604
+                                                include('../controladores/controladorelementos.php');
+
                                                 $controladorElemento = new ControladorElemento();
                                                 $resultado = $controladorElemento->listar();
                                                 
@@ -599,11 +596,9 @@
                                       </tr>
 
                                       <?php
-<<<<<<< HEAD
-                                        require_once ('../controladores/controladorcategoria.php');
-=======
-                                        include ('../controladores/controladorcategoria.php');
->>>>>>> a980e9c65413336240bd9de5abc80acea469a604
+
+                                        include('../controladores/controladorcategoria.php');
+
                                         $controladorCategoria = new ControladorCategoria();
                                         $resultado = $controladorCategoria->listar();
 
@@ -767,11 +762,9 @@
                                             <th>Acciones</th>
                                         </tr>
                                         <?php
-<<<<<<< HEAD
-                                        require_once ('../controladores/controladorempleado.php');
-=======
+
                                         include('../controladores/controladorempleado.php');
->>>>>>> a980e9c65413336240bd9de5abc80acea469a604
+
                                         $controladorEmpleado = new ControladorEmpleado();
                                         $resultado = $controladorEmpleado->listar();
 
@@ -977,11 +970,8 @@
                                             <th>Acciones</th>
                                         </tr>
                                         <?php
-<<<<<<< HEAD
-                                            require_once ('../controladores/controladorprofesional.php');
-=======
                                             include ('../controladores/controladorprofesional.php');
->>>>>>> a980e9c65413336240bd9de5abc80acea469a604
+
                                             $controladorProfesional = new ControladorProfesional();
                                             $resultado = $controladorProfesional->listar();
 
