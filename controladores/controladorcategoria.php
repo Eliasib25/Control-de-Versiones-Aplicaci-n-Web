@@ -27,7 +27,7 @@ class ControladorCategoria extends ConectarMysql {
     }
 
     public function listar(){
-        $sql = "select * from $this->tabla";
+        $sql = "select * from ".$this->tabla;
         return $this->getDatos($sql);
     }
 
