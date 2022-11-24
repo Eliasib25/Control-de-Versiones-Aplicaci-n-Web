@@ -20,10 +20,21 @@ class ControladorUsuario extends ConectarMysql{
         $sentencia-> execute();
     }
 
-    public function consultarRegistro($objeto){
+    public function consultarRegistroCliente($objeto){
         $sql = "Select Clientes_tipoidentificacion tipo, Clientes_identificacion identificacion
                 from usuarios 
                 where usuario = ? and tipousuario = 'cliente'";
+        $sentencia = $this->getconexion()->prepare($sql);
+        $sentencia->bind_param("s",$objeto->usuario);
+        $sentencia-> execute();
+        $resultado = $sentencia->get_result();
+        return $resultado;
+    }
+
+    public function consultarRegistroProfesional($objeto){
+        $sql = "Select Profesionales_tipoidentificacion tipo, Profesionales_Identificacion identificacion
+                from usuarios 
+                where usuario = ? and tipousuario = 'profesional'";
         $sentencia = $this->getconexion()->prepare($sql);
         $sentencia->bind_param("s",$objeto->usuario);
         $sentencia-> execute();

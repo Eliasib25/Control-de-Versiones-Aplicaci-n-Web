@@ -37,7 +37,8 @@ if($controlador == "cliente"){
     $contraseña = isset($_POST['contraseña']) ? $_POST['contraseña'] : '';
     $tipoUsuario = isset($_POST['tipoUsuario']) ? $_POST['tipoUsuario'] : 'Cliente';
     //Se envían los datos a Usuarios
-    require("../modelos/usuario.php");
+    require_once("../modelos/usuario.php");
+    require_once("../modelos/controladorusuario.php");
     $usuario = new Usuario($nombreUsuario,$contraseña,$tipoUsuario,$tipoidentificacion,$identificacion, $Empleados_numeroidentificacion=null, $Empleados_tipoIdentificacion=null, $Profesionales_tipoidentificacion=null, $Profesionales_Identificacion=null);
 
     $controladorGenerico = new ControladorUsuario();
@@ -52,7 +53,8 @@ if($controlador == "cliente"){
 }
 if($controlador == "cliente"){
 
-require("../modelos/contactos.php");
+require_once("../modelos/contactos.php");
+require_once("../modelos/controladorcontacto.php");
 
 $arrayTelefonos=json_decode($_POST["arrayDeValores"], true );
 $arrayCorreos = json_decode($_POST["arrayCorreos"], true);
@@ -275,12 +277,12 @@ else if ($controlador == "login") {
             case 'secretaria':
                 session_start();
                 $_SESSION['usuario'] = $usuario;
-                header('Location: ../html/interfazsecretaria.html');
+                header('Location: ../html/interfazsecretaria.php');
                 break;
             case 'profesional':
                 session_start();
                 $_SESSION['usuario'] = $usuario;
-                header('Location: ../html/interfazprofesionales.html');
+                header('Location: ../html/interfazprofesionales.php');
                 break;
             case 'gerente':
                 session_start();
@@ -315,6 +317,9 @@ else if ($controlador == "citas"){
     if ($operacion == "agendar") {
         $controladorGenerico->guardar($citas);
         echo "Se ha agendado la cita de manera exitosa";
+    }if ($operacion == "eliminar") {
+        $controladorGenerico->eliminar($citas);
+        echo "Se ha eliminado la cita de manera exitosa";
     }
     
     if($operacion == "buscarCitas"){
@@ -335,8 +340,6 @@ else if ($controlador == "citas"){
     require("../modelos/historiaclinica.php");
     require("controladorhistoriaclinica.php");
 
-    echo "Hola";
-
     $arrayServicios=json_decode($_POST["arrayDeValores"], true );
     $identificador = null;
     $tipoidentificacion = $_POST["tipoidentificacion"];
@@ -345,12 +348,15 @@ else if ($controlador == "citas"){
     $peso = $_POST["peso"];
     $presionsdiastolica = $_POST["presionDiastolica"];
     $presionsistolica = $_POST["presionSistolica"];
-    $diagnostico = $_POST["diagnostico"];
+    $diagnostico = isset($_POST['diagnostico']) ? $_POST['diagnostico'] : '';
     $derivacion = $_POST["derivacion"];
     $resultados = $_POST["resultados"];
     $sesionesrecomendadas = $_POST["sesionesrecomendadas"];
+    $Profesionales_tipoidentificacion = isset($_POST['Profesionales_tipoidentificacion']) ? $_POST['Profesionales_tipoidentificacion'] : '';
+    $Profesionales_Identificacion = isset($_POST['Profesionales_Identificacion']) ? $_POST['Profesionales_Identificacion'] : '';
 
-    $historiaclinica = new historiaclinica($identificador,$fecha,$peso,$presionsistolica,$presionsdiastolica,$derivacion,$resultados,$sesionesrecomendadas,$evolucion = null,$tipoidentificacion,$identificacion, $Profesionales_tipoidentificacion="CC",$Profesionales_Identificacion=1234567890);
+    $historiaclinica = new historiaclinica($identificador,$fecha,$peso,$presionsistolica,$presionsdiastolica,$derivacion,$resultados,
+    $sesionesrecomendadas,$evolucion = null,$tipoidentificacion,$identificacion, $Profesionales_tipoidentificacion,$Profesionales_Identificacion);
 
     $controladorGenerico = new ControladorHistoriaClinica();
 

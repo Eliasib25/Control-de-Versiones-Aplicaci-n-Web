@@ -16,10 +16,10 @@ class HistoriaClinica{
     public $Profesionales_tipoidentificacion;
     public $Profesionales_Identificacion;
 
-    public function __construct($identificador,$fechasesion="",$peso,$presionsistolica,$presiondiastolica,
-                                $derivacion="",$resultado="",$numerosesiones,$evolucion="",
-                                $Clientes_tipoidentificacion="",$Clientes_identificacion,
-                                $Profesionales_tipoidentificacion="",$Profesionales_Identificacion){
+    public function __construct($identificador=0,$fechasesion="",$peso=0,$presionsistolica=0,$presiondiastolica=0,
+                                $derivacion="",$resultado="",$numerosesiones=0,$evolucion="",
+                                $Clientes_tipoidentificacion="",$Clientes_identificacion="",
+                                $Profesionales_tipoidentificacion="",$Profesionales_Identificacion=""){
 
         $this->identificador = $identificador;
         $this->fechasesion = $fechasesion;

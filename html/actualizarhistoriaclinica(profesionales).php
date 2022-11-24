@@ -16,20 +16,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="estilosoficina.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    
     <script>
-        $(document).ready(function() {
+        $( document ).ready(function() {
         $('#myModal').modal('toggle')
     });
     </script>
 
-    <title>Registrar Historia Clinica</title>
+    <title>historia Clinica Cliente</title>
 </head>
 <body>
-            <!-- Modal HTML --> 
+            <!-- Modal HTML -->
             <div id="myModal" class="modal fade">
                 <div class="modal-dialog modal-login">
                     <div class="modal-content">
@@ -38,9 +41,7 @@
                             <button type="button" onclick= "history.back()" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
-
-                           
-                            <div class="container mt-3 mb-3 my_text">
+                              <div class="container mt-3 mb-3 my_text">
                                 <div style="text-align: center; width: auto;">
                             
                                 <label for="">Tipo identificacion</label>
@@ -92,56 +93,15 @@
                                 <br>
                                 <input type="number" name="presionSistolica" id="presionSistolica" required>
                                 <br>
-                                <label for="">Diagnostico</label>
-                                <br>
-                                <textarea name="diagnostico" id="diagnostico" cols="23" rows="3">
-                                  
-                                </textarea>
-                                <br>
-                                <label for="">Seleccione el o los servicios</label>
-                                <br>
-                                <select name="servicios" id="servicios">
-                                    <?php
-                                    include_once("../controladores/controladorservicio.php");
-                                    $controladorServicios = new ControladorServicio();
-                                    $servicios = $controladorServicios->listar();
-
-                                    while($fila = $servicios->fetch_assoc())
-                                    echo "<option value='".$fila["identificador"]."'>".$fila["nombre"]."</option>";
-                                    ?>
-                                </select>
-                                <button class = "btn btn-dark btn-sm" id="agregarServicio" >Agregar</button>
                                
                                 <script type="text/javascript">
-                                       let arrayServicios = [];
-
-                                        function llenarListaServicios(){
-                                        $('#tbody').html('');
-                                        
-                                        arrayServicios.map((e, key)=>{
-                                        $('#tbody').append('<tr><td>'+e+'</td></tr>');
-                                        });
-                                        }
-
-                                        $("#agregarServicio").click(function(){
-                                        let valor = $("#servicios").val();
-                                        
-                                        arrayServicios.push(valor);
-                                        
-                                        llenarListaServicios();
-                                        
-                                        $("#servicios").val('');
-                                        })
-
-                                        llenarListaServicios();
                                     
 
                                         function guardar() {
                                                             
-                                        var arrayJSON= JSON.stringify(arrayServicios);
                                                         
-                                                        // mediante ajax, enviamos por POST el json en la variable: arrayDeValores
-                                         $.post("../controladores/controladorformulario.php",{arrayDeValores:arrayJSON,
+                                        // mediante ajax, enviamos por POST el json en la variable: arrayDeValores
+                                         $.post("../controladores/controladorformulario.php",{
                                         controlador:$('#controlador').val(),
                                         operacion:$('#operacion').val(),
                                         tipoidentificacion:$('#tipoidentificacion').val(),
@@ -165,19 +125,7 @@
                                         }
                                 </script>
                                 <br>
-                                <br>
-                                
-                                <table class="table table-striped table-ligth border border-5" style="text-align:center">
-                                <thead>
-                                    <tr>
-                                        <th>Nombre Servicio</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tbody">
-                                   
-                                </tbody>
-                                    
-                                </table>
+
                                 <label for="">Derivación</label>
                                 <br>
                                 <textarea name="derivacion" id="derivacion" cols="auto" rows="auto" required> 
@@ -202,8 +150,6 @@
                                     <input type="text" name="controlador" id="controlador" value="historiaclinica" hidden>
                                </div>
                         </div>
-                               
-                         
                         </div>
                                    
 
