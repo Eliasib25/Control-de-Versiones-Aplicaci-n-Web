@@ -19,7 +19,7 @@ function regresar() {
             console.log(tipoUsuario);
             switch (tipoUsuario){
                 case "cliente": 
-                    window.location.href='../html/interfazcliente.html';
+                    window.location.href='../html/interfazcliente.php';
                     break;
                 case "administrador":
                     window.location.href='../html/interfazadministrador.php';
@@ -28,7 +28,7 @@ function regresar() {
                    window.location.href='../html/interfazsecretaria.html';
                     break;
                 case "profesional":
-                    window.location.href='../html/interfazprofesionales.html';
+                    window.location.href='../html/interfazprofesionales.php';
                     break;
                 case "gerente":
                     window.location.href='../html/interfazGerente.php';
