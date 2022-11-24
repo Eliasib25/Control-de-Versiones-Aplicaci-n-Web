@@ -4,10 +4,6 @@
     if (!isset ($_SESSION['usuario'])) {
 
         header('Location: iniciosesion.html');
-<<<<<<< HEAD
-=======
-
->>>>>>> 240326456367bfc483f979f442432738d76da0bf
     }
 
 ?>
@@ -50,16 +46,10 @@
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ftl-vertical-tab-container">
               <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ftl-vertical-tab-menu">
                 <div style="text-align: center; border:1px solid #dddede;">
-<<<<<<< HEAD
                   <img src="../recursos/imagenes/Usuario.png" alt=""><br>
                   <?php 
                       echo $_SESSION['usuario'];
                     ?>
-=======
-                  <img src="../recursos/imagenes/Usuario.png" alt="">
-                  <p style="font-size: 20px;">Nombre Usuario</p>
-                  <?php echo ucwords($_SESSION['usuario']) ?>
->>>>>>> 240326456367bfc483f979f442432738d76da0bf
                 </div>  
                 <div class="list-group">
                   <a href="#" class="list-group-item active text-center">

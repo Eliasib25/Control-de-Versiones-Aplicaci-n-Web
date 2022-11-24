@@ -261,9 +261,7 @@ else if ($controlador == "login") {
     if ($operacion == "iniciar") {
         $resultado = $controladorGenerico->validarRegistro($usuarios);
         $tipoUsuario = $resultado->fetch_assoc();
-        $valor=implode($tipoUsuario);
-        //echo json_encode($valor);
-        switch ($valor){
+        switch ($tipoUsuario['tipousuario']){
             case 'cliente': 
                 session_start();
                 $_SESSION['usuario'] = $usuario;
@@ -290,7 +288,7 @@ else if ($controlador == "login") {
                 header('Location: ../html/interfazGerente.php');
                 break;
             default:
-                alert("Usuario o contraseña incorrectos");
+                echo("Usuario o contraseña incorrectos");
                 break;
         }
     }

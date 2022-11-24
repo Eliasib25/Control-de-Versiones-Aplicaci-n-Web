@@ -1,6 +1,6 @@
 <?php
 
-    require("../componentes/conectarmysql.php");
+    require_once("../componentes/conectarmysql.php");
 
 //Acá hay una herencia 
 class ControladorLogin extends ConectarMysql{
