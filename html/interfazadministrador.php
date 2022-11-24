@@ -513,46 +513,6 @@
                             </h2>
                             <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                               <div class="accordion-body">
-<<<<<<< HEAD
-                                <div class="container my_text">
-                                  <div class="row justify-content-center">
-                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                      
-                                      <div class="mb-3" style="overflow-x:auto;">
-                                        <table class="table table-striped table-ligth border border-5">
-                                            <tr>
-                                                <th>Identificador</th>
-                                                <th>Nombre Elemento</th>
-                                                <th>Tipo</th>
-                                                <th>Precio</th>
-                                                <th>Acciones</th>
-                                            </tr>
-                                            <?php
-                                                require_once ('../controladores/controladorelementos.php');
-                                                $controladorElemento = new ControladorElemento();
-                                                $resultado = $controladorElemento->listar();
-                                                
-                                                while ($fila = $resultado->fetch_assoc()){
-                                                    echo "<tr>";
-                                                        echo "<td>".$fila['identificador']."</td>";
-                                                        echo "<td>".$fila['tipoelemento']."</td>";
-                                                        echo "<td>".$fila['nombre']."</td>";
-                                                        echo "<td>".$fila['precio']."</td>";
-                                                        echo "<td>
-                                                                <form action='modalelementos.php' method='post'>
-                                                                    <input type='number' name='identificador' value=".$fila['identificador']." hidden>
-                                                                    <input type='text' name='tipoElemento' value=".$fila['tipoelemento']." hidden>
-                                                                    <input type='text' name='nombre' value=".$fila['nombre']." hidden>
-                                                                    <input type='number' name='precio' value=".$fila['precio']." hidden>
-                                                                    <button type='submit' class='btn btn-outline-success' style='text-align: center;'>editar</button>
-                                                                </form>
-                                                              </td>";
-                                                    echo "</tr>";
-                                                }
-                                              ?>
-                                        </table>
-                                     </div>
-=======
                                 <div class="mb-3" style="overflow-x:auto;">
                                   <table class="table table-striped table-ligth border border-5">
                                     <thead>
@@ -683,7 +643,6 @@
                                               }
                                             ?>
                                       </table>
->>>>>>> a2f49278a1bc8997bb8216bfb00e24cb45a41392
                                     </div>
                                   </div>
                                 </div>
@@ -914,14 +873,7 @@
                                           <th>Acciones</th>
                                       </tr>
                                       <?php
-<<<<<<< HEAD
-                                        require_once ('../controladores/controladorcategoria.php');
-                                        $controladorCategoria = new ControladorCategoria();
-                                        $resultado = $controladorCategoria->listar();
-=======
->>>>>>> a2f49278a1bc8997bb8216bfb00e24cb45a41392
-
-                                      include('../controladores/controladorempleado.php');
+                                      include_once('../controladores/controladorempleado.php');
 
                                       $controladorEmpleado = new ControladorEmpleado();
                                       $resultado = $controladorEmpleado->listar();
@@ -1101,40 +1053,12 @@
                                   </div>
                               </div>
                             </div>
-<<<<<<< HEAD
-                            
-                            <div class="accordion-item">
-                              <h2 class="accordion-header" id="flush-headingTwo">
-                                <button class="accordion-button collapsed btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                  Consultar empleados
-                                </button>
-                              </h2>
-                              <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
-                                  <div class="mb-3" style="overflow-x:auto;">
-                                    <table class="table table-striped table-ligth border border-5">
-                                        <tr>
-                                            <th>Tipo de identificación</th>
-                                            <th>Número identificación</th>
-                                            <th>Nombres</th>
-                                            <th>Apellidos</th>
-                                            <th>Telefonos</th>
-                                            <th>Nombre Usuario</th>
-                                            <th>Tipo usuario</th>
-                                            <th>Acciones</th>
-                                        </tr>
-                                        <?php
-                                        require_once ('../controladores/controladorempleado.php');
-                                        $controladorEmpleado = new ControladorEmpleado();
-                                        $resultado = $controladorEmpleado->listar();
-=======
                           </div>
->>>>>>> a2f49278a1bc8997bb8216bfb00e24cb45a41392
 
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingTwo">
                               <button class="accordion-button collapsed btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                Editar profesionales
+                                Consultar profesionales
                               </button>
                             </h2>
                             <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
@@ -1202,225 +1126,7 @@
 
                         <div class="ftl-vertical-tab-content">
                         <center>
-<<<<<<< HEAD
-                          <h2 class="border border-3 text-center" style="margin-top: 0;color:#253237">Gestión profesionales</h2>
-                          <div class="container my_text" style="text-align: center;"> 
-                            <div class="accordion accordion-flush" id="accordionFlushExample">
-                            <div class="accordion-item">
-                              <h2 class="accordion-header" id="flush-headingOne">
-                                <button class="accordion-button collapsed btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                  Registrar Profesionales
-                                </button>
-                              </h2>
-                              <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
-                                  <form action="../controladores/controladorformulario.php" method="post">
-                                  <div class="row">
-                                    <div class= "col"">
-                                        <label for="">Tipo de identificación</label>
-                                        <br>
-                                      <select name="tipoidentificacion" id="tipoidentificacion">
-                                        <option value="CC">Cedula de ciudadanía</option>
-                                        <option value="CE">Cedula de extranjería</option>
-                                      </select>
-                                    </div>
-                                    <div  class = "col" style="width: auto;">
-                                        <label for="">#Identificación</label>
-                                        <br>
-                                        <input type="text" name="identificacion" aria-label="First name" required autofocus>
-                                    </div>  
-                                  </div>
-                                  
-                                    <div class="row" style="justify-content: center;">
-                                        <div class = "col" style="width: auto;">
-                                            <br>
-                                            <label for="">#Tarjeta Profesional</label>
-                                            <br>
-                                            <input type="text" name="numerotarjetaprofesional" aria-label="First name" required>
-                                        </div>  
-                                        <div class = "col" style="width: auto;">
-                                            <br>
-                                            <label for="">Nombres</label>
-                                            <br>
-                                            <input type="text" name="nombres" aria-label="First name" required>
-                                        </div> 
-                                   </div>
-        
-                                   <div class="row" style="justify-content: center;">
-                                    <div class = "col" style="width: auto;">
-                                        <br>
-                                        <label for="">Apellidos</label>
-                                        <br>
-                                        <input type="text" name="apellidos" aria-label="First name" required>
-                                        <br>
-                                        <label for="">Experticia</label>
-                                        <br>
-                                        <input type="text" style="width: 150px;" stylearia-label="First name">
-                                        <button class="btn btn-dark" style="font-size: 13px;" role="button">Agregar</button>
-                                        <br>
-                                        <br>
-                                        <div class="mb-3" style="overflow-x:auto;">
-                                          <table class="table table-striped table-ligth border border-5">
-                                            <thead>
-                                              <tr>
-                                                  <th>Experticia</th>
-                                              </tr>
-                                            </thead>
-                                              <tbody>
-                                                <tr>
-                                                  <td>Experticia 1</td>
-                                                </tr>
-                                              </tbody>
-                                          </table>
-                                       </div>
-                                        <br>
-                                        <label for="">Estudios Realizados</label>
-                                        <br>
-                                        <input type="text" style="width: 150px;" stylearia-label="First name">
-                                        <button class="btn btn-dark" style="font-size: 13px;" role="button">Agregar</button>
-                                        <br>
-                                        <br>
-                                        <div class="mb-3" style="overflow-x:auto;">
-                                          <table class="table table-striped table-ligth border border-5">
-                                            <thead>
-                                              <tr>
-                                                  <th>Estudios Realizados</th>
-                                              </tr>
-                                            </thead>
-                                              <tbody>
-                                                <tr>
-                                                  <td>Estudio Uno</td>
-                                                </tr>
-                                              </tbody>
-                                          </table>
-                                       </div>
-                                    </div>  
-                                    <div class = "col" style="width: auto;">
-                                        <br>
-                                        <label for="">Telefonos</label>
-                                        <br>
-                                        <input type="text" style="width: 150px;" stylearia-label="First name">
-                                        <button class="btn btn-dark" style="font-size: 13px;" role="button">Agregar</button>
-                                        <br>
-                                        <br>
-                                        <div class="mb-3" style="overflow-x:auto;">
-                                          <table class="table table-striped table-ligth border border-5">
-                                            <thead>
-                                              <tr>
-                                                  <th>Telefonos</th>
-                                              </tr>
-                                            </thead>
-                                              <tbody>
-                                                <tr>
-                                                  <td>Telefono uno</td>
-                                                  <td><button class="btn btn-danger">Eliminar</button></td>
-                                                </tr>
-                                              </tbody>
-                                          </table>
-                                       </div>
-                                        <br>
-                                        <label for="">Usuario</label>
-                                        <br>
-                                        <input type="text" name="usuario" id="" required>
-                                        <br>
-                                        <label for="">Contraseña</label>
-                                        <br>
-                                         <input type="password" name="" id="" required>
-                                         <br>
-                                        <label for="">Confirmar contraseña</label>
-                                        <br>
-                                        <input type="password" name="contraseña" id="" required>
-                                    </div> 
-                                   </div>
-
-                                   <br>
-                                   <div class="row" style="justify-content: center;">
-                                    <button class="btn btn-dark" style="font-size: 13px;" role="button" name="operacion" value="guardar">Registrar</button>
-                                    <input type="text" name="controlador" value="profesionales" hidden>
-                                    </div> 
-                                  </form>
-                                    <br>
-                                    </div>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="accordion-item">
-                              <h2 class="accordion-header" id="flush-headingTwo">
-                                <button class="accordion-button collapsed btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                  Editar profesionales
-                                </button>
-                              </h2>
-                              <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
-                                  <div class="mb-3" style="overflow-x:auto;">
-                                    <table class="table table-striped table-ligth border border-5">
-                                        <tr>
-                                            <th>Tipo de identificación</th>
-                                            <th>Número identificación</th>
-                                            <th>Número tarjeta profesional</th>
-                                            <th>Nombres</th>
-                                            <th>Apellidos</th>
-                                            <th>Telefonos</th>
-                                            <th>Experticia</th>
-                                            <th>Estudios Realizados</th>
-                                            <th>Nombre Usuario</th>
-                                            <th>Tipo usuario</th>
-                                            <th>Estado</th>
-                                            <th>Acciones</th>
-                                        </tr>
-                                        <?php
-                                            require_once ('../controladores/controladorprofesional.php');
-                                            $controladorProfesional = new ControladorProfesional();
-                                            $resultado = $controladorProfesional->listar();
-
-                                            while ($fila = $resultado->fetch_assoc()){
-                                                echo "<tr>";
-                                                    echo "<td>".$fila['tipoidentificacion']."</td>";
-                                                    echo "<td>".$fila['identificacion']."</td>";
-                                                    echo "<td>".$fila['numerotarjetaprofesional']."</td>";
-                                                    echo "<td>".$fila['nombres']."</td>";
-                                                    echo "<td>".$fila['apellidos']."</td>";
-                                                    echo "<td>"."---"."</td>";
-                                                    echo "<td>"."---"."</td>";
-                                                    echo "<td>"."---"."</td>";
-                                                    echo "<td>".$fila['usuario']."</td>";
-                                                    echo "<td>".$fila['tipousuario']."</td>";
-                                                    echo "<td>".$fila['estado']."</td>";
-                                                    echo "<td>
-                                                            <form action='modalprofesionales.php' method='post'>
-                                                                <input type='text' name='tipoidentificacion' value=".$fila['tipoidentificacion']." hidden>
-                                                                <input type='text' name='identificacion' value=".$fila['identificacion']." hidden>
-                                                                <input type='text' name='numerotarjetaprofesional' value=".$fila['numerotarjetaprofesional']." hidden>
-                                                                <input type='text' name='nombres' value=".$fila['nombres']." hidden>
-                                                                <input type='text' name='apellidos' value=".$fila['apellidos']." hidden>
-                                                                <input type='text' name='usuario' value=".$fila['usuario']." hidden>
-                                                                <input type='text' name='tipoUsuario' value=".$fila['tipousuario']." hidden>
-                                                                <input type='text' name='estado' value=".$fila['estado']." hidden>
-                                                                <button type='submit' class='btn btn-outline-success' style='text-align: center;'>editar</button>
-                                                            </form>
-                                                          </td>";
-                                                echo "</tr>";
-                                            }
-                                          ?>
-                                    </table>
-                                 </div>
-                                </div>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
-
-                        
-
-                         <div class="ftl-vertical-tab-content">
-                          <center>
-                            <h2 class="border border-3 text-center" style="margin-top: 0;color:#253237">Definición reglas de evolución</h2>
-                             
-                            <div class="container my_text" style="text-align: center;">
-=======
                           <h2 class="border border-3 text-center" style="margin-top: 0;color:#253237">Definición reglas de evolución</h2>
->>>>>>> a2f49278a1bc8997bb8216bfb00e24cb45a41392
                             
                           <div class="container my_text" style="text-align: center;">
                           

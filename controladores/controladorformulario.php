@@ -35,14 +35,7 @@ if($controlador == "cliente"){
     //Usuario
     $nombreUsuario =$_POST['usuario'];
     $contraseña = isset($_POST['contraseña']) ? $_POST['contraseña'] : '';
-<<<<<<< HEAD
     $tipoUsuario = isset($_POST['tipoUsuario']) ? $_POST['tipoUsuario'] : 'Cliente';
-=======
-
-
-    $tipoUsuario = isset($_POST['tipoUsuario']) ? $_POST['tipoUsuario'] : 'Cliente';
-
->>>>>>> a2f49278a1bc8997bb8216bfb00e24cb45a41392
     //Se envían los datos a Usuarios
     require("../modelos/usuario.php");
     $usuario = new Usuario($nombreUsuario,$contraseña,$tipoUsuario,$tipoidentificacion,$identificacion, $Empleados_numeroidentificacion=null, $Empleados_tipoIdentificacion=null, $Profesionales_tipoidentificacion=null, $Profesionales_Identificacion=null);
@@ -244,14 +237,7 @@ elseif($controlador == "profesionales"){
         $tipoUsuario = isset($_POST['tipoUsuario']) ? $_POST['tipoUsuario'] : 'Profesional';
         //Se envían los datos a Usuarios
         require("../modelos/usuario.php");
-<<<<<<< HEAD
         require("controladorusuario.php");
-=======
-
-
-        require("controladorusuario.php");
-        
->>>>>>> a2f49278a1bc8997bb8216bfb00e24cb45a41392
         $usuario = new Usuario($usuario,$contraseña,$tipoUsuario,$Clientes_tipoidentificacion=null, $Clientes_identificacion=null, $Empleados_numeroidentificacion=null, $Empleados_tipoIdentificacion=null,$tipoidentificacion,$identificacion);
         $controladorGenerico = new ControladorUsuario();
         if($operacion == "guardar"){
@@ -278,13 +264,12 @@ else if ($controlador == 'login') {
         $valor=implode($tipoUsuario);
         echo json_encode($valor);
     }
-}else if($controlador =='administrador'){
-<<<<<<< HEAD
-=======
-    
-    
+}
 
-}else if ($controlador == "citas"){
+else if($controlador =='administrador'){
+    }
+    
+else if ($controlador == "citas"){
 
 
     require("../modelos/cita.php");
@@ -311,7 +296,6 @@ else if ($controlador == 'login') {
 
 
 }
->>>>>>> a2f49278a1bc8997bb8216bfb00e24cb45a41392
     
 }
 

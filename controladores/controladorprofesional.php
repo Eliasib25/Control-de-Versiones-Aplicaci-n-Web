@@ -53,8 +53,4 @@ class ControladorProfesional extends ConectarMysql {
 
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> a2f49278a1bc8997bb8216bfb00e24cb45a41392
 ?>
