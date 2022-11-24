@@ -8,9 +8,11 @@ class ControladorCitas extends ConectarMysql {
     private $tabla = "citas";
 
     public function guardar($objeto){
-        $sql = "call crudcitas(0,?,?,?,?)";
+        $sql = "call crudcitas(0,?,?,?,?,?,?,?)";
         $sentencia = $this->getconexion()->prepare($sql);
-        $sentencia->bind_param("ssss", $objeto->numeroidentificacion, $objeto->tipoIdentificacion, $objeto->nombres, $objeto->apellidos);
+        $sentencia->bind_param("issssss", $objeto->identificador,$objeto->fecha, $objeto->hora, 
+                                $objeto->Clientes_tipoidentificacion, $objeto->Clientes_identificacion,
+                                $objeto->Profesionales_tipoidentificacion,$objeto->identificacionProfesional);
         $sentencia->execute();
         $result = $sentencia->get_result();
     }

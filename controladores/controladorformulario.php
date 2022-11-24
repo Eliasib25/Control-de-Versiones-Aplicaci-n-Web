@@ -249,25 +249,53 @@ elseif($controlador == "profesionales"){
     }
 }
 
-else if ($controlador == 'login') {
+else if ($controlador == "login") {
     require("../modelos/usuario.php");
     require("controladorlogin.php");
     
     $usuario = $_POST['usuario'];
     $contraseña = $_POST['contraseña'];
-    $usuario = new Usuario($usuario, $contraseña);
+    $usuarios = new Usuario($usuario, $contraseña);
     $controladorGenerico = new ControladorLogin();
 
     if ($operacion == "iniciar") {
-        $resultado = $controladorGenerico->validarRegistro($usuario);
+        $resultado = $controladorGenerico->validarRegistro($usuarios);
         $tipoUsuario = $resultado->fetch_assoc();
         $valor=implode($tipoUsuario);
-        echo json_encode($valor);
+        //echo json_encode($valor);
+        switch ($valor){
+            case 'cliente': 
+                session_start();
+                $_SESSION['usuario'] = $usuario;
+                header('Location: ../html/interfazcliente.php');
+                break;
+            case 'administrador':
+                session_start();
+                $_SESSION['usuario'] = $usuario;
+                header('Location: ../html/interfazadministrador.php');
+                break;
+            case 'secretaria':
+                session_start();
+                $_SESSION['usuario'] = $usuario;
+                header('Location: ../html/interfazsecretaria.html');
+                break;
+            case 'profesional':
+                session_start();
+                $_SESSION['usuario'] = $usuario;
+                header('Location: ../html/interfazprofesionales.html');
+                break;
+            case 'gerente':
+                session_start();
+                $_SESSION['usuario'] = $usuario;
+                header('Location: ../html/interfazGerente.php');
+                break;
+            default:
+                alert("Usuario o contraseña incorrectos");
+                break;
+        }
     }
 }
 
-else if($controlador =='administrador'){
-    }
     
 else if ($controlador == "citas"){
 
@@ -275,11 +303,21 @@ else if ($controlador == "citas"){
     require("../modelos/cita.php");
     require("controladorcitas.php");
 
-    $fechaCita = $_POST["fechacita"];
-    $citas = new Citas($identificador="",$fechaCita,$hora="",
-    $Clientes_tipoidentificacion="",$Clientes_identificacion="",
-    $Profesionales_tipoidentificacion="",$identificacionProfesional="");
+    $identificador = isset($_POST['identificador']) ? $_POST['identificador'] : 'null';
+    $fecha = $_POST['fecha'];
+    $hora = $_POST['hora'];
+    $Clientes_tipoidentificacion = $_POST['Clientes_tipoidentificacion'];
+    $Clientes_identificacion = $_POST['Clientes_identificacion'];
+
+    $citas = new Citas($identificador,$fecha,$hora,
+    $Clientes_tipoidentificacion,$Clientes_identificacion,
+    $Profesionales_tipoidentificacion=null,$identificacionProfesional=null);
     $controladorGenerico = new ControladorCitas();
+
+    if ($operacion == "agendar") {
+        $controladorGenerico->guardar($citas);
+        echo "Se ha agendado la cita de manera exitosa";
+    }
     
     if($operacion == "buscarCitas"){
         
@@ -293,9 +331,7 @@ else if ($controlador == "citas"){
         // echo "</table>";
 
         echo json_encode($fila);
-
-
-}
+    }
     
 }
 

@@ -1,3 +1,13 @@
+<?php 
+
+    session_start();
+    if (!isset ($_SESSION['usuario'])) {
+
+        header('Location: iniciosesion.html');
+
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -28,7 +38,7 @@
       </h1>
   </div>
   <div>
-      <a href="paginaprincipal.html" class="a" style="color: white; font-size: 15px;" >Cerrar Sesión</a>
+      <a href="cerrar.php" class="a" style="color: white; font-size: 15px;" >Cerrar Sesión</a>
       <img src="../recursos/imagenes/Usuario.png" alt="Usuario">
   </div>
 </header>

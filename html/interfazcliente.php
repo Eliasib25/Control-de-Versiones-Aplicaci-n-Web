@@ -1,3 +1,13 @@
+<?php 
+
+    session_start();
+    if (!isset ($_SESSION['usuario'])) {
+
+        header('Location: iniciosesion.html');
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -26,7 +36,7 @@
         </h1>
     </div>
     <div>
-        <a href="paginaprincipal.html" class="a" style="color: white; font-size: 15px;" >Cerrar Sesión</a>
+        <a href="cerrar.php" class="a" style="color: white; font-size: 15px;" >Cerrar Sesión</a>
         <img src="../recursos/imagenes/Usuario.png" alt="Usuario">
     </div>
   </header>
@@ -36,8 +46,10 @@
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ftl-vertical-tab-container">
               <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ftl-vertical-tab-menu">
                 <div style="text-align: center; border:1px solid #dddede;">
-                  <img src="../recursos/imagenes/Usuario.png" alt="">
-                  <p style="font-size: 20px;">Nombre Usuario</p>
+                  <img src="../recursos/imagenes/Usuario.png" alt=""><br>
+                  <?php 
+                      echo $_SESSION['usuario'];
+                    ?>
                 </div>  
                 <div class="list-group">
                   <a href="#" class="list-group-item active text-center">
@@ -94,25 +106,55 @@
                         <div class="container mt-5 mb-5 my_text">
                           <div class="row justify-content-center">
                               <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5 bg-light text-white rounded">
-                                  <div class="text-center">
+                              <div class="text-center">
                                       <img  src="../recursos/imagenes/cita.png" class="rounded" alt="User">
                                   </div>
-              
-                                  <div class="mb-3">
-                                      <label for="Fecha" style= "color:#253237" class="form-label">Fecha</label>
-                                      <input type="date" class="form-control" id="Fecha" style="height: 50px; font-size: 18px;">
-                                  </div>
-              
-                                  <div class="mb-3">
-                                      <label for="Hora" style= "color:#253237" class="form-label">Hora</label>
-                                      <input type="time" class="form-control" id="Hora" style="height: 50px; font-size: 18px;">
-                                  </div>
-                    
-                                  <div class="mb-3">
-                                      <div class="d-flex justify-content-center">
-                                        <button type="button" class="btn btn-outline-primary" style="height: 50px; font-size: 18px;">Agendar</button>
-                                      </div>
-                                  </div>
+                                  <?php
+                                      include_once('../controladores/controladorusuario.php');
+                                      include_once('../modelos/usuario.php');
+
+                                      $usuario = new Usuario($_SESSION['usuario']);
+                                      $controlador = new ControladorUsuario();
+                                    
+                                      $resultado = $controlador->consultarRegistro($usuario);
+                                      $fila = $resultado->fetch_assoc();
+
+                                      // echo $fila['tipo'] ;
+                                      // echo $fila['identificacion'];
+
+
+                                    ?>
+                                  <form action="../controladores/controladorformulario.php" method="post">
+                                    <div class="text-center">
+                                        <input type="text" name="identificador" hidden>
+                                    </div>
+                                    <div class="text-center">
+                                        <input type="text" name="Clientes_tipoidentificacion" value = <?php
+                                                          echo isset($fila['tipo']) ? $fila['tipo'] : '';
+                                                      ?> hidden>
+                                    </div>
+                                    <div class="text-center">
+                                        <input type="text" name="Clientes_identificacion" value = <?php
+                                                          echo isset($fila['identificacion']) ? $fila['identificacion'] : '';
+                                                      ?> hidden>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="Fecha" style= "color:#253237" class="form-label">Fecha</label>
+                                        <input type="date" class="form-control" id="Fecha" style="height: 50px; font-size: 18px;" name="fecha">
+                                    </div>
+                
+                                    <div class="mb-3">
+                                        <label for="Hora" style= "color:#253237" class="form-label">Hora</label>
+                                        <input type="time" class="form-control" id="Hora" style="height: 50px; font-size: 18px;" name="hora">
+                                    </div>
+                      
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-center">
+                                          <button type="submit" class="btn btn-outline-primary" style="height: 50px; font-size: 18px;" name="operacion" value="agendar">Agendar</button>
+                                          <input type="text" name="controlador" value="citas" hidden>
+                                        </div>
+                                    </div>
+                                  </form>
                               </div>
                           </div>
                       </div>

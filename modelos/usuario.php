@@ -12,7 +12,7 @@ class Usuario {
     public $Profesionales_tipoidentificacion;
     public $Profesionales_Identificacion;
 
-    public function __construct($usuario,$contraseña,$tipousuario="",
+    public function __construct($usuario,$contraseña="",$tipousuario="",
                     $Clientes_tipoidentificacion="",$Clientes_identificacion="",
                     $Empleados_numeroidentificacion="",$Empleados_tipoIdentificacion="",
                     $Profesionales_tipoidentificacion="",$Profesionales_Identificacion=""){
