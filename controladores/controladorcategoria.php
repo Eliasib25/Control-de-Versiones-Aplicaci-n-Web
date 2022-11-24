@@ -1,13 +1,7 @@
 <?php
 
-<<<<<<< HEAD
 require_once("../componentes/conectarmysql.php");
 require_once("interfazcontrolador.php");
-=======
-    require_once("../componentes/conectarmysql.php");
-    require_once("interfazcontrolador.php");
->>>>>>> a980e9c65413336240bd9de5abc80acea469a604
-
 //Acá hay una herencia 
 class ControladorCategoria extends ConectarMysql {
 

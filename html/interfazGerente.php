@@ -110,18 +110,24 @@
                                               <div class="mb-3" style="overflow-x:auto;">
                                                 <h2>Servicios más consumidos</h2>
                                                 <table class="table table-striped table-ligth border border-5">
-                                                  <thead>
                                                     <tr>
                                                         <th>Servicio</th>
                                                         <th>Cantidad</th>
                                                     </tr>
-                                                  </thead>
-                                                    <tbody>
-                                                      <tr>
-                                                        <td>Ejercicios terapeuticos</td>
-                                                        <td>45</td>
-                                                      </tr>
-                                                    </tbody>
+                                                    <?php
+
+                                                    include_once('../controladores/controladorgerente.php');
+                                                    $controladorGenerico = new ControladorGerente();
+                                                    $resultado = $controladorGenerico->serviciosMasConsumidos();
+
+                                                    while ($fila = $resultado->fetch_assoc()){
+                                                      echo "<tr>";
+                                                          echo "<td>".$fila['Nombre']."</td>";
+                                                          echo "<td>".$fila['Cantidad']."</td>";
+                                                      echo "</tr>";
+                                                    }
+
+                                                    ?>
                                                 </table>
                                              </div>
                                             </div>
@@ -132,27 +138,28 @@
                                                   Servicios menos consumidos
                                                 </h2>
                                                 <table class="table table-striped table-ligth border border-5">
-                                                  <thead>
                                                     <tr>
                                                         <th>Servicio</th>
                                                         <th>Cantidad</th>
                                                     </tr>
-                                                  </thead>
-                                                    <tbody>
-                                                      <tr>
-                                                        <td>Ejercicios terapeuticos</td>
-                                                        <td>45</td>
-                                                      </tr>
-                                                    </tbody>
+                                                    <?php
+
+                                                      include_once('../controladores/controladorgerente.php');
+                                                      $controladorGenerico = new ControladorGerente();
+                                                      $resultado = $controladorGenerico->serviciosMenosConsumidos();
+
+                                                      while ($fila = $resultado->fetch_assoc()){
+                                                        echo "<tr>";
+                                                            echo "<td>".$fila['Nombre']."</td>";
+                                                            echo "<td>".$fila['Cantidad']."</td>";
+                                                        echo "</tr>";
+                                                      }
+
+                                                    ?>
                                                 </table>
                                              </div>
                                             </div>
                                           </div>
-                                      </div>
-                                      <div class="mb-3">
-                                        <div class="d-flex justify-content-center">
-                                            <button type="submit" class="btn btn-outline-success btn-lg" style="text-align: center;">Mostrar reporte</button>
-                                        </div>
                                       </div>
                                 </div>
                             </div>
@@ -165,46 +172,35 @@
                       <center>
                         <h2 class="border border-3 text-center" style="margin-top: 0;color:#253237">Reporte de ganancias por servicios</h2>
                         <div class="container my_text">
-                          <div class="mb-3">
-                            <form action="">
-                                <div class="dropdown mb-3">
-                                  <label for="formGroupExampleInput2" class="form-label">Seleccione</label><br>
-                                  <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                    <option selected>Servicios</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                  </select>
-                                </div>
-                                <div class="mb-3">
-                                  <button type="button" class="btn btn-outline-success">Mostra reporte</button>
-                                </div>
-                            <form>
-                          </div>
-                        </div>
-                        <div class="container my_text">
                           <div class="row justify-content-center">
                             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                              <div class="mb-3" style="overflow-x:auto;">
                                 <table class="table table-striped table-ligth border border-5">
                                   <thead>
-                                    <tr>
                                         <th>Servicio</th>
                                         <th>Costo</th>
                                         <th>Ventas</th>
                                         <th>Porcentaje</th>
                                         <th>Ganancias</th>
                                     </tr>
-                                  </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td>Servicio 1</td>
-                                        <td>$600.000</td>
-                                        <td>45</td>
-                                        <td>15%</td>
-                                        <td>$5.000.000</td>
-                                      </tr>
-                                    </tbody>
+                                    
+                                    <?php
+
+                                      include_once('../controladores/controladorgerente.php');
+                                      $controladorGenerico = new ControladorGerente();
+                                      $resultado = $controladorGenerico->gananciasPorServicios();
+
+                                      while ($fila = $resultado->fetch_assoc()){
+                                        echo "<tr>";
+                                            echo "<td>".$fila['nombre']."</td>";
+                                            echo "<td>".$fila['costo']."</td>";
+                                            echo "<td>".$fila['ventas']."</td>";
+                                            echo "<td>".$fila['porcentajeganancia']."</td>";
+                                            echo "<td>".$fila['ganancia']."</td>";
+                                        echo "</tr>";
+                                      }
+
+                                    ?>
                                 </table>
                              </div>
                             </div>
@@ -312,29 +308,28 @@
                             
                            <div class="mb-3" style="overflow-x:auto;">
                               <table class="table table-striped table-ligth border border-5 mt-5">
-                                <thead>
                                   <tr>
                                       <th>Pacientes</th>
                                       <th>Servicios</th>
-                                      <th>Tratamiento</th>
                                       <th>Evolucion</th>
-                                      <th>Descripcion</th>
                                   </tr>
-                                </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td>Andres</td>
-                                      <td>Fisioterapia</td>
-                                      <td>Masajes</td>
-                                      <td>Positiva</td>
-                                      <td>...</td>
-                                    </tr>
-                                  </tbody>
+                                  <?php
+
+                                    include_once('../controladores/controladorgerente.php');
+                                    $controladorGenerico = new ControladorGerente();
+                                    $resultado = $controladorGenerico->reporteEvolucionClientes();
+
+                                    while ($fila = $resultado->fetch_assoc()){
+                                      echo "<tr>";
+                                          echo "<td>".$fila['nombres']."</td>";
+                                          echo "<td>".$fila['nombre']."</td>";
+                                          echo "<td>".$fila['evolucion']."</td>";
+                                      echo "</tr>";
+                                    }
+
+                                  ?>
                               </table>
                            </div>
-                           <div class="mb-3">
-                            <button type="button" class="btn btn-outline-success">Mostrar reporte</button>
-                          </div>
                           </div>
                         </div>
                       </div>

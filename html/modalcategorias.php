@@ -27,7 +27,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">Editar o eliminar categoria</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="history.back()">&times;</button>
                         </div>
                         <div class="modal-body">
 
@@ -57,7 +57,6 @@
                                         <br>
                                         <button class="btn btn-outline-primary" style="font-size: 13px;" role="button" name="operacion" value="guardar">Actualizar</button>&emsp;
                                         <button class="btn btn-outline-danger" style="font-size: 13px;" role="button" name="operacion" value="eliminar" >Eliminar</button>&emsp;
-                                        <button type="reset" class="btn btn-outline-ligth" style="text-align: center;" onclick="history.back()">Cerrar</button>
                                         <input type="text" placeholder="Ingrese el nombre del controlador" name="controlador" value = 'categoria' hidden>
                                     </div>
                                 </div>

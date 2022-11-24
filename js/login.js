@@ -30,7 +30,7 @@ function regresar() {
                     window.location.href='../html/interfazprofesionales.html';
                     break;
                 case "gerente":
-                    window.location.href='../html/interfazGerente.html';
+                    window.location.href='../html/interfazGerente.php';
                     break;
                 default:
                     alert("Usuario o contraseña incorrectos");
