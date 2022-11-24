@@ -9,7 +9,7 @@ class ControladorServicio extends ConectarMysql {
     private $tabla = "servicios";
 
     public function guardar($objeto){
-        $sql = "call crudservicios(0,?,?,?,?)";
+        $sql = "call crudservicios(0,?,?,?,?,?,?,?,?,?,?)";
         $sentencia = $this->getconexion()->prepare($sql);
         $sentencia->bind_param("issi", $objeto->identificador, $objeto->tipoelemento, $objeto->nombre, $objeto->precio);
         $sentencia->execute();

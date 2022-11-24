@@ -16,10 +16,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript" src=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/oficinavirtual.js"></script>
+
 
 <link rel="stylesheet" href="../css/estilosoficina.css">
 
@@ -148,7 +148,7 @@
                                   <div class="row">
                                       <div class = "col" style="width: auto;">
                                           <br>
-                                          <label for="">Materias Primas</label>
+                                          <label for="">Elementos</label>
                                           <br>
                                         <select name="materiaPrima" id="materiaPrima">
                                         <?php
@@ -156,29 +156,25 @@
                                         include_once('../controladores/controladorelementos.php');
 
                                         $controladorElemento = new ControladorElemento();
-                                        $resultado = $controladorElemento->listarMateriasPrimas();
-
-                                        
+                                        $resultado = $controladorElemento->listar();
 
                                         while ($fila = $resultado->fetch_assoc()){
-                                          echo "<option value=".$fila['identificador'].">".$fila['nombre']."</option>";
+                                          echo "<option value=".$fila['identificador'].">".$fila["tipoelemento"]." : ".$fila['nombre']."</option>";
                                         }
                                          ?>
                                         </select>
-                                        <button class="btn btn-dark" id="agregarMaterias" style="font-size: 13px;" role="button">Agregar</button>
+                                        <button class="btn btn-dark" id="agregarMateria" style="font-size: 13px;" role="button">Agregar</button>
                                         <br>
                                         <br>
                                         <div class="mb-3" style="overflow-x:auto;">
                                           <table class="table table-striped table-ligth border border-5">
                                             <thead>
                                               <tr>
-                                                  <th>Materia Prima</th>
+                                                  <th>Elementos</th>
                                               </tr>
                                             </thead>
                                               <tbody id="materiasPrimas">
-                                                <tr>
-                                                  
-                                                </tr>
+                                                
                                               </tbody>
                                           </table>
                                         </div>
@@ -188,64 +184,36 @@
 
                                         //Función para insertar las materias primas dentro de un array en js y mostrarlos en el front-en
                                         // a medida que se vayan agragando :)
-                                        let arrayMaterias= []
 
-                                            function llenarLista(){
-                                            $('#materiasPrimas').html('');
+                                        //Materias
+                                        let arrayMaterias = [];
 
-                                            arrayMateriasPrimas.map((e, key)=>{
-                                            $('#materiasPrimas').append('<tr>'+e+'</tr>');
-                                            });
-                                            }
+                                        function llenarListaMaterias(){
+                                        $('#materiasPrimas').html('');
 
-                                            
-                                            $("#agregarMaterias").click(function(){
-                                            let valor = $("#materiaPrima").val();
+                                        arrayMaterias.map((e, key)=>{
+                                        $('#materiasPrimas').append('<tr><td>'+e+'</td></tr>');
+                                        });
+                                        }
 
-                                            arrayMateriasPrimas.push(valor);
+                                        $("#agregarMateria").click(function(){
+                                        let valor = $("#materiaPrima").val();
 
-                                            llenarLista();
+                                        arrayMaterias.push(valor);
 
-                                            $("#materiaPrima").val('');
-                                            })
+                                        llenarListaMaterias();
 
-                                            llenarLista();
+                                        $("#materiaPrima").val('');
+                                        })
 
-                                            //Función para agregar los correos a un array y mostrarlos en el front-end a medidad que se vayan agregando 
-
-                                            let arrayCorreos = [];
-
-                                            function llenarListaCorreo(){
-                                            $('#correos').html('');
-
-                                            arrayCorreos.map((e, key)=>{
-                                            $('#correos').append('<li>'+e+'</li>');
-                                            });
-                                            }
-
-                                            $("#agregarCorreo").click(function(){
-                                            let valor = $("#correo").val();
-
-                                            arrayCorreos.push(valor);
-
-                                            llenarListaCorreo();
-
-                                            $("#correo").val('');
-                                            })
-
-                                            llenarListaCorreo();
-
+                                        llenarListaMaterias();
 
                                             //Esta función manda los valores de los inputs hacia php mediante ajax :)
                                             function guardar() {
                                               var Materias = JSON.stringify(arrayMaterias);
-                                              var Maquinas = JSON.stringify(arrayMquinas);
-                                              var Reactivos = JSON.stringfy(arrayReactivos);
 
                                             // mediante ajax, enviamos por POST el json en la variable: arrayDeValores
                                             $.post("../controladores/controladorformulario.php",{arrayMaterias:arrayJson,
-                                            arrayMaquinas:arrayCorreosCliente,
-                                            arrayReactivos:Reactivos
                                             controlador:$('#controlador').val(),
                                             operacion:$('#operacion').val(),
                                             nombre:$('#nombre').val(),
@@ -262,93 +230,14 @@
                                             });
                                             }
                                       </script>
-          
-                                      <div class = "col" style="width: auto;">
-                                          <br>
-                                          <label for="">Maquinas</label>
-                                          <br>
-                                        <select name="maquinas" id="maquinas">
-                                          <?php
-                                        include_once('../controladores/controladorelementos.php');
-
-                                        $controladorElemento = new ControladorElemento();
-                                        $resultado = $controladorElemento->listarMaquinas();
-
-                                        while ($fila = $resultado->fetch_assoc()){
-                                          echo "<option value=".$fila['identificador'].">".$fila['nombre']."</option>";
-                                        }
-                                         ?>
-                                        </select>
-                                        <button class="btn btn-dark" style="font-size: 13px;" role="button">Agregar</button>
-                                        <br>
-                                        <br>
-                                        <div class="mb-3" style="overflow-x:auto;">
-                                          <table class="table table-striped table-ligth border border-5">
-                                            <thead>
-                                              <tr>
-                                                  <th>Nombre Maquina</th>
-                                              </tr>
-                                            </thead>
-                                              <tbody>
-                                                <tr>
-                                                  <td>Maquina 1</td>
-                                                  <td><button class="btn btn-danger" style="font-size: 13px;" role="button">Eliminar</button></td>
-                                                </tr>
-                                              </tbody>
-                                          </table>
-                                        </div>
-                                      </div> 
-                                  </div>
-                                  
-  
-                                <div class="row" >
-                                  <div class = "col" style="width: auto;">
-                                      <label for="">Reactivos</label>
-                                      <br>
-                                    <select name="reactivos" id="reactivos">
-                                    <?php
-                                        include_once('../controladores/controladorelementos.php');
-
-                                        $controladorElemento = new ControladorElemento();
-                                        $resultado = $controladorElemento->listarReactivos();
-
-                                        while ($fila = $resultado->fetch_assoc()){
-                                          echo "<option value=".$fila['identificador'].">".$fila['nombre']."</option>";
-                                        }
-                                         ?>
-                                    </select>
-                                    <button class="btn btn-dark" style="font-size: 13px;" role="button">Agregar</button>
-                                    <br>
-                                    <br>
-                                    <div class="mb-3" style="overflow-x:auto;">
-                                      <table class="table table-striped table-ligth border border-5">
-                                        <thead>
-                                          <tr>
-                                              <th>Nombre Reactivo</th>
-                                          </tr>
-                                        </thead>
-                                          <tbody>
-                                            <tr>
-                                              <td>Reactivo 1</td>
-                                              <td><button class="btn btn-danger" style="font-size: 13px;" role="button">Eliminar</button></td>
-                                            </tr>
-                                          </tbody>
-                                      </table>
-                                    </div>
-                                  </div> 
+        
                                   <div class= "col"style="width:auto;">
-                                    <label for="">subtotal (costos del servicio)</label>
-                                      <br>
-                                      <input type="number" disabled aria-label="subtotal">
-                                      
+                                  <br>
+                                  
                                     <div class= "col"style="width:auto;">
                                       <label for="">Porcentaje de ganancia</label>
                                       <br>
                                     <input type="number"  aria-label="First name">
-                                    <br>
-                                      <label for="">Total (Precio final del servicio)</label>
-                                      <br>
-                                      <input type="number" disabled aria-label="subtotal">
                                     </div>
                                   </div>
                               </div>
@@ -407,7 +296,7 @@
                                         <br>
                                         <label for="">Materias Primas</label>
                                         <br>
-                                      <select name="Materias" id="Materias">
+                                      <select name="Materias" id="">
                                         <option value="0">Materia P 1</option>
                                         <option value="1">Materia P 2</option>
                                         <option value="2">Materia P 3</option>
@@ -1212,6 +1101,7 @@
         </div>
   </div>
 </div>
+
 
 <footer class="pie-pagina">
   <div class="grupo-1">

@@ -275,12 +275,12 @@ else if ($controlador == "login") {
             case 'secretaria':
                 session_start();
                 $_SESSION['usuario'] = $usuario;
-                header('Location: ../html/interfazsecretaria.html');
+                header('Location: ../html/interfazsecretaria.php');
                 break;
             case 'profesional':
                 session_start();
                 $_SESSION['usuario'] = $usuario;
-                header('Location: ../html/interfazprofesionales.html');
+                header('Location: ../html/interfazprofesionales.php');
                 break;
             case 'gerente':
                 session_start();
@@ -335,8 +335,6 @@ else if ($controlador == "citas"){
     require("../modelos/historiaclinica.php");
     require("controladorhistoriaclinica.php");
 
-    echo "Hola";
-
     $arrayServicios=json_decode($_POST["arrayDeValores"], true );
     $identificador = null;
     $tipoidentificacion = $_POST["tipoidentificacion"];
@@ -359,6 +357,17 @@ else if ($controlador == "citas"){
 
       echo  json_encode($controladorGenerico);
     }
+
+}else if ($controlador == "servicios"){
+
+    require("../modelos/servicio.php");
+    require("controladorservicios.php");
+
+    $nombreServicio = $_POST["nombre"];
+    $arrayElementos = json_decode($_POST["arrayMaterias"]);
+    $categoria = $_POST["categoria"];
+    $porcentajeGanacia = $_POST["porcentajeGanancia"];
+
 
 }
 

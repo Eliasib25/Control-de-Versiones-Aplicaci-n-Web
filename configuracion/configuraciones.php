@@ -3,7 +3,7 @@
 $servidor = "127.0.0.1"; //$servidor= "localhost";
 $usuario = "root";
 $contrasena = "";
-$baseDatos = "proyecto1";
+$baseDatos = "proyecto";
 $puerto = "3306";
 
 ?>

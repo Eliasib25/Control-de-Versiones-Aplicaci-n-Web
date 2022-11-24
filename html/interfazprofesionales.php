@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <?php 
 
     session_start();
@@ -9,16 +9,7 @@
     }
 
 ?>
-=======
-<?php
 
-$tipoidentificacion = "<script> document.get</script>";
-
-
-?>
-
-
->>>>>>> 240326456367bfc483f979f442432738d76da0bf
 <!DOCTYPE html>
 <html lang="es">
 <head>
