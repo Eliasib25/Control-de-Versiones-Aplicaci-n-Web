@@ -25,8 +25,23 @@ class ControladorElemento extends ConectarMysql {
     }
 
     public function listar(){
-        $sql = "select * from $this->tabla";
+        $sql = "select * from ".$this->tabla;
         return $this->getDatos($sql);
+    }
+
+    public function listarMateriasPrimas(){
+        $sql = "select * from ".$this->tabla." where tipoelemento = 'MateriaPrima' ";
+        return $this->getDatos($sql);
+    }
+
+    public function listarMaquinas(){
+        $sql = "select * from ".$this->tabla." where tipoelemento = 'Maquina' ";
+        return $this->getDatos($sql);
+    }
+
+    public function listarReactivos(){
+        $sql =  "select * from ".$this->tabla." where tipoelemento = 'reactivo' ";
+         return $this->getDatos($sql);
     }
 
     public function getDatos($sql){

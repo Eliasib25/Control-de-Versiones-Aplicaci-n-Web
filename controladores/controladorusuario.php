@@ -1,18 +1,10 @@
 <?php
 
-<<<<<<< HEAD
-require_once ("../componentes/conectarmysql.php");
-//require("interfazcontrolador.php");
-
-class ControladorUsuario extends ConectarMysql{
-    private $tabla = "Usuarios";
-=======
 require_once("../componentes/conectarmysql.php");
 require_once("interfazcontrolador.php");
 
 class ControladorUsuario extends ConectarMysql{
     private $tabla = "usuarios";
->>>>>>> a980e9c65413336240bd9de5abc80acea469a604
     
     public function guardar($objeto){
         $sql = "call crudusuarios(0,?,?,?,?,?,?,?,?,?)";
@@ -27,19 +19,7 @@ class ControladorUsuario extends ConectarMysql{
         $sentencia->bind_param("sssssssss",$objeto->usuario,$objeto->contraseña,$objeto->tipousuario,$objeto->Clientes_tipoidentificacion,$objeto->Clientes_identificacion,$objeto->Empleados_numeroidentificacion,$objeto->Empleados_tipoIdentificacion,$objeto->Profesionales_tipoidentificacion,$objeto->Profesionales_Identificacion);
         $sentencia-> execute();
     }
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> a980e9c65413336240bd9de5abc80acea469a604
-    public function listar(){
-        $sql = "select codigo, concat(nombres,' ',apellidos) nombres from ".$this->tabla;
-        return $this->getDatos($sql);
-    }
-<<<<<<< HEAD
-    
-=======
->>>>>>> a980e9c65413336240bd9de5abc80acea469a604
     public function consultarRegistro($objeto){}
 
     public function getDatos($sql){

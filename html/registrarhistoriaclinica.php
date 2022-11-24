@@ -9,6 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="estilosoficina.css">
     
     <script>
         $( document ).ready(function() {
@@ -16,7 +17,7 @@
     });
     </script>
 
-    <title>Empleados</title>
+    <title>Registrar Historia Clinica</title>
 </head>
 <body>
             <!-- Modal HTML -->
@@ -25,7 +26,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">Registar Historia Clinica</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <button type="button" onclick= "history.back()" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
 
@@ -51,6 +52,29 @@
                                   
                                 </textarea>
                                 <br>
+                                <label for="">Seleccione el o los servicios</label>
+                                <br>
+                                <select name="servicios" id="servicios">
+                                    <?php
+                                    include("../controladores/controladorservicio.php");
+                                    $controladorServicios = new ControladorServicio();
+                                    $servicios = $controladorServicios->listar();
+
+                                    while($fila = $servicios->fetch_assoc())
+                                    echo "<option value='".$fila["identificador"]."'>".$fila["nombre"]."</option>";
+                                    ?>
+                                </select>
+                                <button class = "btn btn-dark btn-sm" >Agregar</button>
+                                <br>
+                                <br>
+                                <table class="table table-striped table-ligth border border-5" style="text-align:center">
+                                    <tr>
+                                        <th>Nombre Servicio</th>
+                                    </tr>
+                                    <td>
+                                        Servicio X
+                                    </td>
+                                </table>
                                 <label for="">Derivación</label>
                                 <br>
                                 <textarea name="derivacion" id="derivacion" cols="23" rows="3" required> 
@@ -64,14 +88,9 @@
 
                                 </textarea>
                                 <br>
-                                <label for="">Sesiones Realizadas</label>
+                                <label for="">Numero de sesiones recomendadas</label>
                                 <br>
-                                <input type="number" disabled name="sesiones" id="sesiones">
-                                <br>
-                                <label for="">Sesiones Faltantes</label>
-                                <br>
-                                <input type="number" disabled name="sesiones" id="sesiones">
-                              
+                                <input type="number" name="sesionesrecomendadas" id="sesionesrecomendadas">
                               </div>
                               <br>
                               <div style="text-align: center;">
@@ -83,13 +102,7 @@
                                
                             </form>
                         </div>
-                                    <!-- <div class="mb-3">
-                                    <button class="btn btn-outline-primary" style="font-size: 13px;" role="button" name="operacion" value="guardar">Actualizar</button>&emsp;
-                                    <button class="btn btn-outline-danger" style="font-size: 13px;" role="button" name="operacion" value="eliminar" >Eliminar</button>&emsp;
-                                    <button type="reset" class="btn btn-outline-ligth" style="text-align: center;" onclick="history.back()">Cerrar</button>
-                                    <input type="text" placeholder="Ingrese el nombre del controlador" name="controlador" value = 'empleado' hidden>
-                                </div> -->
-                        <!-- <div class="modal-footer">Don't have an account? <a href="#">Create one</a></div> -->
+                                   
 
                     </div>
                 </div>

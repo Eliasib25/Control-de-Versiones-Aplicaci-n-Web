@@ -14,7 +14,7 @@ class Servicio{
     public $Categorias_identificador;
 
 
-    public function __construct($identificador=0,$nombre,$costo=0,$precio=0,$porcentajeganancia=0,$peso=0,$presionsistolica=0,$presiondiastolica=0,$evolucion="",$Categorias_identificador=0){
+    public function __construct($identificador,$nombre,$costo,$precio,$porcentajeganancia,$peso,$presionsistolica,$presiondiastolica,$evolucion,$Categorias_identificador){
 
         $this->identificador = $identificador;
         $this->nombre = $nombre;

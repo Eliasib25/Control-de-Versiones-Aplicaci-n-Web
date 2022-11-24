@@ -69,7 +69,7 @@ function remover() {
 
 function agregar(){
 
-    var select = document.getElementById("materias").value;
+    var select = document.getElementById("materiaPrima").value;
 
     var tabla = document.getElementById("tabla");
     var tagTR = crearTag("tr");

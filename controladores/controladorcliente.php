@@ -3,7 +3,7 @@
 require_once("../componentes/conectarmysql.php");
 require_once("interfazcontrolador.php");
 
-class ControladorCliente extends ConectarMysql implements InterfazControlador{
+class ControladorCliente extends ConectarMysql{
         private $tabla = "Clientes";
         
         public function guardar($objeto){
@@ -54,6 +54,8 @@ class ControladorCliente extends ConectarMysql implements InterfazControlador{
             $sql = "select * from ".$this->tabla;
             return $this->getDatos($sql);
         }
+
+        
 }
 
 class ControladorUsuario extends ConectarMysql implements InterfazControlador{

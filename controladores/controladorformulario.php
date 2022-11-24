@@ -35,7 +35,14 @@ if($controlador == "cliente"){
     //Usuario
     $nombreUsuario =$_POST['usuario'];
     $contraseña = isset($_POST['contraseña']) ? $_POST['contraseña'] : '';
+<<<<<<< HEAD
     $tipoUsuario = isset($_POST['tipoUsuario']) ? $_POST['tipoUsuario'] : 'Cliente';
+=======
+
+
+    $tipoUsuario = isset($_POST['tipoUsuario']) ? $_POST['tipoUsuario'] : 'Cliente';
+
+>>>>>>> a2f49278a1bc8997bb8216bfb00e24cb45a41392
     //Se envían los datos a Usuarios
     require("../modelos/usuario.php");
     $usuario = new Usuario($nombreUsuario,$contraseña,$tipoUsuario,$tipoidentificacion,$identificacion, $Empleados_numeroidentificacion=null, $Empleados_tipoIdentificacion=null, $Profesionales_tipoidentificacion=null, $Profesionales_Identificacion=null);
@@ -237,7 +244,14 @@ elseif($controlador == "profesionales"){
         $tipoUsuario = isset($_POST['tipoUsuario']) ? $_POST['tipoUsuario'] : 'Profesional';
         //Se envían los datos a Usuarios
         require("../modelos/usuario.php");
+<<<<<<< HEAD
         require("controladorusuario.php");
+=======
+
+
+        require("controladorusuario.php");
+        
+>>>>>>> a2f49278a1bc8997bb8216bfb00e24cb45a41392
         $usuario = new Usuario($usuario,$contraseña,$tipoUsuario,$Clientes_tipoidentificacion=null, $Clientes_identificacion=null, $Empleados_numeroidentificacion=null, $Empleados_tipoIdentificacion=null,$tipoidentificacion,$identificacion);
         $controladorGenerico = new ControladorUsuario();
         if($operacion == "guardar"){
@@ -251,7 +265,7 @@ elseif($controlador == "profesionales"){
 
 else if ($controlador == 'login') {
     require("../modelos/usuario.php");
-    require("../controladores/controladorlogin.php");
+    require("controladorlogin.php");
     
     $usuario = $_POST['usuario'];
     $contraseña = $_POST['contraseña'];
@@ -265,6 +279,39 @@ else if ($controlador == 'login') {
         echo json_encode($valor);
     }
 }else if($controlador =='administrador'){
+<<<<<<< HEAD
+=======
+    
+    
+
+}else if ($controlador == "citas"){
+
+
+    require("../modelos/cita.php");
+    require("controladorcitas.php");
+
+    $fechaCita = $_POST["fechacita"];
+    $citas = new Citas($identificador="",$fechaCita,$hora="",
+    $Clientes_tipoidentificacion="",$Clientes_identificacion="",
+    $Profesionales_tipoidentificacion="",$identificacionProfesional="");
+    $controladorGenerico = new ControladorCitas();
+    
+    if($operacion == "buscarCitas"){
+        
+        $resultado = $controladorGenerico->listarCitasClientes($citas);
+        $fila = [$resultado->fetch_assoc()];
+
+        // echo "<table>";
+        // while ($fila = $resultado->fetch_assoc()) {
+        //     echo "<tr><td>".$fila["identificacion"]."</td><td>".$fila["tipoidentificacion"]."</td><td>".$fila["nombres"]."</td><td>".$fila["apellidos"]."</td><td>".$fila["estrato"]."</td><td>".$fila["telefonos"]."</td><td>".$fila["fecha"]."</td><td>".$fila["hora"]."</td><tr>";
+        // }
+        // echo "</table>";
+
+        echo json_encode($fila);
+
+
+}
+>>>>>>> a2f49278a1bc8997bb8216bfb00e24cb45a41392
     
 }
 
