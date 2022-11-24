@@ -257,7 +257,7 @@ elseif($controlador == "profesionales"){
 
 else if ($controlador == 'login') {
     require("../modelos/usuario.php");
-    require("../controladores/controladorlogin.php");
+    require("controladorlogin.php");
     
     $usuario = $_POST['usuario'];
     $contraseña = $_POST['contraseña'];
@@ -274,6 +274,34 @@ else if ($controlador == 'login') {
     
     
 
+}else if ($controlador == "citas"){
+
+
+    require("../modelos/cita.php");
+    require("controladorcitas.php");
+
+    $fechaCita = $_POST["fechacita"];
+    $citas = new Citas($identificador="",$fechaCita,$hora="",
+    $Clientes_tipoidentificacion="",$Clientes_identificacion="",
+    $Profesionales_tipoidentificacion="",$identificacionProfesional="");
+    $controladorGenerico = new ControladorCitas();
+    
+    if($operacion == "buscarCitas"){
+        
+        $resultado = $controladorGenerico->listarCitasClientes($citas);
+        $fila = [$resultado->fetch_assoc()];
+
+        // echo "<table>";
+        // while ($fila = $resultado->fetch_assoc()) {
+        //     echo "<tr><td>".$fila["identificacion"]."</td><td>".$fila["tipoidentificacion"]."</td><td>".$fila["nombres"]."</td><td>".$fila["apellidos"]."</td><td>".$fila["estrato"]."</td><td>".$fila["telefonos"]."</td><td>".$fila["fecha"]."</td><td>".$fila["hora"]."</td><tr>";
+        // }
+        // echo "</table>";
+
+        echo json_encode($fila);
+
+
+}
+    
 }
 
 ?>

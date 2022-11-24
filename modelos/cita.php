@@ -10,9 +10,9 @@ class Citas{
     public $Profesionales_tipoidentificacion;
     public $Profesionales_Identificacion;
 
-    public function __construct($identificador=0,$fecha="",$hora="",
-                                $Clientes_tipoidentificacion="",$Clientes_identificacion=0,
-                                $Profesionales_tipoidentificacion="",$identificacionProfesional=0) {
+    public function __construct($identificador="",$fecha="",$hora="",
+                                $Clientes_tipoidentificacion="",$Clientes_identificacion="",
+                                $Profesionales_tipoidentificacion="",$identificacionProfesional="") {
 
         $this->identificador = $identificador;
         $this->fecha = $fecha;

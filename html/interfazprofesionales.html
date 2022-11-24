@@ -46,7 +46,7 @@
                     <h4 class="glyphicon glyphicon-book"></h4><br/>Bienvenida
                   </a>
                   <a href="#" class="list-group-item text-center">
-                    <h4 class="glyphicon glyphicon-book"></h4><br/>Listado de Pacientes
+                    <h4 class="glyphicon glyphicon-book"></h4><br/>Registrar Historia Clinica
                   </a>
                   <a href="#" class="list-group-item text-center">
                     <h4 class="glyphicon glyphicon-book"></h4><br/>Ver evolución tratamiento
@@ -92,42 +92,23 @@
                         <div class="container mt-3 mb-3 my_text">
                             <div style="text-align: center;font-size: 18px;">
                               <form action="">
+                              <label for="">Tipo identificacion</label>
+                              <br>
+                              <select name="" id="tipoIdentificacion">
+                                <option value="CC">Cédula de ciudadanía</option>
+                                <option value="CE">Cédula de extranjería</option>
+                                <option value="TI">Tarjeta de identidad</option>
+                              </select>
+                              <br>
                               <label for="">Número de identificación</label>
                               <br>
                               <input type="number" required name="idpaciente" id="identificacion">
-                              <button  type="submit" class="btn btn-dark" role="button">Buscar</button>
                             </form>
                             </div>
                             <br>
-                            <div class="mb-3" style="overflow-x:auto;">
-                              <table class="table table-striped table-ligth border border-5">
-                                <thead>
-                                  <tr>
-                                      <th>Fecha Cita</th>
-                                      <th>Hora</th>
-                                      <th>Numero de identificación</th>
-                                      <th>Nombre Completo</th>
-                                      <th>Edad</th>
-                                      <th>Consulta</th>
-                                      <th>Numero de sesiones</th>
-                                  </tr>
-                                </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td>22/10/2022</td>
-                                      <td>10:00 a.m</td>
-                                      <td>12</td>
-                                      <td>Giacomo Guilizzoni</td>
-                                      <td>40</td>
-                                      <td>Primera Consulta</td>
-                                      <td>0</td>
-                                    </tr>
-                                  </tbody>
-                              </table>
-                           </div>
                            <div style="text-align: center;">
                             <a href="../html/registrarhistoriaclinica.php"><button class="btn btn-dark" style="font-size: 13px; width: 200px;"role="button">Registrar Historia Clinica</button></a>
-                            <a href="../html/historiaclinica(porfesionales).html"><button class="btn btn-dark" style="font-size: 13px; width: 200px" role="button">Ver Historia Clinica</button></a>
+                            <a href="../html/actualizarhistoriaclinica(profesionales).html"><button class="btn btn-dark" style="font-size: 13px; width: 200px" role="button">Ver Historia Clinica</button></a>
                            </div>
                         </div>
                       </center>

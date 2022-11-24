@@ -16,6 +16,7 @@ function regresar() {
         function(data){
             var tipo = data;
             var tipoUsuario = tipo.replace(/[ '"]+/g, '');
+            console.log(tipoUsuario);
             switch (tipoUsuario){
                 case "cliente": 
                     window.location.href='../html/interfazcliente.html';
@@ -24,7 +25,7 @@ function regresar() {
                     window.location.href='../html/interfazadministrador.php';
                     break;
                 case "secretaria":
-                    window.location.href='../html/interfazSecretaria.html';
+                   window.location.href='../html/interfazsecretaria.html';
                     break;
                 case "profesional":
                     window.location.href='../html/interfazprofesionales.html';

@@ -619,7 +619,7 @@
                                           </tr>
                                           <?php
 
-                                              include('../controladores/controladorelementos.php');
+                                              include_once('../controladores/controladorelementos.php');
 
                                               $controladorElemento = new ControladorElemento();
                                               $resultado = $controladorElemento->listar();
@@ -708,7 +708,7 @@
 
                                     <?php
 
-                                      include('../controladores/controladorcategoria.php');
+                                      include_once('../controladores/controladorcategoria.php');
 
                                       $controladorCategoria = new ControladorCategoria();
                                       $resultado = $controladorCategoria->listar();
