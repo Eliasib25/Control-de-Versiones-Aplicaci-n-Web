@@ -333,6 +333,35 @@ else if ($controlador == "citas"){
         echo json_encode($fila);
     }
     
+}else if ($controlador == "historiaclinica"){
+    require("../modelos/historiaclinica.php");
+    require("controladorhistoriaclinica.php");
+
+    echo "Hola";
+
+    $arrayServicios=json_decode($_POST["arrayDeValores"], true );
+    $identificador = null;
+    $tipoidentificacion = $_POST["tipoidentificacion"];
+    $identificacion = $_POST["identificacion"];
+    $fecha = $_POST["fecha"];
+    $peso = $_POST["peso"];
+    $presionsdiastolica = $_POST["presionDiastolica"];
+    $presionsistolica = $_POST["presionSistolica"];
+    $diagnostico = $_POST["diagnostico"];
+    $derivacion = $_POST["derivacion"];
+    $resultados = $_POST["resultados"];
+    $sesionesrecomendadas = $_POST["sesionesrecomendadas"];
+
+    $historiaclinica = new historiaclinica($identificador,$fecha,$peso,$presionsistolica,$presionsdiastolica,$derivacion,$resultados,$sesionesrecomendadas,$evolucion = null,$tipoidentificacion,$identificacion, $Profesionales_tipoidentificacion="CC",$Profesionales_Identificacion=1234567890);
+
+    $controladorGenerico = new ControladorHistoriaClinica();
+
+    if($operacion == "guardar"){
+        $controladorGenerico->guardar($historiaclinica);
+
+      echo  json_encode($controladorGenerico);
+    }
+
 }
 
 ?>

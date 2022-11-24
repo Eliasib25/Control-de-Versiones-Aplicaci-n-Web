@@ -28,7 +28,7 @@ function regresar() {
                    window.location.href='../html/interfazsecretaria.html';
                     break;
                 case "profesional":
-                    window.location.href='../html/interfazprofesionales.html';
+                    window.location.href='../html/interfazprofesionales.php';
                     break;
                 case "gerente":
                     window.location.href='../html/interfazGerente.php';
