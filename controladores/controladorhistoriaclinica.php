@@ -15,30 +15,19 @@ class ControladorHistoriaClinica extends ConectarMysql {
         $result = $sentencia->get_result();
     }
 
-
-    public function getDatos($sql){
-        $sentencia = $this->getconexion()->prepare($sql);
-        $sentencia->execute();
-        $resultado = $sentencia->get_result();
-        return $resultado;
+    public function listarHistoriasClinicasCliente($tipoC, $identificacionC){
+        $sql = "Select *
+                from historiasclinicas 
+                where Clientes_tipoidentificacion = '$tipoC' and Clientes_identificacion = '$identificacionC'
+                order by fechasesion asc";
+        return $this->getDatos($sql);
     }
 
-    public function listarHistoriasClinicasCliente($objeto){
-        $sql = "Select fechasesion, hc.peso, hc.presionsitolica, hc.presiondiastolica, resultados, d.diagnostico, derivacion, numeroSesiones, hc.evolucion, resultados
-                from historiasclinicas hc, diagnostico d, servicios s
-                where (hc.identificador = d.HistoriaClinica_identificador) and (d.Servicios_identificador = s.identificador) 
-                and (hc.Clientes_tipoidentificacion = ? and hc.Clientes_identificacion = ?) 
-                order by hc.fechasesion asc;";
-        $sentencia = $this->getconexion()->prepare($sql);
-        $sentencia->bind_param("ss" ,$objeto->Clientes_tipoidentificacion,$objeto->Clientes_identificacion);
-        $sentencia->execute();
-        $result = $sentencia->get_result();
-    }
-
-    public function listarEvolucionTratamiento(){
-        $sql = "Select fechasesion, s.nombre, hc.numeroSesiones, hc.resultados, hc.evolucion, hc.derivacion
-                from servicios s, diagnostico d, historiasclinicas hc
-                where (d.HistoriaClinica_identificador = hc.identificador) and (s.identificador = d.Servicios_identificador)";
+    public function listarEvolucionTratamiento($tipoC, $identificacionC){
+        $sql = "Select hc.fechasesion, s.nombre, hc.numeroSesiones, hc.resultados, hc.evolucion, hc.diagnostico
+                from servicios s, servicios_historiasclinicas sh, historiasclinicas hc
+                where (sh.HistoriaClinica_identificador = hc.identificador) and (s.identificador = sh.Servicios_identificador)
+                and (hc.Clientes_tipoidentificacion = '$tipoC' and hc.Clientes_identificacion = '$identificacionC')";
         return $this->getDatos($sql);
     }
       
@@ -50,6 +39,13 @@ class ControladorHistoriaClinica extends ConectarMysql {
         $sentencia->execute();
         $result = $sentencia->get_result();
         return $result;
+    }
+
+    public function getDatos($sql){
+        $sentencia = $this->getconexion()->prepare($sql);
+        $sentencia->execute();
+        $resultado = $sentencia->get_result();
+        return $resultado;
     }
 
     public function consultarRegistro($objeto){

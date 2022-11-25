@@ -227,30 +227,31 @@
                                       </tr>
                                       <?php
                                       include_once('../controladores/controladorhistoriaclinica.php');
+                                      include_once('../modelos/historiaclinica.php');
                                       include_once('../controladores/controladorusuario.php');
                                       include_once('../modelos/usuario.php');
-                                      include_once('../modelos/historiaclinica.php');
 
-                                      $usuario = new Usuario($_SESSION['usuario']);
+                                      $usuarioC = new Usuario($_SESSION['usuario']);
                                       $controladorU = new ControladorUsuario();
                                     
-                                      $resultadoU = $controladorU->consultarRegistroCliente($usuario);
+                                      $resultadoU = $controladorU->consultarRegistroCliente($usuarioC);
                                       $filaU = $resultadoU->fetch_assoc();
-
-                                      // echo $fila['tipo'] ;
-                                      // echo $fila['identificacion'];
-
-                                      $historiaClinica = new HistoriaClinica($filaU['tipo'],$filaU['identificacion'])
+                                      
                                       $controladorH = new ControladorHistoriaClinica();
 
-                                      $resultadoH = $controladorH->listarHistoriasClinicasCliente($historiaClinica);
+                                      $resultadoH = $controladorH->listarHistoriasClinicasCliente($filaU['tipo'],$filaU['identificacion']);
                                       
                                       while ($filaH = $resultadoH->fetch_assoc()){
                                         echo "<tr>";
-                                            echo "<td>".$filaH['identificador']."</td>";
-                                            echo "<td>".$filaH['tipoelemento']."</td>";
-                                            echo "<td>".$filaH['nombre']."</td>";
-                                            echo "<td>".$filaH['precio']."</td>";
+                                            echo "<td>".$filaH['fechasesion']."</td>";
+                                            echo "<td>".$filaH['peso']."</td>";
+                                            echo "<td>".$filaH['presionsitolica']."</td>";
+                                            echo "<td>".$filaH['presiondiastolica']."</td>";
+                                            echo "<td>".$filaH['diagnostico']."</td>";
+                                            echo "<td>".$filaH['derivacion']."</td>";
+                                            echo "<td>".$filaH['numeroSesiones']."</td>";
+                                            echo "<td>".$filaH['evolucion']."</td>";
+                                            echo "<td>".$filaH['resultados']."</td>";
                                         echo "</tr>";
                                     }
 
@@ -271,7 +272,6 @@
                             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                               <div class="mb-3" style="overflow-x:auto;">
                                 <table class="table table-striped table-ligth border border-5">
-                                  <thead>
                                       <tr>
                                           <th>Fecha Sesión</th>
                                           <th>Servicios</th>
@@ -281,18 +281,35 @@
                                           <th>Evolucion</th>
                                           <th>Descripcion</th>
                                       </tr>
-                                  </thead>
-                                  <tbody>
-                                      <tr>
-                                          <td>20/02/2022</td>
-                                          <td>Servicio 1</td>
-                                          <td>3</td>
-                                          <td>1</td>
-                                          <td>x</td>
-                                          <td>Positiva</td>
-                                          <td>Xd</td>
-                                      </tr>
-                                  </tbody>
+                                  <?php
+                                      include_once('../controladores/controladorhistoriaclinica.php');
+                                      include_once('../modelos/historiaclinica.php');
+                                      include_once('../controladores/controladorusuario.php');
+                                      include_once('../modelos/usuario.php');
+
+                                      $usuarioC = new Usuario($_SESSION['usuario']);
+                                      $controladorU = new ControladorUsuario();
+                                    
+                                      $resultadoU = $controladorU->consultarRegistroCliente($usuarioC);
+                                      $filaU = $resultadoU->fetch_assoc();
+                                      
+                                      $controladorH = new ControladorHistoriaClinica();
+
+                                      $resultadoH = $controladorH->listarEvolucionTratamiento($filaU['tipo'],$filaU['identificacion']);
+                                      
+                                      while ($filaH = $resultadoH->fetch_assoc()){
+                                        echo "<tr>";
+                                            echo "<td>".$filaH['fechasesion']."</td>";
+                                            echo "<td>".$filaH['nombre']."</td>";
+                                            echo "<td>".$filaH['numeroSesiones']."</td>";
+                                            echo "<td>"."---"."</td>";
+                                            echo "<td>".$filaH['resultados']."</td>";
+                                            echo "<td>".$filaH['evolucion']."</td>";
+                                            echo "<td>".$filaH['diagnostico']."</td>";
+                                        echo "</tr>";
+                                    }
+
+                                    ?>
                               </table>
                               </div>
                             </div>
