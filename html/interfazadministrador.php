@@ -1048,10 +1048,22 @@
                               <div class="justify-content-center">
                                   <label for="">Servicio</label>
                                   <br>
-                                  <select name="" id="">
-                                    <option value="0">Servicio 1</option>
-                                    <option value="1">Servicio 2</option>
-                                    <option value="2">Servicio 3</option>
+                                  <select name="" id="serviciosId">
+
+                                  <?php
+
+                                  include_once("../controladores/controldadorservicio.php");
+
+                                  $controladorGenerico = new ControladorServicio();
+
+                                  $resultado= $controladorGenerico->listar();
+
+                                  while($fila= $resultado->fetch_assoc()){
+                                    echo "<option value =' ".$fila["identificador"]." '>".$fila["nombre"]."</option>";
+                                  }
+
+                                  ?>
+                                    
                                   </select>
                                 </div>
 
@@ -1059,38 +1071,31 @@
                               <div class= "col">
                                 <label for="">Peso</label>
                                 <br>
-                                <div class="form-check">
-                                  <label class="form-check-label" for="flexRadioDefault1">
-                                  Baja
-                                  </label>&emsp;
-                                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                </div>
-                                <div class="form-check">
-                                  <label class="form-check-label" for="flexRadioDefault2">
-                                  Sube
-                                  </label>&emsp;
-                                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                </div>
+                                <select name="" id="variacionP">
+                                  <option value=""></option>
+                                  <option value="Incremento">incremento</option>
+                                  <option value="Decremento">decremento</option>
+                                </select>
                                 <br>
                                 
                               </div>
 
                               <div  class = "col" style="width: auto;">
-                                <label for="">Presión arterial</label>
+                                <label for="">Presión sistolica</label>
                                 <br>
-                                <div class="form-check">
-                                  <label class="form-check-label" for="exampleRadios1">
-                                    Baja
-                                  </label>&emsp;
-                                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                                </div>
-                                <div class="form-check">
-                                  <label class="form-check-label" for="exampleRadios2">
-                                    Sube
-                                  </label>&emsp;
-                                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                </div>
+                                <select name="" id="variacions">
+                                  <option value=""></option>
+                                  <option value="Incremento">incremento</option>
+                                  <option value="Decremento">decremento</option>
+                                </select>
                                 <br>
+                                <label for="">Presion Diastolica</label>
+                                <br>
+                               <select name="" id="variacionD">
+                               <option value=""></option>
+                                <option value="Incremento">incremento</option>
+                                <option value="Decremento">decremento</option>
+                               </select>
                                 
                               </div>  
 
@@ -1099,14 +1104,42 @@
                             <div class="justify-content-center">
                                 <label for="">Evolución</label>
                                 <br>
-                                <select name="" id="">
-                                  <option value="">Positiva</option>
-                                  <option value="">Negativa</option>
+                                <select name="" id="evolucion">
+                                  <option value="positiva">Positiva</option>
+                                  <option value="negativa">Negativa</option>
                                 </select>
                             </div>
                             <div class="justify-content-center">
                               <br>
-                              <button class="btn btn-info" style="font-size: 15px;">Definir</button>
+                              <button onclick="definir()" id="operacionE" value="definir" class="btn btn-info" style="font-size: 15px;">Definir</button>
+                              <input type="text" name="" id="controladorE" value="evolucion" hidden>
+                              <script>
+
+                                        //Función para insertar las materias primas dentro de un array en js y mostrarlos en el front-en
+                                        // a medida que se vayan agragando :)
+
+                                            //Esta función manda los valores de los inputs hacia php mediante ajax :)
+                                            function definir() {
+                                              var servicios = JSON.stringify(arrayMaterias);
+
+                                            // mediante ajax, enviamos por POST el json en la variable: arrayDeValores
+                                            $.post("../controladores/controladorformulario.php",{
+                                            controlador:$('#controladorE').val(),
+                                            operacion:$('#operacionE').val(),
+                                            serviciosId:$('#serviciosId').val(),
+                                            variacionP:$('#variacionP').val(),
+                                            variacionS:$('#variacions').val(),
+                                            variacionD:$('#variacionD').val(),
+                                            evolucion:$('#evolucion').val(),
+                                            },
+                                            function(data) {
+                                              // Mostramos el texto devuelto por el archivo php
+                                              // alert("Se guardó el cliente de manera exitosa!! :)");
+                                              document.writeln(data);
+                                              
+                                            });
+                                            }
+                                      </script>
                           </div>
                           </div>
                           </div>

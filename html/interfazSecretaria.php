@@ -355,10 +355,9 @@
                               <div class="mb-3">
                                 <label for="">Selecione la fecha</label>
                                 <br>
-                                <input type="date" class="form-control"  id="fechacita">
+                                <input type="date" class="form-control"  id="fecha">
                                 <br>
                                 <button onclick = "buscar()" type="button" name="operacionCitas" id = "operacionCitas" value="buscarCitas" class="btn btn-outline-success">Buscar Citas</button>
-                                <button onclick="cargarDatos()">Cargar Datos</button>
                                 <input type="text" name="controlador" id="controladorCitas" value="citas" hidden>
                               </div>
                             </div>
@@ -373,37 +372,44 @@
                         $.post("../controladores/controladorformulario.php",{
                         controlador:$('#controladorCitas').val(),
                         operacion:$('#operacionCitas').val(),
-                        fechacita:$('#fechacita').val()
+                        fecha:$('#fecha').val()
 
                         },
                         function(data1) {
                         // Mostramos el texto devuelto por el archivo php
-                        var fila = data1;
-                        document.writeln(fila);
-                        for(x of fila) {
-                          console.log(x.identificacion);
-                        }
-
-                        $("#Table").append('<tr><th>identificacion</th>'+
-                        '<th>Tipo identificacion</th>' + 
-                        '<th>nombres</th>'+
-                        '<th>apellidos</th>'+
-                        '<th>estrato</th>'+
-                        '<th>telefonos</th>'+
-                        '<th>fecha</th>'+
-                        '<th>hora</th>');
-                          for (i = 0; i < data1.length; i++){
-                      
-                      $("#Table").append('<tr>' + 
-                        '<td align="center" style="dislay: none;">' + data1[i].identificacion+ '</td>'+
-                        '<td align="center" style="dislay: none;">' + data1[i].tipoidentificacion+'</td>'+
-                        '<td align="center" style="dislay: none;">' + data1[i].nombres+'</td>'+
-                        '<td align="center" style="dislay: none;">' + data1[i].apellidos+'</td>'+
-                        '<td align="center" style="dislay: none;">' + data1[i].estrato+'</td>'+
-                        '<td align="center" style="dislay: none;">' + data1[i].telefono+'</td>'+
-                        '<td align="center" style="dislay: none;">' + data1[i].fecha+'</td>'+
-                        '<td align="center" style="dislay: none;">' + data1[i].hora+'</td>'+'</tr>');
-                          }
+                        alert(data1);
+                        var $tablebody = document.getElementById("body_report");
+                        var result= [data1];
+                         
+                        for (var a = 0; a < result.length; a++) {
+                        let $tr = document.createElement('tr');
+                        let $td_identificacion = document.createElement('td');
+                        $td_identificacion.textContent = result[a].identificacion;
+                        $tr.appendChild($td_identificacion);
+                        let $td_tipoidentificacion = document.createElement('td');
+                        $td_tipoidentificacion.textContent = result[a].tipoidentificacion;
+                        $tr.appendChild($td_tipoidentificacion);
+                        let $td_nombres = document.createElement('td');
+                        $td_nombres.textContent = result[a].nombres;
+                        $tr.appendChild($td_nombres);
+                        let $td_apellidos = document.createElement('td');
+                        $td_apellidos.textContent = result[a].apellidos;
+                        $tr.appendChild($td_apellidos);
+                        let $td_estrato = document.createElement('td');
+                        $td_estrato.textContent = result[a].estrato;
+                        $tr.appendChild($td_estrato);
+                        let $td_telefonos = document.createElement('td');
+                        $td_telefonos.textContent = result[a].telefonos
+                        $tr.appendChild($td_telefonos);
+                        let $td_fecha = document.createElement('td');
+                        $td_fecha.textContent = result[a].fecha;
+                        $tr.appendChild($td_fecha);
+                        let $td_hora = document.createElement('td');
+                        $td_hora.textContent = result[a].hora;
+                        $tr.appendChild($td_hora);
+    
+                        $tablebody.appendChild($tr);
+                    }
                       
                         });
                           }
@@ -413,32 +419,23 @@
                           <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             
                             <div class="mb-3" style="overflow-x:auto;">
-                              <table class="table table-striped table-ligth border border-5" id="Table">
-                                <thead>
-                                  <tr>
-                                      <th>Tipo de identificacion</th>
-                                      <th>Numero de identificacion</th>
-                                      <th>Nombre</th>
-                                      <th>Apellido</th>
-                                      <th>Estrato</th>
-                                      <th>Telefono</th>
-                                      <th>Fecha cita</th>
-                                      <th>Hora</th>
-                                  </tr>
-                                </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td>Cedula de ciudadania</td>
-                                      <td>1194576890</td>
-                                      <td>Andres</td>
-                                      <td>Rodriguez</td>
-                                      <td>3</td>
-                                      <td>3174980934</td>
-                                      <td>02/07/2023</td>
-                                      <td>03:00 p.m</td>
-                                    </tr>
-                                  </tbody>
-                              </table>
+                            <table id="table_report">
+        <thead>
+            <tr>
+                <th scope="col">identificacion</th>
+                <th scope="col">tipoidentificacion</th>
+                <th scope="col">nombres</th>
+                <th scope="col">apellidos</th>
+                <th scope="col">estrato</th>
+                <th scope="col">telefonos</th>
+                <th scope="col">fecha</th>
+                <th scope="col">hora</th>
+            </tr>
+        </thead>
+        <tbody id="body_report">
+
+        </tbody>
+    </table>
                             </div>
                           </div>
                         </div>
