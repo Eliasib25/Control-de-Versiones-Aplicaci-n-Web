@@ -1,6 +1,6 @@
 <?php
 
-require_once("../componenetes/conectarmysql.php");
+require_once("../componentes/conectarmysql.php");
 require_once("interfazcontrolador.php");
 
 class ControladorServiciosElementos extends ConectarMysql implements InterfazControlador{
@@ -9,10 +9,9 @@ class ControladorServiciosElementos extends ConectarMysql implements InterfazCon
 
     public function guardar($objeto)
     {
-        $sql: "call crudservicios(0,?,?,?,?,?,?,?)"
+        $sql = "call crudservicioselementos(0,?,?)";
         $sentencia = $this->getconexion()->prepare($sql);
-        $sentencia->bind_param("isiiisssi", $objeto->tipoidentificacion, $objeto->identificador, $objeto->nombre, 
-        $objeto->costo, $objeto->precio, $objeto->porcentajeganancia,$objeto->peso,$objeto->presionsistolica,$objeto->presiondiastolica,$objeto->evolucion,$objeto->Categorias_identificador);
+        $sentencia->bind_param("ii", $objeto->Elementos_identificador, $objeto->Servicios_identificador);
         $sentencia->execute();
         $result = $sentencia->get_result();
     }

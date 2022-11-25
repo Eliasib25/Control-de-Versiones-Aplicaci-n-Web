@@ -50,8 +50,10 @@
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ftl-vertical-tab-container">
               <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ftl-vertical-tab-menu">
                 <div style="text-align: center; border:1px solid #dddede;">
-                  <img src="../recursos/imagenes/Usuario.png" alt="">
-                  <p style="font-size: 20px;">Nombre Usuario</p>
+                  <img src="../recursos/imagenes/Usuario.png" alt=""><br>
+                  <?php 
+                      echo $_SESSION['usuario'];
+                    ?>
                 </div>  
                 <div class="list-group">
                   <a href="#" class="list-group-item active text-center">
@@ -112,7 +114,7 @@
                             <br>
                             <label for="">Presione este botón si el cliente viene por segunda vez o más</label>
                             <br>
-                            <a href="../html/actualizarhistoriaclinica(profesionales).html"><button class="btn btn-dark" style="font-size: 13px; width: 200px" role="button">Registrar Historia Clinica</button></a>
+                            <a href="../html/actualizarhistoriaclinica(profesionales).php"><button class="btn btn-dark" style="font-size: 13px; width: 200px" role="button">Registrar Historia Clinica</button></a>
                            </div>
                         </div>
                       </center>

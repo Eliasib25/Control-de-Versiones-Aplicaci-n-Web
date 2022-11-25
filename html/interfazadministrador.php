@@ -123,7 +123,7 @@
                                   <div class= "col"style="width:auto;">
                                       <label for="">Nombre</label>
                                       <br>
-                                    <input type="text"  aria-label="First name">
+                                    <input type="text"  id ="nombre" aria-label="First name">
                                   </div>
                                   <div  class = "col" style="width: auto;">
                                       <label for="">Categoría</label>
@@ -210,10 +210,10 @@
 
                                             //Esta función manda los valores de los inputs hacia php mediante ajax :)
                                             function guardar() {
-                                              var Materias = JSON.stringify(arrayMaterias);
+                                              var servicios = JSON.stringify(arrayMaterias);
 
                                             // mediante ajax, enviamos por POST el json en la variable: arrayDeValores
-                                            $.post("../controladores/controladorformulario.php",{arrayMaterias:arrayJson,
+                                            $.post("../controladores/controladorformulario.php",{arrayServicios:servicios,
                                             controlador:$('#controlador').val(),
                                             operacion:$('#operacion').val(),
                                             nombre:$('#nombre').val(),
@@ -237,13 +237,16 @@
                                     <div class= "col"style="width:auto;">
                                       <label for="">Porcentaje de ganancia</label>
                                       <br>
-                                    <input type="number"  aria-label="First name">
+                                    <input type="number" id="porcentajeGanancia" aria-label="First name">
                                     </div>
                                   </div>
                               </div>
                           </div>
                           <div class="row" style="display: flex; justify-content: center;">
-                              <button class="btn btn-dark" style="font-size: 13px;" role="button">Registrar</button>
+                              <button class="btn btn-dark" onclick="guardar()" id="operacion" value="guardar" style="font-size: 13px;" 
+                              role="button">Registrar</button>
+
+                              <input type="text" name="" id="controlador" value="servicios" hidden>
                           </div>
                           <br>
                               </div>
@@ -413,30 +416,43 @@
                             <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                               <div class="accordion-body">
                                 <div class="mb-3" style="overflow-x:auto;">
+
                                   <table class="table table-striped table-ligth border border-5">
                                     <thead>
                                       <tr>
                                           <th>Nombre del Servicio</th>
-                                          <th>Categoría</th>
-                                          <th>Materias Primas</th>
-                                          <th>Maquinas</th>
-                                          <th>Reactivos</th>
                                           <th>Costo</th>
-                                          <th>Porcentaje de ganancia</th>
                                           <th>Precio</th>
+                                          <th>Porcentaje de ganancia</th>
                                       </tr>
                                     </thead>
                                       <tbody>
-                                        <tr>
-                                          <td>Servicio 1</td>
-                                          <td>categoria 1</td>
-                                          <td>Materia P 1</td>
-                                          <td>Maquina 1</td>
-                                          <td>Reactivo 1</td>
-                                          <td>$20</td>
-                                          <td>50%</td>
-                                          <td>$60</td>
-                                        </tr>
+                                        
+                                <?php
+
+                                  include_once('../controladores/controladorservicio.php');
+
+                                  $controladorServicio = new ControladorServicio();
+                                  $resultado = $controladorServicio->listar();
+                                  // <input type='number' name='identificador' value=".$fila['identificador']." hidden>
+                                  //                     <input type='text' name='tipoElemento' value=".$fila['tipoelemento']." hidden>
+                                  //                     <input type='text' name='nombre' value=".$fila['nombre']." hidden>
+                                  //                     <input type='number' name='precio' value=".$fila['precio']." hidden>
+                                  while ($fila = $resultado->fetch_assoc()){
+                                      echo "<tr>";
+                                          echo "<td>".$fila['nombre']."</td>";
+                                          echo "<td>".$fila['costo']."</td>";
+                                          echo "<td>".$fila['precio']."</td>";
+                                          echo "<td>".$fila['porcentajeganancia']."</td>";
+                                          echo "<td>
+                                                  <form action='modalelementos.php' method='post'>
+                                                      
+                                                      <button type='submit' class='btn btn-outline-success' style='text-align: center;'>editar</button>
+                                                  </form>
+                                                </td>";
+                                      echo "</tr>";
+                                  }
+                                  ?>
                                       </tbody>
                                   </table>
                                 </div>

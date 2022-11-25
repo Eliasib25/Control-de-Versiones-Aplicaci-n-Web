@@ -17,6 +17,16 @@ class ControladorCitas extends ConectarMysql {
         $result = $sentencia->get_result();
     }
 
+    public function eliminar($objeto){
+        $sql = "call crudcitas(1,?,?,?,?,?,?,?)";
+        $sentencia = $this->getconexion()->prepare($sql);
+        $sentencia->bind_param("issssss", $objeto->identificador,$objeto->fecha, $objeto->hora, 
+                                $objeto->Clientes_tipoidentificacion, $objeto->Clientes_identificacion,
+                                $objeto->Profesionales_tipoidentificacion,$objeto->identificacionProfesional);
+        $sentencia->execute();
+        $result = $sentencia->get_result();
+    }
+
     public function listarCitasClientes($objeto){
         $sql = "Select ce.identificacion as identificacion, ce.tipoidentificacion as tipoidentificacion, 
         ce.nombres as nombres, ce.apellidos as apellidos, ce.estrato as estrato, co.telefonos as telefonos, ci.fecha as fecha, ci.hora as hora
@@ -29,6 +39,11 @@ class ControladorCitas extends ConectarMysql {
         $sentencia->execute();
         $result = $sentencia->get_result();
         return $result;
+    }
+
+    public function listar(){
+        $sql = "select * from $this->tabla order by fecha asc";
+        return $this->getDatos($sql);
     }
 
     public function getDatos($sql){

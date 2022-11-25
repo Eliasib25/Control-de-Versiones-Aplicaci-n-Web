@@ -37,7 +37,8 @@ if($controlador == "cliente"){
     $contraseña = isset($_POST['contraseña']) ? $_POST['contraseña'] : '';
     $tipoUsuario = isset($_POST['tipoUsuario']) ? $_POST['tipoUsuario'] : 'Cliente';
     //Se envían los datos a Usuarios
-    require("../modelos/usuario.php");
+    require_once("../modelos/usuario.php");
+    require_once("../modelos/controladorusuario.php");
     $usuario = new Usuario($nombreUsuario,$contraseña,$tipoUsuario,$tipoidentificacion,$identificacion, $Empleados_numeroidentificacion=null, $Empleados_tipoIdentificacion=null, $Profesionales_tipoidentificacion=null, $Profesionales_Identificacion=null);
 
     $controladorGenerico = new ControladorUsuario();
@@ -52,7 +53,8 @@ if($controlador == "cliente"){
 }
 if($controlador == "cliente"){
 
-require("../modelos/contactos.php");
+require_once("../modelos/contactos.php");
+require_once("../modelos/controladorcontacto.php");
 
 $arrayTelefonos=json_decode($_POST["arrayDeValores"], true );
 $arrayCorreos = json_decode($_POST["arrayCorreos"], true);
@@ -315,6 +317,9 @@ else if ($controlador == "citas"){
     if ($operacion == "agendar") {
         $controladorGenerico->guardar($citas);
         echo "Se ha agendado la cita de manera exitosa";
+    }if ($operacion == "eliminar") {
+        $controladorGenerico->eliminar($citas);
+        echo "Se ha eliminado la cita de manera exitosa";
     }
     
     if($operacion == "buscarCitas"){
@@ -335,7 +340,8 @@ else if ($controlador == "citas"){
     require("../modelos/historiaclinica.php");
     require("controladorhistoriaclinica.php");
 
-    $arrayServicios=json_decode($_POST["arrayDeValores"], true );
+
+    $arrayServicios=json_decode(isset($_POST["arrayDeValores"]) ? $_POST["arrayDeValores"] : '', true );
     $identificador = null;
     $tipoidentificacion = $_POST["tipoidentificacion"];
     $identificacion = $_POST["identificacion"];
@@ -343,32 +349,121 @@ else if ($controlador == "citas"){
     $peso = $_POST["peso"];
     $presionsdiastolica = $_POST["presionDiastolica"];
     $presionsistolica = $_POST["presionSistolica"];
-    $diagnostico = $_POST["diagnostico"];
+    $diagnostico = isset($_POST['diagnostico']) ? $_POST['diagnostico'] : '';
     $derivacion = $_POST["derivacion"];
     $resultados = $_POST["resultados"];
-    $sesionesrecomendadas = $_POST["sesionesrecomendadas"];
+    $sesionesrecomendadas = isset($_POST["sesionesrecomendadas"]) ? $_POST['sesionesrecomendadas'] : '';
+    $Profesionales_tipoidentificacion = isset($_POST['Profesionales_tipoidentificacion']) ? $_POST['Profesionales_tipoidentificacion'] : '';
+    $Profesionales_Identificacion = isset($_POST['Profesionales_Identificacion']) ? $_POST['Profesionales_Identificacion'] : '';
 
-    $historiaclinica = new historiaclinica($identificador,$fecha,$peso,$presionsistolica,$presionsdiastolica,$derivacion,$resultados,$sesionesrecomendadas,$evolucion = null,$tipoidentificacion,$identificacion, $Profesionales_tipoidentificacion="CC",$Profesionales_Identificacion=1234567890);
+    
+    
 
     $controladorGenerico = new ControladorHistoriaClinica();
 
-    if($operacion == "guardar"){
+    if($operacion == "guardar2"){
+
+    $historiaclinica2 = new historiaclinica($identificador,$fecha,$peso,$presionsistolica,$presionsdiastolica,$derivacion,$resultados,
+    $sesionesrecomendadas,$evolucion = null,
+    $diagnostico,$tipoidentificacion,$identificacion, $Profesionales_tipoidentificacion,$Profesionales_Identificacion);
+
+        $controladorGenerico->guardar($historiaclinica2);
+
+    }else if($operacion == "guardar"){
+
+    $historiaclinica = new historiaclinica($identificador,$fecha,$peso,$presionsistolica,$presionsdiastolica,$derivacion,$resultados,
+    $sesionesrecomendadas,$evolucion = null,
+    $diagnostico,$tipoidentificacion,$identificacion, $Profesionales_tipoidentificacion,$Profesionales_Identificacion);
+
         $controladorGenerico->guardar($historiaclinica);
 
-      echo  json_encode($controladorGenerico);
-    }
+    $consulta = new historiaclinica(
+        $identificador,$fecha,$peso,$presionsistolica,$presionsdiastolica,$derivacion,$resultados,
+        $sesionesrecomendadas,$evolucion = null,
+        $diagnostico,$tipoidentificacion,$identificacion, $Profesionales_tipoidentificacion,$Profesionales_Identificacion
+    );
 
+    $controlador = new ControladorHistoriaClinica();
+
+    $resultado = $controlador->consultarIdHistoria($consulta);
+
+    $identificadorHistoria = implode($resultado->fetch_assoc());
+
+   
+
+    require("../modelos/diagnostico.php");
+    require("controladordiagnostico.php");
+
+    $controladorGenerico = new ControladorDiagnostico();
+    for ($i=0; $i <count($arrayServicios) ; $i++) { 
+
+        $diagnostico = new Diagnostico($arrayServicios[$i],$identificadorHistoria);
+
+        
+        if($operacion == "guardar"){
+            $controladorGenerico->guardar($diagnostico);
+        }
+    }
+}
 }else if ($controlador == "servicios"){
 
     require("../modelos/servicio.php");
-    require("controladorservicios.php");
+    require("controladorservicio.php");
 
-    $nombreServicio = $_POST["nombre"];
-    $arrayElementos = json_decode($_POST["arrayMaterias"]);
-    $categoria = $_POST["categoria"];
-    $porcentajeGanacia = $_POST["porcentajeGanancia"];
+    $identificador = null;
+    $nombreServicio = isset($_POST["nombre"]) ? $_POST["nombre"] : '';
+    $arrayElementos = json_decode(isset($_POST["arrayServicios"]) ? $_POST["arrayServicios"] : '',true);
+    $categoria = isset($_POST["categoria"])? $_POST["categoria"] : '';
+    $porcentajeGanacia = isset($_POST["porcentajeGanancia"]) ? $_POST["porcentajeGanancia"] : '';
+
+    $servicio = new Servicio($identificador,$nombreServicio,$costo=0,$precio=0,$porcentajeGanacia,$peso="",$presionsistolica="",$presiondiastolica="",$evolucion="",$categoria);
+
+    $controladorGenerico = new ControladorServicio();
+
+    if($operacion == "guardar"){
+        $controladorGenerico->guardar($servicio);
+    }
+
+    $controlador = new ControladorServicio();
+
+    $consulta = new Servicio($identificador,$nombreServicio,$costo=0,$precio=0,$porcentajeGanacia=0,$peso="",$presionsistolica="",$presiondiastolica="",$evolucion="",$categoria=0);
+
+
+    $resultado = $controlador->consultarIdServicio($consulta);
+
+    $servicioId = implode($resultado->fetch_assoc());
+    
+    require("../modelos/servicioelemento.php");
+    require("controladorservicioselementos.php");
+
+    $controladorGenerico = new ControladorServiciosElementos();
+
+    for ($i=0; $i <count($arrayElementos) ; $i++) { 
+        
+        $elementosServicio = new ServicioElemento($servicioId,$arrayElementos[$i]);
+
+        if($operacion == "guardar") {
+            $controladorGenerico->guardar($elementosServicio);
+        }
+
+    }
+
+    $costoPrecioServicio = new ControladorServicio();
+
+    $objetoCostoPrecio = new Servicio($servicioId,$nombreServicio,$costo=0,$precio=0,$porcentajeGanacia=0,$peso="",$presionsistolica="",$presiondiastolica="",$evolucion="",$categoria=0);
+
+    $consulta = $costoPrecioServicio->consultarPrecioCosto($objetoCostoPrecio);
+    $resultado = $consulta->fetch_assoc();
+
+    $costo = $resultado["costo"];
+    $precio = $resultado["precio"];
+
+    $arrayPrecioCosto = [$costo,$precio];
+
+   echo json_encode($arrayPrecioCosto);
 
 
 }
+
 
 ?>

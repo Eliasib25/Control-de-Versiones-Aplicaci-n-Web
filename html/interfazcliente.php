@@ -116,7 +116,7 @@
                                       $usuario = new Usuario($_SESSION['usuario']);
                                       $controlador = new ControladorUsuario();
                                     
-                                      $resultado = $controlador->consultarRegistro($usuario);
+                                      $resultado = $controlador->consultarRegistroCliente($usuario);
                                       $fila = $resultado->fetch_assoc();
 
                                       // echo $fila['tipo'] ;
@@ -166,17 +166,6 @@
                       <center>
                         <h2 class="border border-3 text-center" style="margin-top: 0;color:#253237">Consultar y cancelar cita</h2>
                         <div class="container my_text">
-                          <div class="mb-3">
-                            <form action="">
-                              <label for="formGroupExampleInput2" class="form-label">Seleccione la fecha</label>
-                              <input type="date" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
-                              <br>
-                              <div style="display: flex; justify-content: center;">
-                                <button type="button" style="font-size:18px" class="btn btn-outline-primary">consultar</button>
-                              </div>
-                              
-                            <form>
-                          </div>
                         </div>
                         <div class="container my_text">
                           <div class="row justify-content-center">
@@ -184,23 +173,32 @@
                               
                              <div class="mb-3" style="overflow-x:auto;">
                                 <table class="table table-striped table-ligth border border-5">
-                                  <thead>
                                     <tr>
                                         <th>Fecha</th>
                                         <th>Hora</th>
-                                        <th>Servicio</th>
-                                        <th>Tratamiento</th>
+                                        <th>Accion</th>
                                     </tr>
-                                  </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td>22/10/2022</td>
-                                        <td>10:00 a.m.</td>
-                                        <td>Servicio x</td>
-                                        <td>Tratamiento x</td>
-                                        <td><button type="button" style="font-size:18px" class="btn btn-outline-danger">Cancelar cita</button></td>
-                                      </tr>
-                                    </tbody>
+                                          <?php
+
+                                              include_once('../controladores/controladorcitas.php');
+
+                                              $controladorCita = new ControladorCitas();
+                                              $resultado = $controladorCita->listar();
+                                              
+                                              while ($fila = $resultado->fetch_assoc()){
+                                                  echo "<tr>";
+                                                      echo "<td>".$fila['fecha']."</td>";
+                                                      echo "<td>".$fila['hora']."</td>";
+                                                      echo "<td>
+                                                              <form action='modalelementos.php' method='post'>
+                                                              <input type='number' name='codigo' value = '". $fila['identificador'] ."' hidden>
+                                                              <input type='text' name='controlador' value='citas' hidden>
+                                                              <input type='submit' name='operacion' value='eliminar' class='btn btn-outline-danger'>
+                                                              </form>
+                                                            </td>";
+                                                  echo "</tr>";
+                                              }
+                                          ?>
                                 </table>
                              </div>
                             </div>
@@ -214,35 +212,49 @@
                         <div class="container my_text">
                           <div class="row justify-content-center">
                             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                              <div class="mb-3 d-flex justify-content-center">
-                                <button type="button" style="font-size:18px" class="btn btn-outline-primary">Ver</button>
-                              </div>
                               <div class="mb-3" style="overflow-x:auto;">
                                 <table class="table table-striped table-ligth border border-5">
-                                  <thead>
                                       <tr>
                                           <th>Fecha sesión</th>
                                           <th>Peso</th>
-                                          <th>Presion arterial</th>
+                                          <th>Presion sistolica</th>
+                                          <th>Presion diastolica</th>
                                           <th>Diagnostico</th>
                                           <th>Derivación</th>
                                           <th>Sesiones</th>
-                                          <th>Sesiones realizadas</th>
+                                          <th>Evolucion</th>
                                           <th>Resultados</th>
                                       </tr>
-                                  </thead>
-                                  <tbody>
-                                      <tr>
-                                          <td>Andres Rodriguez</td>
-                                          <td>Cedula</td>
-                                          <td>1098345960</td>
-                                          <td>Sucre</td>
-                                          <td>Carrera 2b #09-34</td>
-                                          <td>Avenida la Maria Local #134</td>
-                                          <td>34</td>
-                                          <td>77</td>
-                                      </tr>
-                                  </tbody>
+                                      <?php
+                                      include_once('../controladores/controladorhistoriaclinica.php');
+                                      include_once('../controladores/controladorusuario.php');
+                                      include_once('../modelos/usuario.php');
+
+                                      $usuario = new Usuario($_SESSION['usuario']);
+                                      $controladorU = new ControladorUsuario();
+                                    
+                                      $resultadoU = $controladorU->consultarRegistroCliente($usuario);
+                                      $filaU = $resultadoU->fetch_assoc();
+
+                                      // echo $fila['tipo'] ;
+                                      // echo $fila['identificacion'];
+
+                                      $historiaClinica = new HistoriaClinica($filaU['tipo'],$filaU['identificacion'])
+                                      $controladorH = new ControladorHistoriaClinica();
+
+                                      $resultadoH = $controladorH->listarHistoriasClinicasCliente($historiaClinica);
+                                      
+                                      while ($filaH = $resultadoH->fetch_assoc();){
+                                        echo "<tr>";
+                                            echo "<td>".$filaH['identificador']."</td>";
+                                            echo "<td>".$filaH['tipoelemento']."</td>";
+                                            echo "<td>".$filaH['nombre']."</td>";
+                                            echo "<td>".$filaH['precio']."</td>";
+                                        echo "</tr>";
+                                    }
+
+                                    ?>
+
                               </table>
                               </div>
                             </div>
@@ -256,9 +268,6 @@
                         <div class="container my_text">
                           <div class="row justify-content-center">
                             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                              <div class="mb-3 d-flex justify-content-center">
-                                <button type="button" style="font-size:18px" class="btn btn-outline-primary">Ver</button>
-                              </div>
                               <div class="mb-3" style="overflow-x:auto;">
                                 <table class="table table-striped table-ligth border border-5">
                                   <thead>
