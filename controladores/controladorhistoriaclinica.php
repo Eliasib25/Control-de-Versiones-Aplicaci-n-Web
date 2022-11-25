@@ -35,13 +35,13 @@ class ControladorHistoriaClinica extends ConectarMysql {
         $result = $sentencia->get_result();
     }
 
-<<<<<<< HEAD
     public function listarEvolucionTratamiento(){
         $sql = "Select fechasesion, s.nombre, hc.numeroSesiones, hc.resultados, hc.evolucion, hc.derivacion
                 from servicios s, diagnostico d, historiasclinicas hc
                 where (d.HistoriaClinica_identificador = hc.identificador) and (s.identificador = d.Servicios_identificador)";
         return $this->getDatos($sql);
-=======
+    }
+      
     public function consultarIdHistoria($objeto){
         $sql= "select identificador from historiasclinicas
         where Clientes_tipoidentificacion = ? and  Clientes_identificacion = ?";
@@ -50,7 +50,6 @@ class ControladorHistoriaClinica extends ConectarMysql {
         $sentencia->execute();
         $result = $sentencia->get_result();
         return $result;
->>>>>>> 5004f2a5766f9017e6554f5e82a532e8daa29302
     }
 
     public function consultarRegistro($objeto){
