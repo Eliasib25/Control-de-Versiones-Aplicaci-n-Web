@@ -2,6 +2,7 @@
 
 $controlador = $_POST["controlador"];
 $operacion = $_POST["operacion"];
+$controladorE = isset($_POST["controladorE"]);
 
 if($controlador == "cliente"){
     require("../modelos/cliente.php");
@@ -305,9 +306,9 @@ else if ($controlador == "citas"){
 
     $identificador = isset($_POST['identificador']) ? $_POST['identificador'] : 'null';
     $fecha = $_POST['fecha'];
-    $hora = $_POST['hora'];
-    $Clientes_tipoidentificacion = $_POST['Clientes_tipoidentificacion'];
-    $Clientes_identificacion = $_POST['Clientes_identificacion'];
+    $hora = isset($_POST['hora'])?$_POST['hora'] : '';
+    $Clientes_tipoidentificacion = isset($_POST['Clientes_tipoidentificacion']) ? $_POST['Clientes_tipoidentificacion'] : '';
+    $Clientes_identificacion = isset($_POST['Clientes_identificacion']) ? $_POST['Clientes_identificacion'] : '';
 
     $citas = new Citas($identificador,$fecha,$hora,
     $Clientes_tipoidentificacion,$Clientes_identificacion,
@@ -325,7 +326,7 @@ else if ($controlador == "citas"){
     if($operacion == "buscarCitas"){
         
         $resultado = $controladorGenerico->listarCitasClientes($citas);
-        $fila = [$resultado->fetch_assoc()];
+        $fila = $resultado->fetch_assoc();
 
         // echo "<table>";
         // while ($fila = $resultado->fetch_assoc()) {
@@ -462,6 +463,25 @@ else if ($controlador == "citas"){
 
    echo json_encode($arrayPrecioCosto);
 
+
+}
+else if($controladorE == "controladorE"){
+    $operacionE = $_POST("operacionE");
+    $servicioId = $_POST["serviciosId"];
+    $variacionP = isset($_POST["variacionP"]) ? $_POST["variacionP"] : '';
+    $variacionS = isset($_POST["variacionS"]) ? $_POST["variacionS"] : '';
+    $variacionD = isset($_POST["variacionD"]) ? $_POST["variacionD"] : '';
+    $evolucion = $_POST["evolucion"];
+
+    $evolucion = new Servicio($servicioId,$nombreServicio="",$costo=0,$precio=0,$porcentajeGanacia=0,$variacionP,$variacionS,$variacionD,$evolucion,$categoria=0);
+
+    $controladorGenerico = new ControladorServicio();
+
+    if($operacionE == "definir"){
+        $controladorGenerico->definirReglas($evolucion);
+    }
+
+    
 
 }
 

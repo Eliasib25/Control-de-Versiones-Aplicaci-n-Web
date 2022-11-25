@@ -47,6 +47,15 @@ class ControladorServicio extends ConectarMysql {
         return $result;
     }
 
+    public function definirReglas(){
+        $sql = "update from ".$this->tabla." set peso = ?, presionsistolica = ? ,presiondiastolica = ?, evolucion ? where identificador = ?";
+        $sentencia = $this->getconexion()->prepare($sql);
+        $sentencia->bind_param("ssssi",$objeto->peso,$objeto->presionsistolica,$objeto->presiondiastolica,$objeto->evolucion,$objeto->identificador);
+        $sentencia->execute();
+        $result = $sentencia->get_result();
+        return $result;
+    }
+
     public function getDatos($sql){
         $sentencia = $this->getconexion()->prepare($sql);
         $sentencia->execute();
