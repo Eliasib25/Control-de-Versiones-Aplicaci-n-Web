@@ -16,10 +16,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="estilosoficina.css">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     
@@ -119,7 +118,7 @@
 
                                         function(data) {
                                         
-                                        document.writeln(data);
+                                        alert("Se guardó la historia clinica :)");
                                                            
                                         });
                                         }
@@ -139,13 +138,10 @@
 
                                 </textarea>
                                 <br>
-                                <label for="">Numero de sesiones recomendadas</label>
-                                <br>
-                                <input type="number" name="sesionesrecomendadas" id="sesionesrecomendadas">
                               </div>
                               <br>
                               <div style="text-align: center;">
-                                <button onclick="guardar()" id="operacion" value="guardar" class="btn btn-dark" style="font-size: 13px; width: 200px;"role="button">Registrar</button>
+                                <button onclick="guardar()" id="operacion" value="guardar2" class="btn btn-dark" style="font-size: 13px; width: 200px;"role="button">Registrar</button>
                               <a href="../html/agendarcita.php"><button class="btn btn-dark" style="font-size: 13px; width: 200px" role="button">Agendar Cita</button></a>
                                     <input type="text" name="controlador" id="controlador" value="historiaclinica" hidden>
                                </div>

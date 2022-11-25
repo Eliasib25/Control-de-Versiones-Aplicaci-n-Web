@@ -159,7 +159,7 @@
 
                                         function(data) {
                                         
-                                        document.writeln(data);
+                                        alert("Se registró la historia clinica");
                                                            
                                         });
                                         }
