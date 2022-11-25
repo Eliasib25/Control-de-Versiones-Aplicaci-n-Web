@@ -1,7 +1,6 @@
 <?php
 
 require_once("../componentes/conectarmysql.php");
-require_once("interfazcontrolador.php");
 
 class ControladorHistoriaClinica extends ConectarMysql {
 
@@ -33,6 +32,13 @@ class ControladorHistoriaClinica extends ConectarMysql {
         $sentencia->bind_param("ss" ,$objeto->Clientes_tipoidentificacion,$objeto->Clientes_identificacion);
         $sentencia->execute();
         $result = $sentencia->get_result();
+    }
+
+    public function listarEvolucionTratamiento(){
+        $sql = "Select fechasesion, s.nombre, hc.numeroSesiones, hc.resultados, hc.evolucion, hc.derivacion
+                from servicios s, diagnostico d, historiasclinicas hc
+                where (d.HistoriaClinica_identificador = hc.identificador) and (s.identificador = d.Servicios_identificador)";
+        return $this->getDatos($sql);
     }
 
     public function consultarRegistro($objeto){

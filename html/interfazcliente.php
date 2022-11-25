@@ -229,6 +229,7 @@
                                       include_once('../controladores/controladorhistoriaclinica.php');
                                       include_once('../controladores/controladorusuario.php');
                                       include_once('../modelos/usuario.php');
+                                      include_once('../modelos/historiaclinica.php');
 
                                       $usuario = new Usuario($_SESSION['usuario']);
                                       $controladorU = new ControladorUsuario();
@@ -244,7 +245,7 @@
 
                                       $resultadoH = $controladorH->listarHistoriasClinicasCliente($historiaClinica);
                                       
-                                      while ($filaH = $resultadoH->fetch_assoc();){
+                                      while ($filaH = $resultadoH->fetch_assoc()){
                                         echo "<tr>";
                                             echo "<td>".$filaH['identificador']."</td>";
                                             echo "<td>".$filaH['tipoelemento']."</td>";

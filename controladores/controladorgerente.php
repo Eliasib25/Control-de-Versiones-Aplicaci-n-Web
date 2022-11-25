@@ -46,8 +46,10 @@ class ControladorGerente extends ConectarMysql {
         return $this->getDatos($sql);
     }
 
-    public function listar(){
-        $sql = "select * from $this->tabla";
+    public function ganaciasPorMes(){
+        $sql = "Select monthname(ve.fecha) mes, (((costo*porcentajeganancia)/100)*count(vd.Servicios_identificador))as ganancia
+                from servicios s, ventadetalles vd, ventasencabezado ve where (s.identificador = vd.Servicios_identificador) 
+                and (vd.ventasEncabezado_identificador = ve.identificador) group by 1";
         return $this->getDatos($sql);
     }
 
