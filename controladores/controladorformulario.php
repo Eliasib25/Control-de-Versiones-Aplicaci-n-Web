@@ -1,7 +1,7 @@
 <?php
 
-$controlador = $_POST["controlador"];
-$operacion = $_POST["operacion"];
+$controlador = isset($_POST["controlador"]);
+$operacion = isset($_POST["operacion"]);
 $controladorE = isset($_POST["controladorE"]);
 
 if($controlador == "cliente"){
@@ -39,7 +39,7 @@ if($controlador == "cliente"){
     $tipoUsuario = isset($_POST['tipoUsuario']) ? $_POST['tipoUsuario'] : 'Cliente';
     //Se envían los datos a Usuarios
     require_once("../modelos/usuario.php");
-    require_once("../modelos/controladorusuario.php");
+    require_once("controladorusuario.php");
     $usuario = new Usuario($nombreUsuario,$contraseña,$tipoUsuario,$tipoidentificacion,$identificacion, $Empleados_numeroidentificacion=null, $Empleados_tipoIdentificacion=null, $Profesionales_tipoidentificacion=null, $Profesionales_Identificacion=null);
 
     $controladorGenerico = new ControladorUsuario();
@@ -55,7 +55,7 @@ if($controlador == "cliente"){
 if($controlador == "cliente"){
 
 require_once("../modelos/contactos.php");
-require_once("../modelos/controladorcontacto.php");
+require_once("controladorcontacto.php");
 
 $arrayTelefonos=json_decode($_POST["arrayDeValores"], true );
 $arrayCorreos = json_decode($_POST["arrayCorreos"], true);
@@ -308,7 +308,8 @@ else if ($controlador == "citas"){
     $fecha = $_POST['fecha'];
     $hora = isset($_POST['hora'])?$_POST['hora'] : '';
     $Clientes_tipoidentificacion = isset($_POST['Clientes_tipoidentificacion']) ? $_POST['Clientes_tipoidentificacion'] : '';
-    $Clientes_identificacion = isset($_POST['Clientes_identificacion']) ? $_POST['Clientes_identificacion'] : '';
+
+    $Clientes_identificacion = isset($_POST['Clientes_identificacion']) ? $_POST['Clientes_tipoidentificacion']: '';
 
     $citas = new Citas($identificador,$fecha,$hora,
     $Clientes_tipoidentificacion,$Clientes_identificacion,
@@ -326,7 +327,7 @@ else if ($controlador == "citas"){
     if($operacion == "buscarCitas"){
         
         $resultado = $controladorGenerico->listarCitasClientes($citas);
-        $fila = $resultado->fetch_assoc();
+        $fila = [$resultado->fetch_assoc()];
 
         // echo "<table>";
         // while ($fila = $resultado->fetch_assoc()) {

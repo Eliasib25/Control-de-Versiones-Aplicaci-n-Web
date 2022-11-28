@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/estilos.css">
     <script src="../js/utilidades.js"></script>
     <title>Iniciar Sesión</title>
 </head>
+
 <body>
     <header>
-        <div class="grupo1";>
+        <div class="grupo1" ;>
             <ul class="nav justify-content-center" style="align-items: center;">
                 <li class="nav-item">
-                <img style="height: 80px;width: 80px;"src="../recursos/imagenes/cecarlogo.png" alt="CECAR">
+                    <img style="height: 80px;width: 80px;" src="../recursos/imagenes/cecarlogo.png" alt="CECAR">
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" style="color: white;" href="paginaprincipal.html">Página Principal</a>
+                    <a class="nav-link" style="color: white;" href="paginaprincipal.html">Página Principal</a>
                 </li>
             </ul>
         </div>
@@ -26,42 +29,43 @@
     <div class="divlogin">
         <div class="login-page">
             <div class="form">
-                    <form action="../controladores/controladorformulario.php" method="post">
-                        <input type="text" placeholder="Usuario" id="usuario" name="usuario"/>
-                        <input type="password" placeholder="Contraseña" id="contraseña" name="contraseña"/>
-                        <input type="text" id="controlador" name="controlador" value="login" hidden>
-                        <button id="operacion" name="operacion" value="iniciar">Iniciar Sesión</button>  
-                        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+                <form action="../controladores/controladorformulario.php" method="post">
+                    <input type="text" placeholder="Usuario" id="usuario" name="usuario" />
+                    <input type="password" placeholder="Contraseña" id="contraseña" name="contraseña" />
+                    <input type="text" id="controlador" name="controlador" value="login" hidden>
+                    <button id="operacion" name="operacion" value="iniciar">Iniciar Sesión</button>
+                    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
                         <script type="text/javascript" src="../js/login.js"></script>  -->
-                    </form>
+                </form>
 
             </div>
         </div>
     </div>
 
-    
+
 
     <footer class="pie-pagina">
         <div class="grupo-1">
             <div class="box">
-                <a href="" ><img src="../recursos/imagenes/facebook.png" alt="facebook"></a>
-                <a href="" ><img src="../recursos/imagenes/instagram.png  " alt="facebook"></a>
+                <a href=""><img src="../recursos/imagenes/facebook.png" alt="facebook"></a>
+                <a href=""><img src="../recursos/imagenes/instagram.png  " alt="facebook"></a>
                 </figure>
             </div>
             <div class="box">
                 <h1>CECAR</h1>
             </div>
             <div class="box">
-                <ul class="footer-links" >
+                <ul class="footer-links">
                     <h6>Contactanos</h6>
                     <li><a href=""><img src="../recursos/imagenes/telefono.png" alt=""></a> numero telefono</li>
-                    <li><a href=""><img src="../recursos/imagenes/correo.png" alt=""></a> direccioncorreo@example.com</li>
+                    <li><a href=""><img src="../recursos/imagenes/correo.png" alt=""></a> direccioncorreo@example.com
+                    </li>
                 </ul>
             </div>
         </div>
     </footer>
 
-<!-- <script>
+    <!-- <script>
 function inicioSesion() {
 var usuario = document.getElementById("correo").value;
 var password = document.getElementById("password").value;
@@ -83,4 +87,5 @@ if (usuario== "cliente" && password=="123") {
 }
  </script> -->
 </body>
+
 </html>

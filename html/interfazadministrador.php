@@ -1124,8 +1124,8 @@
 
                                             // mediante ajax, enviamos por POST el json en la variable: arrayDeValores
                                             $.post("../controladores/controladorformulario.php",{
-                                            controlador:$('#controladorE').val(),
-                                            operacion:$('#operacionE').val(),
+                                              controladorE:$('#controladorE').val(),
+                                              operacionE:$('#operacionE').val(),
                                             serviciosId:$('#serviciosId').val(),
                                             variacionP:$('#variacionP').val(),
                                             variacionS:$('#variacions').val(),
