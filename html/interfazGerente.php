@@ -451,35 +451,39 @@
                           
                          <div class="mb-3" style="overflow-x:auto;">
                             <table class="table table-striped table-ligth border border-5">
-                              <thead>
                                 <tr>
-                                    <th>Nombre del servicio</th>
-                                    <th>Categoria</th>
-                                    <th>Importe</th>
-                                    <th>Importe semanal</th>
-                                    <th>Importe quincenal</th>
-                                    <th>Importe mensual</th>
-                                    <th>Pacientes con evolucion positiva</th>
-                                    <th>Pacientes con evolucion negativa</th>
+                                    <th>Nombre del Servicio</th>
+                                    <th>Costo</th>
+                                    <th>Precio</th>
+                                    <th>Porcentaje de ganancia</th>
+                                    <th>Acciones</th>
                                 </tr>
-                              </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>Servicio x</td>
-                                    <td>Fisioterapeutico</td>
-                                    <td>600.000</td>
-                                    <td>3.000.000</td>
-                                    <td>23.000.000</td>
-                                    <td>50.000.000</td>
-                                    <td>23</td>
-                                    <td>56</td>
-                                  </tr>
-                                </tbody>
+                                <?php
+
+                                  include_once('../controladores/controladorservicio.php');
+
+                                  $controladorServicio = new ControladorServicio();
+                                  $resultado = $controladorServicio->listarServicios();
+                                  while ($fila = $resultado->fetch_assoc()){
+                                      echo "<tr>";
+                                          echo "<td>".$fila['nombre']."</td>";
+                                          echo "<td>".$fila['costo']."</td>";
+                                          echo "<td>".$fila['precio']."</td>";
+                                          echo "<td>".$fila['porcentajeganancia']."</td>";
+                                          echo "<td>
+                                                <form action='../controladores/controladorformulario.php' method='post'>
+
+                                                  <input type='number' name='codigo' value = '". $fila['identificador'] ."' hidden>
+                                                  <input type='text' name='controlador' value='servicios' hidden>
+                                                  <input type='submit' class='btn btn-outline-danger' name='operacion' value='eliminar'>
+                                  
+                                                </form>
+                                                </td>";
+                                      echo "</tr>";
+                                  }
+                                  ?>
                             </table>
                          </div>
-                         <div class="mb-3 d-flex justify-content-center">
-                          <button type="button" class="btn btn-outline-danger">Eliminar</button>
-                        </div>
                         </div>
                       </div>
                     </div>

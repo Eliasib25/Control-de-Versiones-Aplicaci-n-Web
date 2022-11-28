@@ -424,6 +424,8 @@
                                           <th>Costo</th>
                                           <th>Precio</th>
                                           <th>Porcentaje de ganancia</th>
+                                          <th>Categorias</th>
+                                          <th>Elementos</th>
                                       </tr>
                                     </thead>
                                       <tbody>
@@ -434,16 +436,14 @@
 
                                   $controladorServicio = new ControladorServicio();
                                   $resultado = $controladorServicio->listar();
-                                  // <input type='number' name='identificador' value=".$fila['identificador']." hidden>
-                                  //                     <input type='text' name='tipoElemento' value=".$fila['tipoelemento']." hidden>
-                                  //                     <input type='text' name='nombre' value=".$fila['nombre']." hidden>
-                                  //                     <input type='number' name='precio' value=".$fila['precio']." hidden>
                                   while ($fila = $resultado->fetch_assoc()){
                                       echo "<tr>";
-                                          echo "<td>".$fila['nombre']."</td>";
+                                          echo "<td>".$fila['nombreservicio']."</td>";
                                           echo "<td>".$fila['costo']."</td>";
                                           echo "<td>".$fila['precio']."</td>";
                                           echo "<td>".$fila['porcentajeganancia']."</td>";
+                                          echo "<td>".$fila['nombrecategoria']."</td>";
+                                          echo "<td>".$fila['nombreElemento']."</td>";
                                           echo "<td>
                                                   <form action='modalelementos.php' method='post'>
                                                       

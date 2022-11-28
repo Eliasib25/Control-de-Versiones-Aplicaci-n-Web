@@ -264,7 +264,8 @@ else if ($controlador == "login") {
     if ($operacion == "iniciar") {
         $resultado = $controladorGenerico->validarRegistro($usuarios);
         $tipoUsuario = $resultado->fetch_assoc();
-        switch ($tipoUsuario['tipousuario']){
+        $tipo = $tipoUsuario['tipousuario'];
+        switch ($tipo){
             case 'cliente': 
                 session_start();
                 $_SESSION['usuario'] = $usuario;
@@ -424,6 +425,8 @@ else if ($controlador == "citas"){
 
     if($operacion == "guardar"){
         $controladorGenerico->guardar($servicio);
+    }elseif($operacion == "eliminar"){
+        $controladorGenerico->eliminar($servicio);
     }
 
     $controlador = new ControladorServicio();
@@ -432,6 +435,8 @@ else if ($controlador == "citas"){
 
 
     $resultado = $controlador->consultarIdServicio($consulta);
+
+    $resultado2 = $resultado->fetch_assoc();
 
     $servicioId = implode($resultado->fetch_assoc());
     

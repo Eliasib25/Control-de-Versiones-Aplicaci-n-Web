@@ -17,15 +17,24 @@ class ControladorServicio extends ConectarMysql {
     }
 
     public function eliminar($objeto){
-        $sql = "call crudservicios(1,?,?,?,?)";
+        $sql = "call crudservicios(1,?,?,?,?,?,?,?,?,?,?)";
         $sentencia = $this->getconexion()->prepare($sql);
-        $sentencia->bind_param("issi", $objeto->identificador, $objeto->tipoelemento, $objeto->nombre, $objeto->precio);
+        $sentencia->bind_param("isiiissssi", $objeto->identificador, $objeto->nombre, $objeto->costo, $objeto->precio,$objeto->porcentajeganancia,$objeto->peso,$objeto->presionsistolica,$objeto->presiondiastolica,$objeto->evolucion,$objeto->Categorias_identificador);
         $sentencia->execute();
         $result = $sentencia->get_result();
     }
 
     public function listar(){
-        $sql = "select * from $this->tabla";
+        $sql = "select s.identificador as identificador, s.nombre as nombreservicio, c.nombre as nombrecategoria, e.nombre as nombreElemento, s.costo,  
+                s.porcentajeganancia, s.precio
+                from servicios s, servicioselementos se, elementos e, categorias c
+                where s.identificador = se.Servicios_identificador and s.Categorias_identificador = c.identificador 
+                and e.identificador = se.Elementos_identificador";
+        return $this->getDatos($sql);
+    }
+
+    public function listarServicios(){
+        $sql = "select * from servicios";
         return $this->getDatos($sql);
     }
 
@@ -62,11 +71,7 @@ class ControladorServicio extends ConectarMysql {
         $resultado = $sentencia->get_result();
         return $resultado;
     }
-//     select s.nombre as nombreservicio, c.nombre as nombrecategoria, e.nombre as nombreElemento, s.costo,  
-// s.porcentajeganancia, s.precio
-// from servicios s, servicioselementos se, elementos e, categorias c
-// where s.identificador = se.Servicios_identificador and s.Categorias_identificador = c.identificador 
-// and e.identificador = se.Elementos_identificador;
+
     public function consultarRegistro($objeto){
     }
 
